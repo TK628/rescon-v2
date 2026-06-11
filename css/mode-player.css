@@ -1,0 +1,213 @@
+/* ===== PLAYER ONLY ===== */
+
+.player-mode{
+    width:min(1600px,96vw)!important;
+    height:100dvh;
+    min-height:100dvh!important;
+    padding:10px 0!important;
+    gap:10px!important;
+}
+
+.player-mode #mode-top{
+    min-height:42px;
+}
+
+.player-mode #match-area{
+    height:calc(100dvh - 120px);
+    display:none;
+    grid-template-rows:auto auto 1fr;
+    gap:10px;
+    overflow:hidden;
+}
+
+.player-mode #match-area[style*="flex"]{
+    display:grid!important;
+}
+
+.player-mode #match-timer{
+    font-size:clamp(34px,5vw,64px)!important;
+    padding:8px 12px!important;
+    border-radius:16px;
+    line-height:1;
+}
+
+.player-mode #dummy-grid{
+    height:100%;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    overflow:hidden;
+}
+
+.player-mode .neon-card{
+    padding:12px!important;
+}
+
+.player-mode .section-title{
+    font-size:clamp(14px,1.4vw,20px)!important;
+    margin-bottom:8px!important;
+}
+
+.player-dummy-card{
+    min-height:0;
+    gap:8px;
+    overflow:hidden;
+}
+
+.player-dummy-card .dummy-name{
+    font-size:clamp(13px,1.4vw,18px);
+}
+
+.player-dummy-card .dummy-hp{
+    font-size:clamp(28px,3.6vw,48px);
+    line-height:1;
+}
+
+.player-dummy-card .dummy-bar{
+    height:12px;
+}
+
+.report-panel{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin-top:8px;
+    min-height:0;
+    overflow:hidden;
+}
+
+.report-panel .section-title{
+    grid-column:1/3;
+    font-size:13px!important;
+    margin-bottom:0!important;
+}
+
+.report-panel label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    line-height:1.2;
+}
+
+.report-panel .neon-input{
+    padding:8px!important;
+    font-size:12px!important;
+    height:34px;
+}
+
+.btn-report-dummy{
+    width:100%;
+    grid-column:1/3;
+    height:34px!important;
+    font-size:12px!important;
+}
+
+.player-dummy-card.hidden-dummy{
+    opacity:.25;
+    transition:.3s;
+}
+
+.player-dummy-card.found-dummy{
+    opacity:1;
+}
+
+.report-success{
+    border:2px solid #00ff88;
+    box-shadow:0 0 15px rgba(0,255,136,.35);
+}
+
+.player-stove-report-card{
+    display:grid;
+    grid-template-columns:repeat(3,1fr) 120px;
+    gap:8px;
+    align-items:end;
+}
+
+.player-stove-report-card .stove-card{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.player-stove-report-card label{
+    font-size:12px;
+}
+
+#btn-report-stove{
+    width:100%;
+}
+
+@media(max-width:1024px){
+    .player-mode #dummy-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+
+    .report-panel{
+        grid-template-columns:1fr;
+    }
+
+    .report-panel .section-title,
+    .btn-report-dummy{
+        grid-column:auto;
+    }
+}
+
+@media(max-width:768px){
+    .player-mode{
+        padding:6px 0!important;
+        gap:6px!important;
+    }
+
+    .player-mode #match-area{
+        height:calc(100dvh - 138px);
+        gap:6px;
+    }
+
+    .player-mode #dummy-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:6px;
+    }
+
+    .player-dummy-card{
+        gap:5px;
+        padding:7px!important;
+    }
+
+    .player-dummy-card .dummy-name{
+        font-size:11px;
+    }
+
+    .player-dummy-card .dummy-hp{
+        font-size:26px;
+    }
+
+    .report-panel{
+        gap:4px;
+    }
+
+    .report-panel label{
+        font-size:10px;
+    }
+
+    .report-panel .neon-input{
+        height:28px;
+        padding:4px!important;
+        font-size:10px!important;
+    }
+
+    .btn-report-dummy{
+        height:28px!important;
+        font-size:10px!important;
+    }
+
+    .player-stove-report-card{
+        grid-template-columns:1fr;
+    }
+}
+
+/* PLAYER uses shared countdown styles from mode-base.css */
+
+
+/* ===== v5.1 PLAYER DUMMY ICON ADJUST ===== */
+.player-dummy-card .dummy-icon-holder{min-height:42px;margin:0;}

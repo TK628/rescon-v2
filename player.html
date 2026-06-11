@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PLAYER</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/mode-base.css">
+    <link rel="stylesheet" href="../css/mode-player.css">
+</head>
+<body>
+<div id="app">
+    <main id="mode-container">
+        <section id="mode-top">
+            <button class="neon-button" id="btn-home">
+                HOME
+            </button>
+            <div class="section-title">
+                PLAYER SYSTEM
+            </div>
+        </section>
+
+        <div id="waiting-screen">
+            REFEREE WAITING...
+        </div>
+
+        <div id="match-area">
+            <section class="neon-card">
+                <div class="section-title">
+                    REFEREE
+                </div>
+                <div id="referee-list">
+                </div>
+            </section>
+
+            <div id="match-timer">
+                05:00
+            </div>
+
+            <section class="neon-card">
+                <div class="section-title">STOVE REPORT</div>
+                <div class="stove-grid">
+                    <div class="stove-card">
+                        <label for="report-stove-room-a">ROOM A</label>
+                        <select id="report-stove-room-a" class="neon-input">
+                            <option value="">選択</option>
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                    <div class="stove-card">
+                        <label for="report-stove-room-b">ROOM B</label>
+                        <select id="report-stove-room-b" class="neon-input">
+                            <option value="">選択</option>
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                    <div class="stove-card">
+                        <label for="report-stove-room-c">ROOM C</label>
+                        <select id="report-stove-room-c" class="neon-input">
+                            <option value="">選択</option>
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="neon-button" id="btn-report-stove">
+                    STOVE REPORT
+                </button>
+            </section>
+
+            <section class="neon-card">
+                <div class="section-title">
+                    DUMMY STATUS
+                </div>
+
+                <div id="dummy-grid">
+                    <div class="dummy-card player-dummy-card" id="dummy-card-1">
+                        <div class="dummy-name">
+                            DUMMY 1
+                        </div>
+                        <div class="dummy-hp" id="dummy1-hp">
+                            250
+                        </div>
+                        <div class="dummy-bar">
+                            <div class="dummy-bar-fill" id="dummy1-bar">
+                            </div>
+                        </div>
+
+                        <div class="report-panel">
+                            <div class="section-title">
+                                REPORT
+                            </div>
+
+                            <select class="neon-input report-face-color" data-dummy="dummy1">
+                                <option value="">顔色</option>
+                                <option value="black">黒</option>
+                                <option value="red">赤</option>
+                                <option value="green">緑</option>
+                                <option value="blue">青</option>
+                                <option value="yellow">黄</option>
+                                <option value="purple">紫</option>
+                                <option value="cyan">水</option>
+                                <option value="white">白</option>
+                            </select>
+
+                            <select class="neon-input report-sound-frequency" data-dummy="dummy1">
+                                <option value="">周波数</option>
+                                <option value="1">周波数1</option>
+                                <option value="2">周波数2</option>
+                                <option value="3">周波数3</option>
+                                <option value="4">周波数4</option>
+                                <option value="5">周波数5</option>
+                                <option value="6">周波数6</option>
+                                <option value="7">周波数7</option>
+                                <option value="8">周波数8</option>
+                                <option value="9">周波数9</option>
+                                <option value="10">周波数10</option>
+                                <option value="11">周波数11</option>
+                                <option value="12">周波数12</option>
+                            </select>
+
+                            <input class="neon-input report-qr-code" data-dummy="dummy1" placeholder="QR CODE">
+
+                            <label><input type="checkbox" class="report-right-hand" data-dummy="dummy1"> 右手負傷</label>
+                            <label><input type="checkbox" class="report-left-hand" data-dummy="dummy1"> 左手負傷</label>
+                            <label><input type="checkbox" class="report-right-leg" data-dummy="dummy1"> 右足負傷</label>
+                            <label><input type="checkbox" class="report-left-leg" data-dummy="dummy1"> 左足負傷</label>
+
+                            <select class="neon-input report-walking" data-dummy="dummy1">
+                                <option value="">歩行</option>
+                                <option value="true">可</option>
+                                <option value="false">不可</option>
+                            </select>
+
+                            <button class="neon-button btn-report-dummy" data-dummy="dummy1">
+                                REPORT
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="dummy-card player-dummy-card" id="dummy-card-2">
+                        <div class="dummy-name">
+                            DUMMY 2
+                        </div>
+                        <div class="dummy-hp" id="dummy2-hp">
+                            250
+                        </div>
+                        <div class="dummy-bar">
+                            <div class="dummy-bar-fill" id="dummy2-bar">
+                            </div>
+                        </div>
+
+                        <div class="report-panel">
+                            <div class="section-title">
+                                REPORT
+                            </div>
+
+                            <select class="neon-input report-face-color" data-dummy="dummy2">
+                                <option value="">顔色</option>
+                                <option value="black">黒</option>
+                                <option value="red">赤</option>
+                                <option value="green">緑</option>
+                                <option value="blue">青</option>
+                                <option value="yellow">黄</option>
+                                <option value="purple">紫</option>
+                                <option value="cyan">水</option>
+                                <option value="white">白</option>
+                            </select>
+
+                            <select class="neon-input report-sound-frequency" data-dummy="dummy2">
+                                <option value="">周波数</option>
+                                <option value="1">周波数1</option>
+                                <option value="2">周波数2</option>
+                                <option value="3">周波数3</option>
+                                <option value="4">周波数4</option>
+                                <option value="5">周波数5</option>
+                                <option value="6">周波数6</option>
+                                <option value="7">周波数7</option>
+                                <option value="8">周波数8</option>
+                                <option value="9">周波数9</option>
+                                <option value="10">周波数10</option>
+                                <option value="11">周波数11</option>
+                                <option value="12">周波数12</option>
+                            </select>
+
+                            <input class="neon-input report-qr-code" data-dummy="dummy2" placeholder="QR CODE">
+
+                            <label><input type="checkbox" class="report-right-hand" data-dummy="dummy2"> 右手負傷</label>
+                            <label><input type="checkbox" class="report-left-hand" data-dummy="dummy2"> 左手負傷</label>
+                            <label><input type="checkbox" class="report-right-leg" data-dummy="dummy2"> 右足負傷</label>
+                            <label><input type="checkbox" class="report-left-leg" data-dummy="dummy2"> 左足負傷</label>
+
+                            <select class="neon-input report-walking" data-dummy="dummy2">
+                                <option value="">歩行</option>
+                                <option value="true">可</option>
+                                <option value="false">不可</option>
+                            </select>
+
+                            <button class="neon-button btn-report-dummy" data-dummy="dummy2">
+                                REPORT
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="dummy-card player-dummy-card" id="dummy-card-3">
+                        <div class="dummy-name">
+                            DUMMY 3
+                        </div>
+                        <div class="dummy-hp" id="dummy3-hp">
+                            250
+                        </div>
+                        <div class="dummy-bar">
+                            <div class="dummy-bar-fill" id="dummy3-bar">
+                            </div>
+                        </div>
+
+                        <div class="report-panel">
+                            <div class="section-title">
+                                REPORT
+                            </div>
+
+                            <select class="neon-input report-face-color" data-dummy="dummy3">
+                                <option value="">顔色</option>
+                                <option value="black">黒</option>
+                                <option value="red">赤</option>
+                                <option value="green">緑</option>
+                                <option value="blue">青</option>
+                                <option value="yellow">黄</option>
+                                <option value="purple">紫</option>
+                                <option value="cyan">水</option>
+                                <option value="white">白</option>
+                            </select>
+
+                            <select class="neon-input report-sound-frequency" data-dummy="dummy3">
+                                <option value="">周波数</option>
+                                <option value="1">周波数1</option>
+                                <option value="2">周波数2</option>
+                                <option value="3">周波数3</option>
+                                <option value="4">周波数4</option>
+                                <option value="5">周波数5</option>
+                                <option value="6">周波数6</option>
+                                <option value="7">周波数7</option>
+                                <option value="8">周波数8</option>
+                                <option value="9">周波数9</option>
+                                <option value="10">周波数10</option>
+                                <option value="11">周波数11</option>
+                                <option value="12">周波数12</option>
+                            </select>
+
+                            <input class="neon-input report-qr-code" data-dummy="dummy3" placeholder="QR CODE">
+
+                            <label><input type="checkbox" class="report-right-hand" data-dummy="dummy3"> 右手負傷</label>
+                            <label><input type="checkbox" class="report-left-hand" data-dummy="dummy3"> 左手負傷</label>
+                            <label><input type="checkbox" class="report-right-leg" data-dummy="dummy3"> 右足負傷</label>
+                            <label><input type="checkbox" class="report-left-leg" data-dummy="dummy3"> 左足負傷</label>
+
+                            <select class="neon-input report-walking" data-dummy="dummy3">
+                                <option value="">歩行</option>
+                                <option value="true">可</option>
+                                <option value="false">不可</option>
+                            </select>
+
+                            <button class="neon-button btn-report-dummy" data-dummy="dummy3">
+                                REPORT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="finish-motion">
+        MATCH FINISHED
+    </div>
+</div>
+<script type="module" src="../js/player.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        ROOM LIST
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/common.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/room.css"
+    >
+
+</head>
+
+<body>
+
+<div id="app">
+
+    <main id="room-container">
+
+        <button
+            class="neon-button"
+            id="btn-home"
+        >
+            HOME
+        </button>
+
+        <section class="neon-card">
+
+            <div class="section-title">
+                ROOM LIST
+            </div>
+
+            <input
+                type="text"
+                id="room-search"
+                placeholder="ルーム検索"
+            >
+
+            <div id="room-list">
+            </div>
+
+        </section>
+
+        <button
+            class="neon-button"
+            id="btn-create-room"
+        >
+            CREATE ROOM
+        </button>
+
+    </main>
+
+</div>
+
+<div id="join-overlay">
+
+    <div
+        class="neon-card"
+        id="join-panel"
+    >
+
+        <div
+            id="join-room-name"
+            class="section-title"
+        >
+            ROOM
+        </div>
+
+        <input
+            type="text"
+            id="join-room-id"
+            placeholder="ROOM ID"
+        >
+
+        <input
+            type="password"
+            id="join-room-pass"
+            maxlength="4"
+            placeholder="ROOM PASS"
+        >
+
+        <input
+            type="text"
+            id="player-name-input"
+            placeholder="YOUR NAME"
+        >
+
+        <div id="join-buttons">
+
+            <button
+                class="neon-button"
+                id="btn-referee"
+            >
+                REFEREE
+            </button>
+
+            <button
+                class="neon-button"
+                id="btn-player"
+            >
+                PLAYER
+            </button>
+
+            <button
+                class="neon-button"
+                id="btn-spectator"
+            >
+                SPECTATOR
+            </button>
+
+        </div>
+
+        <button
+            class="neon-button"
+            id="btn-close-join"
+        >
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+<script
+    type="module"
+    src="../js/room.js"
+></script>
+
+</body>
+
+</html>

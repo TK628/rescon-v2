@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FEEDBACK</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/feedback.css">
+</head>
+<body>
+<div id="app">
+<main id="feedback-container">
+<section id="feedback-header">
+<button class="neon-button" id="btn-back-home">HOME</button>
+<div>
+<div id="feedback-kicker">RESCON SYSTEM</div>
+<h1 id="feedback-title">FEEDBACK</h1>
+</div>
+</section>
+
+<section class="neon-card" id="feedback-card">
+<div class="section-title">ご意見・不具合報告</div>
+
+<div class="feedback-form-grid">
+<label>
+<span>TYPE</span>
+<select id="feedback-type" class="neon-input">
+<option value="bug">不具合報告</option>
+<option value="request">要望</option>
+<option value="impression">感想</option>
+<option value="other">その他</option>
+</select>
+</label>
+
+<label>
+<span>NAME</span>
+<input id="feedback-name" class="neon-input" maxlength="30" placeholder="任意">
+</label>
+</div>
+
+<label class="feedback-message-label">
+<span>MESSAGE</span>
+<textarea id="feedback-message" class="feedback-textarea" maxlength="800" placeholder="内容を入力してください"></textarea>
+</label>
+
+<div id="feedback-status"></div>
+
+<div class="feedback-actions">
+<button class="neon-button" id="btn-submit-feedback">SEND</button>
+<button class="neon-button" id="btn-clear-feedback">CLEAR</button>
+</div>
+</section>
+</main>
+</div>
+<script type="module" src="../js/feedback.js"></script>
+</body>
+</html>

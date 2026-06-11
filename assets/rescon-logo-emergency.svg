@@ -1,0 +1,45 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="gMain" x1="28" y1="24" x2="212" y2="216" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E8FBFF"/>
+<stop offset="0.42" stop-color="#FF416C"/>
+<stop offset="1" stop-color="#FF9500"/>
+</linearGradient>
+<linearGradient id="gAccent" x1="60" y1="48" x2="184" y2="190" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFCC00"/>
+<stop offset="1" stop-color="#FF416C"/>
+</linearGradient>
+<linearGradient id="gMetal" x1="52" y1="40" x2="188" y2="190" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFFFFF"/>
+<stop offset="0.45" stop-color="#B8C6D8"/>
+<stop offset="1" stop-color="#4E5A68"/>
+</linearGradient>
+<filter id="glow" x="-45%" y="-45%" width="190%" height="190%">
+<feGaussianBlur stdDeviation="5" result="blur"/>
+<feColorMatrix in="blur" type="matrix" values="0 0 0 0 1.000 0 0 0 0 0.255 0 0 0 0 0.424 0 0 0 0.8 0"/>
+<feBlend in="SourceGraphic" mode="screen"/>
+</filter>
+</defs>
+
+<path d="M120 12L203 60V156L120 228L37 156V60L120 12Z" fill="rgba(7,17,30,0.88)" stroke="url(#gMain)" stroke-width="8" filter="url(#glow)"/>
+<path d="M120 32L184 70V146L120 202L56 146V70L120 32Z" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
+
+<path d="M53 62L83 44L95 57L67 73L53 62Z" fill="url(#gMetal)" opacity="0.95"/>
+<path d="M187 62L157 44L145 57L173 73L187 62Z" fill="url(#gAccent)" opacity="0.98"/>
+<path d="M53 154L83 172L95 159L67 143L53 154Z" fill="url(#gAccent)" opacity="0.86"/>
+<path d="M187 154L157 172L145 159L173 143L187 154Z" fill="url(#gMain)" opacity="0.92"/>
+
+<circle cx="120" cy="112" r="64" stroke="url(#gMain)" stroke-width="5" stroke-dasharray="34 10" opacity="0.92"/>
+<circle cx="120" cy="112" r="82" stroke="rgba(255,255,255,0.16)" stroke-width="2" stroke-dasharray="5 12"/>
+
+<path d="M61 112H83L91 101L102 124L112 93L124 134L135 112H179" stroke="url(#gAccent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+<path d="M85 158V65H127C150 65 166 79 166 100C166 115 157 127 143 133L170 158H141L118 136H109V158H85Z" fill="url(#gMetal)"/>
+<path d="M109 114H126C136 114 142 109 142 101C142 93 136 88 126 88H109V114Z" fill="#07111E"/>
+
+<path d="M120 46V23" stroke="url(#gAccent)" stroke-width="4" stroke-linecap="round"/>
+<path d="M120 219V196" stroke="url(#gAccent)" stroke-width="4" stroke-linecap="round"/>
+<path d="M46 112H23" stroke="url(#gAccent)" stroke-width="4" stroke-linecap="round"/>
+<path d="M217 112H194" stroke="url(#gAccent)" stroke-width="4" stroke-linecap="round"/>
+
+<text x="120" y="218" text-anchor="middle" fill="#FF9500" font-size="10" font-family="Orbitron, Arial, sans-serif" letter-spacing="3">EMERGENCY</text>
+</svg>

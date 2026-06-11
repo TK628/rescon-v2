@@ -1,0 +1,157 @@
+/* ===== v8.6 RESCON OFFICIAL LOGO ===== */
+
+.rescon-logo{
+    width:110px;
+    height:110px;
+    margin:0 auto 10px;
+    display:block;
+    filter:
+        drop-shadow(0 0 18px rgba(0,255,255,.28))
+        drop-shadow(0 0 26px rgba(191,132,255,.18));
+}
+
+.rescon-logo.small{
+    width:58px;
+    height:58px;
+    margin:0;
+}
+
+.rescon-logo.large{
+    width:min(180px,42vw);
+    height:min(180px,42vw);
+    margin:0 auto 18px;
+}
+
+.rescon-logo img,
+.rescon-logo svg{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.rescon-emblem-ring{
+    position:relative;
+}
+
+.rescon-emblem-ring::before{
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border-radius:50%;
+    border:1px solid rgba(0,255,255,.20);
+    box-shadow:
+        0 0 18px rgba(0,255,255,.18),
+        inset 0 0 18px rgba(191,132,255,.08);
+    animation:resconLogoRing 4s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes resconLogoRing{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* HOME logo placement */
+#title-area .rescon-logo{
+    margin-bottom:6px;
+}
+
+/* MASTER header logo */
+#master-header .rescon-logo{
+    justify-self:center;
+}
+
+.master-title-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+}
+
+/* Login screen uses larger official emblem */
+#master-container:has(#master-login-card:not(.master-hidden)) #master-header .rescon-logo{
+    width:92px;
+    height:92px;
+    margin-bottom:4px;
+}
+
+/* Boot emblem */
+.rescon-boot-logo,
+.master-boot-logo{
+    width:min(170px,42vw);
+    height:min(170px,42vw);
+    margin:0 auto 18px;
+    filter:
+        drop-shadow(0 0 22px rgba(0,255,255,.34))
+        drop-shadow(0 0 34px rgba(191,132,255,.22));
+    animation:resconLogoPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes resconLogoPulse{
+    0%,100%{
+        transform:scale(1);
+        opacity:.92;
+    }
+    50%{
+        transform:scale(1.035);
+        opacity:1;
+    }
+}
+
+
+/* ===== v8.6.1 LOGO POSITION TUNE ===== */
+.rescon-boot-logo-stage .rescon-emblem-ring::before{
+    inset:-10px;
+}
+
+
+/* ===== v8.6.2 MASTER BOOT LOGO FIX ===== */
+.master-boot-panel .master-boot-logo{
+    margin-left:auto!important;
+    margin-right:auto!important;
+}
+
+.master-boot-panel .rescon-emblem-ring::before{
+    transform-origin:center!important;
+}
+
+
+
+/* ===== v8.7 OFFICIAL EMBLEM SYSTEM ===== */
+
+.rescon-logo img[src*="rescon-logo.svg"],
+.rescon-boot-logo img[src*="rescon-logo.svg"]{
+    filter:
+        drop-shadow(0 0 20px rgba(0,229,255,.34))
+        drop-shadow(0 0 34px rgba(102,227,255,.16));
+}
+
+.rescon-logo img[src*="rescon-logo-master.svg"],
+.master-boot-logo img[src*="rescon-logo-master.svg"]{
+    filter:
+        drop-shadow(0 0 20px rgba(191,132,255,.36))
+        drop-shadow(0 0 34px rgba(0,255,255,.18));
+}
+
+.rescon-logo img[src*="rescon-logo-emergency.svg"],
+.master-boot-logo img[src*="rescon-logo-emergency.svg"]{
+    filter:
+        drop-shadow(0 0 22px rgba(255,65,108,.50))
+        drop-shadow(0 0 38px rgba(255,149,0,.22));
+}
+
+body.client-emergency-active .rescon-logo img,
+body.master-emergency-active .rescon-logo img{
+    content:url("../assets/rescon-logo-emergency.svg");
+}
+
+/* normal emblem should not feel purple */
+body:not(.theme-royal-purple):not(.theme-emergency-red) .rescon-logo img[src*="rescon-logo.svg"]{
+    filter:
+        drop-shadow(0 0 20px rgba(0,229,255,.34))
+        drop-shadow(0 0 32px rgba(0,255,156,.12));
+}

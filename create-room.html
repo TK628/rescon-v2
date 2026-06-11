@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>CREATE ROOM</title>
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/create-room.css">
+</head>
+<body>
+
+<div id="app">
+
+    <main id="create-room-container">
+
+        <section class="neon-card">
+
+            <div class="section-title">
+                CREATE ROOM
+            </div>
+
+            <div class="form-group">
+                <label>
+                    ROOM NAME
+                </label>
+
+                <input
+                    id="room-name-input"
+                    type="text"
+                    maxlength="30"
+                    placeholder="ROOM NAME"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>
+                    ROOM ID
+                </label>
+
+                <input
+                    id="room-id-input"
+                    type="text"
+                    maxlength="20"
+                    placeholder="ROOM ID"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>
+                    ROOM PASS
+                </label>
+
+                <input
+                    id="room-pass-input"
+                    type="password"
+                    maxlength="4"
+                    placeholder="0000"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>
+                    REFEREE LIMIT
+                </label>
+
+                <select
+                    id="referee-limit-input"
+                    class="neon-input"
+                >
+                    <option value="1">
+                        1
+                    </option>
+
+                    <option value="2">
+                        2
+                    </option>
+
+                    <option value="3">
+                        3
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    KEEP DAYS
+                </label>
+
+                <input
+                    id="keep-days-input"
+                    type="number"
+                    min="1"
+                    max="30"
+                    value="7"
+                >
+            </div>
+
+            <div id="create-buttons">
+
+                <button
+                    class="neon-button"
+                    id="btn-back"
+                >
+                    BACK
+                </button>
+
+                <button
+                    class="neon-button"
+                    id="btn-create-room"
+                >
+                    CREATE
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script
+    type="module"
+    src="../js/create-room.js">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+#feedback-container{
+    width:min(760px,94vw);
+    min-height:100dvh;
+    margin:0 auto;
+    padding:18px 0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:16px;
+}
+
+#feedback-header{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:12px;
+    align-items:center;
+}
+
+#feedback-kicker{
+    text-align:center;
+    font-family:'Orbitron',sans-serif;
+    color:#66e3ff;
+    letter-spacing:4px;
+    font-size:13px;
+    opacity:.82;
+}
+
+#feedback-title{
+    text-align:center;
+    font-family:'Orbitron',sans-serif;
+    color:#00ffff;
+    font-size:clamp(34px,6vw,64px);
+    letter-spacing:5px;
+    text-shadow:0 0 24px rgba(0,255,255,.58);
+}
+
+#feedback-card{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.feedback-form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.feedback-form-grid label,
+.feedback-message-label{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.feedback-form-grid span,
+.feedback-message-label span{
+    font-family:'Orbitron',sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    color:#66e3ff;
+}
+
+.feedback-textarea{
+    width:100%;
+    min-height:220px;
+    resize:none;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid rgba(0,255,255,.22);
+    background:rgba(255,255,255,.045);
+    color:white;
+    outline:none;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.feedback-textarea:focus{
+    border-color:#00ffff;
+    box-shadow:0 0 16px rgba(0,255,255,.20);
+}
+
+#feedback-status{
+    min-height:24px;
+    color:#00ff9c;
+}
+
+.feedback-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.feedback-actions .neon-button{
+    width:100%;
+}
+
+@media(max-width:768px){
+    #feedback-container{
+        justify-content:flex-start;
+        padding:14px 0;
+    }
+
+    #feedback-header{
+        grid-template-columns:1fr;
+    }
+
+    .feedback-form-grid,
+    .feedback-actions{
+        grid-template-columns:1fr;
+    }
+}

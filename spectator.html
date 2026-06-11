@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPECTATOR</title>
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/mode-base.css">
+    <link rel="stylesheet" href="../css/mode-spectator.css">
+</head>
+<body>
+
+<div id="app">
+
+    <main id="mode-container">
+
+        <section id="mode-top">
+
+            <button
+                class="neon-button"
+                id="btn-home">
+                HOME
+            </button>
+
+            <div class="section-title">
+                SPECTATOR SYSTEM
+            </div>
+
+        </section>
+
+        <div id="waiting-screen">
+            REFEREE WAITING...
+        </div>
+
+        <div id="match-area">
+
+            <section class="neon-card">
+
+                <div class="section-title">
+                    REFEREE
+                </div>
+
+                <div id="referee-list">
+                </div>
+
+            </section>
+
+            <div id="match-timer">
+                05:00
+            </div>
+
+            <section class="neon-card">
+
+                <div class="section-title">
+                    DUMMY STATUS
+                </div>
+
+                <div id="dummy-grid">
+
+                    <div
+                        class="dummy-card"
+                        id="dummy-card-1">
+
+                        <div class="dummy-name">
+                            DUMMY 1
+                        </div>
+
+                        <div
+                            class="dummy-hp"
+                            id="dummy1-hp">
+                            250
+                        </div>
+
+                        <div class="dummy-bar">
+                            <div
+                                class="dummy-bar-fill"
+                                id="dummy1-bar">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="dummy-card"
+                        id="dummy-card-2">
+
+                        <div class="dummy-name">
+                            DUMMY 2
+                        </div>
+
+                        <div
+                            class="dummy-hp"
+                            id="dummy2-hp">
+                            250
+                        </div>
+
+                        <div class="dummy-bar">
+                            <div
+                                class="dummy-bar-fill"
+                                id="dummy2-bar">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="dummy-card"
+                        id="dummy-card-3">
+
+                        <div class="dummy-name">
+                            DUMMY 3
+                        </div>
+
+                        <div
+                            class="dummy-hp"
+                            id="dummy3-hp">
+                            250
+                        </div>
+
+                        <div class="dummy-bar">
+                            <div
+                                class="dummy-bar-fill"
+                                id="dummy3-bar">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <div id="finish-motion">
+        MATCH FINISHED
+    </div>
+
+</div>
+
+<script
+    type="module"
+    src="../js/spectator.js">
+</script>
+
+</body>
+</html>

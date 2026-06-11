@@ -1,0 +1,155 @@
+.neon-card{
+    background:rgba(19,26,46,0.92);
+    border:1px solid rgba(0,255,255,0.25);
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 0 20px rgba(0,255,255,0.12);
+    backdrop-filter:blur(10px);
+}
+
+.neon-button{
+    min-width:120px;
+    height:48px;
+    padding:0 20px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:14px;
+    border:1px solid rgba(0,255,255,0.45);
+    background:linear-gradient(
+        135deg,
+        rgba(0,255,255,0.12),
+        rgba(0,120,255,0.22)
+    );
+    color:white;
+    cursor:pointer;
+    transition:var(--transition-normal);
+    box-shadow:0 0 15px rgba(0,255,255,0.18);
+    font-family:'Orbitron',sans-serif;
+    font-size:15px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.neon-button:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 25px rgba(0,255,255,0.45);
+}
+
+.neon-button:disabled{
+    opacity:0.45;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:0 0 8px rgba(0,255,255,0.08);
+}
+
+.section-title{
+    font-family:'Orbitron',sans-serif;
+    font-size:var(--font-section);
+    font-weight:bold;
+    color:var(--color-neon);
+    margin-bottom:18px;
+    letter-spacing:2px;
+    text-shadow:0 0 10px rgba(0,255,255,0.45);
+}
+
+.overlay-base{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(10px);
+    z-index:var(--z-overlay);
+    pointer-events:auto;
+}
+
+.neon-input{
+    width:100%;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,255,255,0.18);
+    border-radius:12px;
+    color:white;
+    padding:14px;
+    outline:none;
+    transition:var(--transition-normal);
+    backdrop-filter:blur(8px);
+}
+
+.neon-input:focus{
+    border:1px solid rgba(0,255,255,0.6);
+    background:rgba(0,255,255,0.04);
+    box-shadow:0 0 16px rgba(0,255,255,0.28);
+}
+
+
+/* ===== v6.5 DROPDOWN WHITEOUT FIX ===== */
+select,
+.neon-input,
+select.neon-input{
+    color:#ffffff;
+    background-color:#07111f!important;
+    background-image:
+        linear-gradient(135deg,rgba(0,255,255,.08),rgba(0,90,150,.12))!important;
+    border-color:rgba(0,255,255,.32)!important;
+}
+
+select:focus,
+.neon-input:focus,
+select.neon-input:focus{
+    color:#ffffff;
+    background-color:#07111f!important;
+    border-color:#00ffff!important;
+    box-shadow:0 0 16px rgba(0,255,255,.24)!important;
+    outline:none;
+}
+
+select option,
+.neon-input option,
+select.neon-input option{
+    color:#ffffff!important;
+    background-color:#07111f!important;
+}
+
+select option:checked,
+.neon-input option:checked,
+select.neon-input option:checked{
+    color:#ffffff!important;
+    background-color:#006ee6!important;
+}
+
+select option:hover,
+.neon-input option:hover,
+select.neon-input option:hover{
+    color:#ffffff!important;
+    background-color:#064b77!important;
+}
+
+select option:disabled,
+.neon-input option:disabled,
+select.neon-input option:disabled{
+    color:rgba(255,255,255,.45)!important;
+    background-color:#07111f!important;
+}
+
+select:-webkit-autofill,
+input:-webkit-autofill,
+textarea:-webkit-autofill{
+    -webkit-text-fill-color:#ffffff!important;
+    box-shadow:0 0 0 1000px #07111f inset!important;
+    caret-color:#ffffff;
+}
+
+/* Firefox */
+select{
+    scrollbar-color:#00ffff #07111f;
+}
+
+/* Windows/Chrome native dropdown対策 */
+@media(forced-colors:none){
+    select,
+    select.neon-input{
+        appearance:auto;
+    }
+}

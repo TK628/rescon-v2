@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MASTER CONSOLE</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/master.css">
+<link rel="stylesheet" href="../css/logo.css">
+</head>
+<body>
+<div id="app">
+<main id="master-container">
+
+<section id="master-header">
+<button class="neon-button" id="btn-back-home">HOME</button>
+<div class="master-title-wrap">
+<div class="rescon-logo small rescon-emblem-ring"><img src="../assets/rescon-logo-master.svg" alt="RESCON"></div>
+<div id="master-kicker">AUTHORIZED CONTROL NODE</div>
+<h1 id="master-title"><span>MASTER</span> CONSOLE</h1>
+</div>
+<div id="master-status">LOCKED</div>
+</section>
+
+<section class="neon-card master-login-card" id="master-login-card">
+<div class="section-title">AUTHORIZATION</div>
+<p class="master-help">MASTER AUTHORIZATION REQUIRED</p>
+<div class="master-login-row">
+<input id="master-pass-input" class="neon-input" type="password" maxlength="32" placeholder="MASTER PASS">
+<button class="neon-button" id="btn-master-login">LOGIN</button>
+</div>
+<div id="login-message"></div>
+</section>
+
+<section id="master-console" class="master-hidden">
+
+<nav id="master-tabs">
+<button class="master-tab active" data-tab="dashboard">DASHBOARD</button>
+<button class="master-tab" data-tab="system">SYSTEM</button>
+<button class="master-tab" data-tab="content">CONTENT</button>
+<button class="master-tab" data-tab="rooms">ROOMS</button>
+<button class="master-tab" data-tab="community-manage">COMMUNITY</button>
+<button class="master-tab" data-tab="feedback">FEEDBACK</button>
+<button class="master-tab" data-tab="logs">LOG</button>
+</nav>
+
+<section id="master-tab-panels">
+
+<div class="master-panel active" data-panel="dashboard">
+<div class="neon-card master-panel-card">
+<div class="master-card-head">
+<div>
+<div class="section-title">MASTER DASHBOARD</div>
+<div class="master-panel-caption">RESCON全体の状態を確認します。詳細なROOM監視はROOMSタブで行います。</div>
+</div>
+<div id="dashboard-updated">--</div>
+</div>
+
+<div id="dashboard-grid">
+<div class="dashboard-stat"><span>ACTIVE ROOMS</span><strong id="dash-active-rooms">0</strong></div>
+<div class="dashboard-stat"><span>RUNNING MATCHES</span><strong id="dash-running-matches">0</strong></div>
+<div class="dashboard-stat"><span>ONLINE USERS</span><strong id="dash-online-users">0</strong></div>
+<div class="dashboard-stat"><span>COMMUNITY POSTS</span><strong id="dash-community-posts">0</strong></div>
+<div class="dashboard-stat"><span>NG WORDS</span><strong id="dash-ng-words">0</strong></div>
+<div class="dashboard-stat"><span>COMMENTS</span><strong id="dash-comments">0</strong></div>
+</div>
+
+<div class="dashboard-lower">
+<section class="dashboard-section">
+<div class="section-title mini-section-title">LATEST ACTIVITY</div>
+<div id="dashboard-activity-list"></div>
+</section>
+
+<section class="dashboard-section">
+<div class="section-title mini-section-title">ROOM SUMMARY</div>
+<div id="dashboard-room-list"></div>
+</section>
+
+<section class="dashboard-section dashboard-feed-wide">
+<div class="section-title mini-section-title">LIVE EVENT FEED</div>
+<div id="dashboard-live-feed-list"></div>
+</section>
+</div>
+</div>
+</div>
+
+<div class="master-panel" data-panel="system">
+<div class="master-subtabs" data-subgroup="system">
+<button class="master-subtab active" data-subtab-target="system-control">CONTROL</button>
+<button class="master-subtab" data-subtab-target="system-health">HEALTH</button>
+<button class="master-subtab" data-subtab-target="system-emergency">EMERGENCY</button>
+<button class="master-subtab" data-subtab-target="system-theme">THEME</button>
+</div>
+<div class="master-consolidated-grid master-subpanel-area">
+
+<section class="neon-card master-panel-card compact-panel master-sub-panel active-subpanel" data-subpanel="system-control">
+<div class="master-card-head">
+<div>
+<div class="section-title">SYSTEM CONTROL</div>
+<div class="master-panel-caption">メンテナンス・COMMUNITY停止を切り替えます。</div>
+</div>
+<div id="maintenance-badge" class="status-badge">NORMAL</div>
+</div>
+
+<label class="master-switch-row large-switch">
+<span>
+<strong>メンテナンスモード</strong>
+<small>ONにするとROOM SELECTを停止します。COMMUNITYは利用可能です。</small>
+</span>
+<input type="checkbox" id="maintenance-toggle">
+</label>
+
+<label class="master-switch-row large-switch">
+<span>
+<strong>COMMUNITY停止</strong>
+<small>ONにするとCOMMUNITYへの投稿を停止します。閲覧とNGワード申請は可能です。</small>
+</span>
+<input type="checkbox" id="community-disabled-toggle">
+</label>
+
+<button class="neon-button full-button" id="btn-save-system">SYSTEM SAVE</button>
+</section>
+
+<section class="neon-card master-panel-card compact-panel master-sub-panel" data-subpanel="system-health">
+<div class="master-card-head">
+<div>
+<div class="section-title">SYSTEM HEALTH</div>
+<div class="master-panel-caption">通信状態・DB応答・全体稼働状況を確認します。</div>
+</div>
+<div id="health-overall-badge">CHECKING</div>
+</div>
+
+<div id="health-grid">
+<div class="health-card"><span>FIREBASE</span><strong id="health-firebase">CHECKING</strong></div>
+<div class="health-card"><span>DB LATENCY</span><strong id="health-latency">-- ms</strong></div>
+<div class="health-card"><span>CONNECTED USERS</span><strong id="health-users">0</strong></div>
+<div class="health-card"><span>ACTIVE ROOMS</span><strong id="health-rooms">0</strong></div>
+<div class="health-card"><span>ERROR COUNT</span><strong id="health-errors">0</strong></div>
+<div class="health-card"><span>STATUS</span><strong id="health-status">NORMAL</strong></div>
+</div>
+
+<div class="health-note">
+SYSTEM HEALTH is estimated from Firebase connectivity, write/read response, room state, and log error keywords.
+</div>
+</section>
+
+<section class="neon-card master-panel-card compact-panel emergency-panel master-sub-panel" data-subpanel="system-emergency">
+<div class="master-card-head">
+<div>
+<div class="section-title">EMERGENCY MODE</div>
+<div class="master-panel-caption">緊急停止表示・新規ROOM参加停止・全画面赤ネオン警告を制御します。</div>
+</div>
+<div id="emergency-badge">OFF</div>
+</div>
+
+<label class="master-switch-row large-switch emergency-switch">
+<span>
+<strong>EMERGENCY MODE</strong>
+<small>ONにすると全画面に緊急停止表示を出し、ROOM SELECTを停止します。</small>
+</span>
+<input type="checkbox" id="emergency-toggle">
+</label>
+
+<label class="announcement-message-label">
+<span>EMERGENCY MESSAGE</span>
+<textarea id="emergency-message-input" class="master-textarea" maxlength="220" placeholder="緊急停止メッセージ"></textarea>
+</label>
+
+<div class="announcement-actions">
+<button class="neon-button danger-action" id="btn-save-emergency">SAVE EMERGENCY</button>
+<button class="neon-button" id="btn-clear-emergency">CLEAR EMERGENCY</button>
+</div>
+
+<div id="emergency-preview"></div>
+</section>
+
+<section class="neon-card master-panel-card compact-panel master-sub-panel" data-subpanel="system-theme">
+<div class="master-card-head">
+<div>
+<div class="section-title">MASTER THEME</div>
+<div class="master-panel-caption">MASTER CONSOLEのテーマを変更します。</div>
+</div>
+<div id="theme-current-badge">ROYAL PURPLE</div>
+</div>
+
+<div id="theme-grid">
+<button class="theme-card" data-theme="royal-purple"><span>ROYAL</span><strong>PURPLE</strong></button>
+<button class="theme-card" data-theme="neon-cyan"><span>NEON</span><strong>CYAN</strong></button>
+<button class="theme-card" data-theme="gold-command"><span>GOLD</span><strong>COMMAND</strong></button>
+<button class="theme-card" data-theme="midnight-black"><span>MIDNIGHT</span><strong>BLACK</strong></button>
+<button class="theme-card" data-theme="emergency-red"><span>EMERGENCY</span><strong>RED</strong></button>
+</div>
+</section>
+
+</div>
+</div>
+
+<div class="master-panel" data-panel="content">
+<div class="master-subtabs" data-subgroup="content">
+<button class="master-subtab active" data-subtab-target="content-notice">NOTICE</button>
+<button class="master-subtab" data-subtab-target="content-manual">MANUAL</button>
+<button class="master-subtab" data-subtab-target="content-version">VERSION</button>
+<button class="master-subtab" data-subtab-target="content-announcement">ANNOUNCEMENT</button>
+</div>
+<div class="master-consolidated-grid master-subpanel-area">
+
+<section class="neon-card master-panel-card compact-panel master-sub-panel active-subpanel" data-subpanel="content-notice">
+<div class="master-card-head">
+<div>
+<div class="section-title">NOTICE CENTER</div>
+<div class="master-panel-caption">お知らせを履歴として残しながら投稿・予約・ピン止め管理します。</div>
+</div>
+<div id="notice-center-count">0 NOTICES</div>
+</div>
+<div class="notice-center-form">
+<input id="notice-title-input" class="neon-input" maxlength="60" placeholder="タイトル">
+<select id="notice-status-input" class="neon-input">
+<option value="published">今すぐ公開</option>
+<option value="scheduled">予約投稿</option>
+<option value="draft">下書き</option>
+</select>
+<label class="notice-check-row"><input type="checkbox" id="notice-pinned-input"><span>PINNED</span></label>
+<label><span>PUBLISH AT</span><input id="notice-publish-at-input" class="neon-input" type="datetime-local"></label>
+<label><span>DELETE AT</span><input id="notice-delete-at-input" class="neon-input" type="datetime-local"></label>
+<textarea id="notice-body-input" class="master-textarea" maxlength="700" placeholder="お知らせ本文"></textarea>
+<div class="notice-center-actions">
+<button class="neon-button" id="btn-add-notice">ADD NOTICE</button>
+<button class="neon-button" id="btn-clear-notice-form">CLEAR</button>
+</div>
+</div>
+<div class="notice-center-filter">
+<button class="notice-filter active" data-notice-filter="all">ALL</button>
+<button class="notice-filter" data-notice-filter="published">PUBLISHED</button>
+<button class="notice-filter" data-notice-filter="scheduled">SCHEDULED</button>
+<button class="notice-filter" data-notice-filter="draft">DRAFT</button>
+<button class="notice-filter" data-notice-filter="expired">EXPIRED</button>
+</div>
+<div id="notice-center-list"></div>
+</section>
+
+
+<section class="neon-card master-panel-card compact-panel master-sub-panel" data-subpanel="content-manual">
+<div class="master-card-head">
+<div>
+<div class="section-title">MANUAL CENTER</div>
+<div class="master-panel-caption">manual.htmlに表示する内容をMASTER権限で項目ごとに追加・編集・削除します。</div>
+</div>
+<div id="manual-center-count">0 ITEMS</div>
+</div>
+
+<div class="master-subtabs manual-center-tabs" data-subgroup="manual-center">
+<button class="master-subtab active" data-subtab-target="manual-match">MATCH MANUAL</button>
+<button class="master-subtab" data-subtab-target="manual-system">SYSTEM MANUAL</button>
+</div>
+
+<div class="manual-center-body">
+
+<div class="master-sub-panel active-subpanel" data-subpanel="manual-match">
+<div class="manual-editor-grid">
+<section class="manual-editor-form">
+<div class="section-title mini-section-title">MATCH MANUAL EDITOR</div>
+<input id="manual-match-title-input" class="neon-input" maxlength="60" placeholder="見出し 例：レフリー操作">
+<textarea id="manual-match-body-input" class="master-textarea" maxlength="900" placeholder="本文"></textarea>
+<div class="manual-editor-actions">
+<button class="neon-button" id="btn-add-manual-match">ADD / UPDATE</button>
+<button class="neon-button" id="btn-clear-manual-match">CLEAR</button>
+</div>
+</section>
+<section class="manual-editor-list">
+<div class="section-title mini-section-title">MATCH ITEMS</div>
+<div id="manual-match-list"></div>
+</section>
+</div>
+</div>
+
+<div class="master-sub-panel" data-subpanel="manual-system">
+<div class="manual-editor-grid">
+<section class="manual-editor-form">
+<div class="section-title mini-section-title">SYSTEM MANUAL EDITOR</div>
+<input id="manual-system-title-input" class="neon-input" maxlength="60" placeholder="見出し 例：HOME">
+<textarea id="manual-system-body-input" class="master-textarea" maxlength="900" placeholder="本文"></textarea>
+<div class="manual-editor-actions">
+<button class="neon-button" id="btn-add-manual-system">ADD / UPDATE</button>
+<button class="neon-button" id="btn-clear-manual-system">CLEAR</button>
+</div>
+</section>
+<section class="manual-editor-list">
+<div class="section-title mini-section-title">SYSTEM ITEMS</div>
+<div id="manual-system-list"></div>
+</section>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="neon-card master-panel-card compact-panel master-sub-panel" data-subpanel="content-version">
+<div class="master-card-head">
+<div>
+<div class="section-title">VERSION CENTER</div>
+<div class="master-panel-caption">UPDATEページに表示するバージョン履歴を管理します。</div>
+</div>
+<div id="version-center-count">0 VERSIONS</div>
+</div>
+
+<div class="version-admin-form">
+<input id="version-input" class="neon-input" maxlength="20" placeholder="例: v9.0">
+<input id="version-title-input" class="neon-input" maxlength="60" placeholder="タイトル">
+<select id="version-tag-input" class="neon-input">
+<option value="FEATURE">FEATURE</option>
+<option value="FIX">FIX</option>
+<option value="HOTFIX">HOTFIX</option>
+<option value="MAJOR">MAJOR</option>
+<option value="UI">UI</option>
+<option value="SYSTEM">SYSTEM</option>
+<option value="NOTICE">NOTICE</option>
+</select>
+<textarea id="version-body-input" class="master-textarea" maxlength="700" placeholder="更新内容"></textarea>
+<button class="neon-button" id="btn-add-version">ADD VERSION</button>
+</div>
+
+<div id="version-center-list"></div>
+</section>
+
+<section class="neon-card master-panel-card compact-panel master-sub-panel" data-subpanel="content-announcement">
+<div class="master-card-head">
+<div>
+<div class="section-title">MASTER ANNOUNCEMENT</div>
+<div class="master-panel-caption">全体アナウンスを送信・停止します。</div>
+</div>
+<div id="announcement-status-badge">STANDBY</div>
+</div>
+
+<div class="announcement-form">
+<label>
+<span>TYPE</span>
+<select id="announcement-type" class="neon-input">
+<option value="info">INFO</option>
+<option value="notice">NOTICE</option>
+<option value="alert">ALERT</option>
+</select>
+</label>
+
+<label>
+<span>TITLE</span>
+<input id="announcement-title-input" class="neon-input" maxlength="40" placeholder="タイトル">
+</label>
+
+<label class="announcement-message-label">
+<span>MESSAGE</span>
+<textarea id="announcement-message-input" class="master-textarea" maxlength="300" placeholder="本文"></textarea>
+</label>
+</div>
+
+<div class="announcement-actions">
+<button class="neon-button" id="btn-send-announcement">SEND ANNOUNCEMENT</button>
+<button class="neon-button danger-action" id="btn-clear-announcement">CLEAR ANNOUNCEMENT</button>
+</div>
+
+<div id="announcement-preview"></div>
+</section>
+
+</div>
+</div>
+
+<div class="master-panel" data-panel="rooms">
+<div class="neon-card master-panel-card">
+<div class="master-subtabs" data-subgroup="rooms">
+<button class="master-subtab active" data-subtab-target="rooms-command">COMMAND</button>
+<button class="master-subtab" data-subtab-target="rooms-list">ROOM LIST</button>
+</div>
+<div class="master-card-head">
+<div>
+<div class="section-title">ROOMS</div>
+<div class="master-panel-caption">ルームの確認・詳細表示・監視・期限延長・削除を行います。</div>
+</div>
+<button class="neon-button mini-button" id="btn-refresh-rooms">REFRESH</button>
+</div>
+<div id="rooms-command-wrap" class="master-sub-panel active-subpanel" data-subpanel="rooms-command">
+<section id="command-center-card">
+<div class="master-card-head">
+<div>
+<div class="section-title">COMMAND CENTER MAP</div>
+<div class="master-panel-caption">ROOMの状態を司令室マップとして監視します。</div>
+</div>
+<div id="command-map-summary">0 ROOMS</div>
+</div>
+<div id="command-utilization">
+<div class="utilization-head">
+<div>
+<div class="utilization-title">ROOM UTILIZATION</div>
+<div id="utilization-detail">0 / 0 ACTIVE</div>
+</div>
+<div id="utilization-percent">0%</div>
+</div>
+<div class="utilization-bar"><div id="utilization-bar-fill"></div></div>
+<div id="utilization-breakdown">
+<span class="util-waiting">WAITING 0</span>
+<span class="util-ready">READY 0</span>
+<span class="util-running">RUNNING 0</span>
+<span class="util-finished">FINISHED 0</span>
+<span class="util-emergency">EMERGENCY 0</span>
+</div>
+</div>
+
+<div id="command-center-toolbar">
+<input id="command-center-search" class="neon-input" placeholder="ROOM検索">
+<select id="command-center-state-filter" class="neon-input">
+<option value="all">ALL STATES</option>
+<option value="waiting">WAITING</option>
+<option value="ready">READY</option>
+<option value="running">RUNNING</option>
+<option value="finished">FINISHED</option>
+<option value="emergency">EMERGENCY</option>
+</select>
+<button class="neon-button" id="btn-command-clear-filter">CLEAR</button>
+</div>
+
+<div id="command-center-map"></div>
+</section>
+</div>
+
+<div class="master-sub-panel" data-subpanel="rooms-list">
+<div id="room-summary"></div>
+<div id="master-room-list"></div>
+</div>
+</div>
+</div>
+
+<div class="master-panel" data-panel="community-manage">
+<div class="neon-card master-panel-card">
+<div class="master-subtabs" data-subgroup="community">
+<button class="master-subtab active" data-subtab-target="community-posts">POSTS</button>
+<button class="master-subtab" data-subtab-target="community-ng">NG REQUEST</button>
+<button class="master-subtab" data-subtab-target="community-stats">STATS</button>
+</div>
+<div class="master-card-head">
+<div>
+<div class="section-title">COMMUNITY CONTROL</div>
+<div class="master-panel-caption">投稿削除・NGワード申請・統計・投稿者別フィルタを行います。</div>
+</div>
+<div id="community-manage-summary"></div>
+</div>
+
+<div class="community-control-toolbar">
+<input id="community-author-filter" class="neon-input" placeholder="投稿者名でフィルタ">
+<button class="neon-button" id="btn-clear-community-filter">CLEAR FILTER</button>
+</div>
+
+<div class="community-stats-admin master-sub-panel active-subpanel" data-subpanel="community-stats">
+<div class="community-stat-admin"><span>POSTS</span><strong id="admin-community-total">0</strong></div>
+<div class="community-stat-admin"><span>TODAY</span><strong id="admin-community-today">0</strong></div>
+<div class="community-stat-admin"><span>AUTHORS</span><strong id="admin-community-authors">0</strong></div>
+<div class="community-stat-admin"><span>NG WORDS</span><strong id="admin-ng-word-count">0</strong></div>
+</div>
+
+<div class="community-manage-layout">
+<section class="community-admin-section master-sub-panel active-subpanel" data-subpanel="community-posts">
+<div class="community-admin-head">
+<div class="section-title mini-section-title">POSTS</div>
+<div id="community-post-count">0 POSTS</div>
+</div>
+<div id="master-community-post-list"></div>
+</section>
+
+<section class="community-admin-section">
+<div class="community-admin-head">
+<div class="section-title mini-section-title">NG WORD REQUESTS</div>
+<div id="ng-request-count">0 REQUESTS</div>
+</div>
+<div id="master-ng-request-list"></div>
+</section>
+</div>
+</div>
+</div>
+
+<div class="master-panel" data-panel="feedback">
+<div class="neon-card master-panel-card">
+<div class="master-card-head">
+<div>
+<div class="section-title">FEEDBACK CENTER</div>
+<div class="master-panel-caption">コメントとOWNER通知をタブで分けて管理します。</div>
+</div>
+</div>
+
+<div class="master-subtabs" data-subgroup="feedback">
+<button class="master-subtab active" data-subtab-target="feedback-comments">COMMENTS</button>
+<button class="master-subtab" data-subtab-target="feedback-owner">OWNER NOTIFICATION</button>
+</div>
+
+<div class="feedback-tab-body">
+
+<div class="master-sub-panel active-subpanel" data-subpanel="feedback-comments">
+<div class="feedback-panel-head">
+<div>
+<div class="section-title mini-section-title">COMMENTS</div>
+<div class="master-panel-caption">利用者からのご意見・不具合報告を確認します。</div>
+</div>
+</div>
+<div id="comment-summary"></div>
+<div id="master-comment-list"></div>
+</div>
+
+<div class="master-sub-panel" data-subpanel="feedback-owner">
+<div class="feedback-panel-head">
+<div>
+<div class="section-title mini-section-title">OWNER NOTIFICATION CENTER</div>
+<div class="master-panel-caption">重要イベント・申請・コメントを確認します。</div>
+</div>
+</div>
+<div id="notification-summary"></div>
+<div class="notification-toolbar">
+<button class="neon-button" id="btn-mark-all-notifications">MARK ALL READ</button>
+<button class="neon-button danger-action" id="btn-clear-read-notifications">CLEAR READ</button>
+</div>
+<div id="notification-list"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="master-panel" data-panel="logs">
+<div class="neon-card master-panel-card">
+<div class="master-card-head">
+<div>
+<div class="section-title">LOG CENTER</div>
+<div class="master-panel-caption">LIVE EVENT FEEDとLOGをタブで分けて確認します。</div>
+</div>
+</div>
+
+<div class="master-subtabs" data-subgroup="logs">
+<button class="master-subtab active" data-subtab-target="logs-live">LIVE EVENT FEED</button>
+<button class="master-subtab" data-subtab-target="logs-all">LOG</button>
+</div>
+
+<div class="log-tab-body">
+
+<div class="master-sub-panel active-subpanel" data-subpanel="logs-live">
+<div class="feedback-panel-head">
+<div>
+<div class="section-title mini-section-title">LIVE EVENT FEED</div>
+<div class="master-panel-caption">最新イベントをリアルタイムで確認します。</div>
+</div>
+</div>
+<div id="log-live-feed-list"></div>
+</div>
+
+<div class="master-sub-panel" data-subpanel="logs-all">
+<div class="feedback-panel-head">
+<div>
+<div class="section-title mini-section-title">LOG</div>
+<div class="master-panel-caption">システム操作ログを確認します。</div>
+</div>
+</div>
+<div id="master-log-list"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+</section>
+</section>
+
+<div id="room-detail-modal" class="master-modal hidden">
+<div class="master-modal-panel room-detail-panel">
+<div class="master-modal-head">
+<div>
+<div class="modal-kicker">ROOM INTELLIGENCE</div>
+<div class="section-title">ROOM DETAIL</div>
+</div>
+<button class="neon-button mini-modal-button" id="btn-close-room-detail">CLOSE</button>
+</div>
+<div id="room-detail-content"></div>
+</div>
+</div>
+
+<div id="room-monitor-modal" class="master-modal hidden">
+<div class="master-modal-panel room-monitor-panel">
+<div class="master-modal-head">
+<div>
+<div class="modal-kicker">LIVE OBSERVATION</div>
+<div class="section-title">ROOM MONITOR</div>
+</div>
+<button class="neon-button mini-modal-button" id="btn-close-room-monitor">CLOSE</button>
+</div>
+<div id="room-monitor-content"></div>
+</div>
+</div>
+
+
+
+<div id="master-boot-overlay" class="master-boot-hidden">
+<div class="master-boot-panel">
+<div class="master-boot-logo rescon-emblem-ring"><img src="../assets/rescon-logo-master.svg" alt="RESCON"></div>
+<div class="master-boot-title">MASTER CORE</div>
+<div class="master-boot-lines" id="master-boot-lines"></div>
+<div class="master-boot-footer">AUTHORIZED CONTROL NODE</div>
+</div>
+</div>
+
+</div>
+<script type="module" src="../js/master.js"></script>
+</body>
+</html>

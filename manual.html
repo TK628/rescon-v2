@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RESCON MANUAL</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/manual.css">
+<link rel="stylesheet" href="../css/logo.css">
+</head>
+<body>
+<div id="app">
+<main id="manual-container">
+
+<section id="manual-header" class="neon-card">
+<button class="neon-button" id="btn-back-home">HOME</button>
+<div class="manual-title-area">
+<div class="rescon-logo small rescon-emblem-ring">
+<img src="../assets/rescon-logo-master.svg" alt="RESCON">
+</div>
+<div id="manual-kicker">RESCON OPERATION GUIDE</div>
+<h1 id="manual-title">MANUAL CENTER</h1>
+</div>
+<div id="manual-status">LIVE</div>
+</section>
+
+<section id="manual-main-card" class="neon-card">
+<div class="manual-card-head">
+<div>
+<div class="section-title">USER MANUAL</div>
+<div class="manual-caption">MASTER CONSOLEで管理されたマニュアルを表示します。</div>
+</div>
+<input id="manual-search-input" class="neon-input" placeholder="検索：HOME / NOTICE / COMMUNITY / レフリー">
+</div>
+
+<div id="manual-tabs">
+<button class="manual-tab active" data-manual-tab="match">MATCH MANUAL</button>
+<button class="manual-tab" data-manual-tab="system">SYSTEM MANUAL</button>
+</div>
+
+<section class="manual-panel active" data-manual-panel="match">
+<div class="manual-panel-head">
+<div>
+<div class="section-title mini-section-title">MATCH MANUAL</div>
+<div class="manual-caption">試合システムに関する操作説明</div>
+</div>
+<div id="match-manual-updated" class="manual-updated">--</div>
+</div>
+<div id="match-manual-content" class="manual-content">読み込み中...</div>
+</section>
+
+<section class="manual-panel" data-manual-panel="system">
+<div class="manual-panel-head">
+<div>
+<div class="section-title mini-section-title">SYSTEM MANUAL</div>
+<div class="manual-caption">HOME・NOTICE・COMMUNITY・MASTERなどの説明</div>
+</div>
+<div id="system-manual-updated" class="manual-updated">--</div>
+</div>
+<div id="system-manual-content" class="manual-content">読み込み中...</div>
+</section>
+
+</section>
+
+</main>
+</div>
+<script type="module" src="../js/manual.js"></script>
+</body>
+</html>

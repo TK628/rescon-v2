@@ -1,0 +1,56 @@
+#master-announcement-banner{
+    position:fixed;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10020;
+    width:min(920px,94vw);
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:14px 18px;
+    border-radius:18px;
+    border:1px solid rgba(0,255,255,.34);
+    background:rgba(5,14,28,.94);
+    box-shadow:0 0 28px rgba(0,255,255,.18);
+    color:white;
+    backdrop-filter:blur(4px);
+}
+
+#master-announcement-banner.announcement-hidden{
+    display:none!important;
+}
+
+#master-announcement-banner.notice{
+    border-color:rgba(255,204,0,.45);
+    box-shadow:0 0 28px rgba(255,204,0,.18);
+}
+
+#master-announcement-banner.alert{
+    border-color:rgba(255,65,108,.55);
+    box-shadow:0 0 32px rgba(255,65,108,.24);
+}
+
+.announcement-icon{
+    font-size:24px;
+}
+
+.announcement-client-title{
+    font-family:'Orbitron',sans-serif;
+    color:#00ffff;
+    letter-spacing:1px;
+    font-weight:700;
+}
+
+#master-announcement-banner.notice .announcement-client-title{
+    color:#ffcc00;
+}
+
+#master-announcement-banner.alert .announcement-client-title{
+    color:#ff416c;
+}
+
+.announcement-client-message{
+    margin-top:4px;
+    line-height:1.5;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>REFEREE</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/mode-base.css">
+    <link rel="stylesheet" href="../css/mode-referee.css">
+</head>
+<body>
+<div id="app">
+    <main id="mode-container" class="referee-compact">
+        <section id="match-header">
+            <button class="neon-button" id="btn-back">戻る</button>
+            <div id="room-name">ROOM NAME</div>
+            <button class="neon-button" id="btn-access">ACCESS</button>
+            <button class="neon-button" id="btn-settings">SETTING</button>
+            <button class="neon-button" id="btn-full-reset">ALL RESET</button>
+        </section>
+
+        <section id="referee-timer-row">
+            <div id="match-timer">05:00</div>
+            <button class="neon-button" id="btn-timer-toggle">START</button>
+        </section>
+
+        <section id="referee-dashboard">
+            <section class="neon-card referee-main-card">
+                <div class="section-title compact-title">DUMMY STATUS</div>
+                <div id="dummy-grid" class="referee-dummy-grid">
+                    <div class="dummy-card" id="dummy-card-1">
+                        <div class="dummy-top-row">
+                            <div class="dummy-name">DUMMY 1</div>
+                            <button class="neon-button found-button" id="btn-found-dummy1">未発見</button>
+                        </div>
+                        <div class="dummy-hp" id="dummy1-hp">250</div>
+                        <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy1-bar"></div></div>
+                        <div class="dummy-buttons">
+                            <button class="neon-button" id="btn-dummy1-minus1">-1</button>
+                            <button class="neon-button" id="btn-dummy1-minus5">-5</button>
+                            <button class="neon-button" id="btn-dummy1-minus10">-10</button>
+                            <button class="neon-button" id="btn-dummy1-reset">RESET</button>
+                        </div>
+                    </div>
+
+                    <div class="dummy-card" id="dummy-card-2">
+                        <div class="dummy-top-row">
+                            <div class="dummy-name">DUMMY 2</div>
+                            <button class="neon-button found-button" id="btn-found-dummy2">未発見</button>
+                        </div>
+                        <div class="dummy-hp" id="dummy2-hp">250</div>
+                        <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy2-bar"></div></div>
+                        <div class="dummy-buttons">
+                            <button class="neon-button" id="btn-dummy2-minus1">-1</button>
+                            <button class="neon-button" id="btn-dummy2-minus5">-5</button>
+                            <button class="neon-button" id="btn-dummy2-minus10">-10</button>
+                            <button class="neon-button" id="btn-dummy2-reset">RESET</button>
+                        </div>
+                    </div>
+
+                    <div class="dummy-card" id="dummy-card-3">
+                        <div class="dummy-top-row">
+                            <div class="dummy-name">DUMMY 3</div>
+                            <button class="neon-button found-button" id="btn-found-dummy3">未発見</button>
+                        </div>
+                        <div class="dummy-hp" id="dummy3-hp">250</div>
+                        <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy3-bar"></div></div>
+                        <div class="dummy-buttons">
+                            <button class="neon-button" id="btn-dummy3-minus1">-1</button>
+                            <button class="neon-button" id="btn-dummy3-minus5">-5</button>
+                            <button class="neon-button" id="btn-dummy3-minus10">-10</button>
+                            <button class="neon-button" id="btn-dummy3-reset">RESET</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="neon-card referee-side-card">
+                <div class="section-title compact-title">TASK</div>
+                <div class="task-grid compact-task-grid">
+                    <label><input type="checkbox" id="task-arrival-a"> 現場到着A</label>
+                    <label><input type="checkbox" id="task-arrival-b"> 現場到着B</label>
+                    <label><input type="checkbox" id="task-arrival-c"> 現場到着C</label>
+                    <label><input type="checkbox" id="task-debris"> がれき撤去</label>
+                    <label><input type="checkbox" id="task-gas"> ガス栓</label>
+                </div>
+            </section>
+
+            <section class="neon-card referee-side-card">
+                <div class="section-title compact-title">RESCUE</div>
+                <div class="rescue-grid compact-rescue-grid">
+                    <div class="rescue-card">
+                        <div class="dummy-name">DUMMY 1</div>
+                        <button class="neon-button rescue-button" id="btn-rescue-dummy1">未救助</button>
+                    </div>
+                    <div class="rescue-card">
+                        <div class="dummy-name">DUMMY 2</div>
+                        <button class="neon-button rescue-button" id="btn-rescue-dummy2">未救助</button>
+                    </div>
+                    <div class="rescue-card">
+                        <div class="dummy-name">DUMMY 3</div>
+                        <button class="neon-button rescue-button" id="btn-rescue-dummy3">未救助</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div id="finish-motion">MATCH FINISHED</div>
+
+    <div id="access-overlay">
+        <div class="neon-card" id="access-panel">
+            <div class="section-title">ACCESS</div>
+            <div id="access-list"></div>
+            <button class="neon-button" id="btn-close-access">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="settings-overlay">
+        <div class="neon-card" id="settings-panel">
+            <div class="section-title">SETTING</div>
+
+            <div class="setting-group compact-setting-group">
+                <div class="setting-label">試合時間</div>
+                <div class="setting-buttons">
+                    <button class="neon-button setting-time" data-time="300">5分</button>
+                    <button class="neon-button setting-time" data-time="480">8分</button>
+                    <button class="neon-button setting-time" data-time="900">15分</button>
+                </div>
+            </div>
+
+            <div class="setting-group compact-setting-group">
+                <div class="setting-label">人形数</div>
+                <div class="setting-buttons">
+                    <button class="neon-button setting-dummy" data-count="1">1体</button>
+                    <button class="neon-button setting-dummy" data-count="2">2体</button>
+                    <button class="neon-button setting-dummy" data-count="3">3体</button>
+                </div>
+            </div>
+
+            <div class="setting-group compact-setting-group">
+                <div class="setting-label">ストーブ設定</div>
+                <div class="stove-grid compact-stove-grid">
+                    <div class="stove-card">
+                        <label for="stove-room-a">ROOM A</label>
+                        <select id="stove-room-a" class="neon-input">
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                    <div class="stove-card">
+                        <label for="stove-room-b">ROOM B</label>
+                        <select id="stove-room-b" class="neon-input">
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                    <div class="stove-card">
+                        <label for="stove-room-c">ROOM C</label>
+                        <select id="stove-room-c" class="neon-input">
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-group compact-setting-group">
+                <div class="setting-label">人形詳細設定</div>
+
+                <div id="dummy-setting-tabs">
+                    <button class="neon-button dummy-setting-tab active" data-dummy="dummy1">DUMMY 1</button>
+                    <button class="neon-button dummy-setting-tab" data-dummy="dummy2">DUMMY 2</button>
+                    <button class="neon-button dummy-setting-tab" data-dummy="dummy3">DUMMY 3</button>
+                </div>
+
+                <div id="dummy-detail-setting">
+                    <div class="setting-row">
+                        <label>服の色</label>
+                        <select id="setting-clothes-color" class="neon-input">
+                            <option value="red">赤</option>
+                            <option value="blue">青</option>
+                            <option value="yellow">黄</option>
+                            <option value="green">緑</option>
+                            <option value="black">黒</option>
+                            <option value="white">白</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-row setting-face-row">
+                        <label>顔色</label>
+                        <div id="face-color-buttons">
+                            <button class="face-color-button" data-face-color="black">黒</button>
+                            <button class="face-color-button" data-face-color="red">赤</button>
+                            <button class="face-color-button" data-face-color="green">緑</button>
+                            <button class="face-color-button" data-face-color="blue">青</button>
+                            <button class="face-color-button" data-face-color="yellow">黄</button>
+                            <button class="face-color-button" data-face-color="purple">紫</button>
+                            <button class="face-color-button" data-face-color="cyan">水</button>
+                            <button class="face-color-button" data-face-color="white">白</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <label>音声周波数</label>
+                        <select id="setting-sound-frequency" class="neon-input">
+                            <option value="1">周波数1</option>
+                            <option value="2">周波数2</option>
+                            <option value="3">周波数3</option>
+                            <option value="4">周波数4</option>
+                            <option value="5">周波数5</option>
+                            <option value="6">周波数6</option>
+                            <option value="7">周波数7</option>
+                            <option value="8">周波数8</option>
+                            <option value="9">周波数9</option>
+                            <option value="10">周波数10</option>
+                            <option value="11">周波数11</option>
+                            <option value="12">周波数12</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-row">
+                        <label>QRコード</label>
+                        <input type="text" id="setting-qr-code" class="neon-input" placeholder="QR CODE DATA">
+                    </div>
+
+                    <div class="setting-row">
+                        <label>負傷状態</label>
+                        <div class="injury-grid">
+                            <label><input type="checkbox" id="setting-right-hand"> 右手負傷</label>
+                            <label><input type="checkbox" id="setting-left-hand"> 左手負傷</label>
+                            <label><input type="checkbox" id="setting-right-leg"> 右足負傷</label>
+                            <label><input type="checkbox" id="setting-left-leg"> 左足負傷</label>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <label>歩行</label>
+                        <div class="setting-buttons">
+                            <button class="neon-button walking-button active" data-walking="true">可</button>
+                            <button class="neon-button walking-button" data-walking="false">不可</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="settings-actions">
+                <button class="neon-button" id="btn-save-settings">保存</button>
+                <button class="neon-button" id="btn-close-settings">閉じる</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="../js/referee.js"></script>
+</body>
+</html>

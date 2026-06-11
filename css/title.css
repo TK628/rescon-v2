@@ -1,0 +1,239 @@
+#title-container{
+    width:100vw;
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    overflow:hidden;
+}
+
+#title-panel{
+    width:min(880px,94vw);
+    min-height:min(640px,86dvh);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    transition:
+        opacity .55s ease,
+        transform .55s ease,
+        filter .55s ease;
+}
+
+#title-panel::before{
+    content:"";
+    position:absolute;
+    inset:-40%;
+    background:
+        radial-gradient(circle at 50% 15%,rgba(0,255,255,.22),transparent 28%),
+        radial-gradient(circle at 50% 50%,rgba(0,255,255,.12),transparent 38%);
+    animation:titleGlow 5s ease-in-out infinite alternate;
+    pointer-events:none;
+}
+
+#title-panel>*{
+    position:relative;
+    z-index:1;
+}
+
+.title-panel-starting{
+    transform:scale(.96);
+    opacity:.25;
+    filter:blur(3px);
+}
+
+.title-logo{
+    width:132px;
+    height:132px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:6px;
+    filter:
+        drop-shadow(0 0 12px #00ffff)
+        drop-shadow(0 0 24px #00ffff)
+        drop-shadow(0 0 40px #00ffff);
+}
+
+.title-logo.rescon-emblem-ring{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.title-logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+#title-kicker{
+    color:#00ffff;
+    font-family:'Orbitron',sans-serif;
+    font-size:13px;
+    letter-spacing:4px;
+    text-shadow:
+        0 0 8px #00ffff,
+        0 0 18px rgba(0,255,255,.65);
+}
+
+#title-main{
+    margin:0;
+    color:#00ffff;
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(42px,8vw,86px);
+    letter-spacing:7px;
+    line-height:1;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 24px #00ffff,
+        0 0 48px rgba(0,255,255,.74);
+}
+
+#title-sub{
+    color:#e8fbff;
+    font-family:'Orbitron',sans-serif;
+    font-size:16px;
+    letter-spacing:5px;
+    opacity:.86;
+}
+
+#title-actions{
+    margin-top:22px;
+    display:flex;
+    justify-content:center;
+}
+
+#btn-start-system{
+    width:260px;
+    height:54px;
+    font-size:15px;
+    letter-spacing:1.5px;
+}
+
+#btn-start-system:disabled{
+    opacity:.8;
+    cursor:wait;
+}
+
+#title-footer{
+    margin-top:14px;
+    color:#00ffff;
+    font-family:'Orbitron',sans-serif;
+    font-size:11px;
+    letter-spacing:3px;
+    opacity:.82;
+    text-shadow:0 0 14px rgba(0,255,255,.5);
+}
+
+#title-start-overlay{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    background:
+        radial-gradient(circle at 50% 50%,rgba(0,255,255,.16),transparent 32%),
+        rgba(2,6,18,.72);
+    animation:startOverlayIn .28s ease-out both;
+}
+
+#title-start-overlay.hidden{
+    display:none;
+}
+
+#title-start-ring{
+    width:190px;
+    height:190px;
+    border-radius:50%;
+    border:2px solid rgba(0,255,255,.36);
+    box-shadow:
+        0 0 18px #00ffff,
+        inset 0 0 18px rgba(0,255,255,.45);
+    position:relative;
+    animation:startRingSpin 1.15s linear infinite;
+}
+
+#title-start-ring::before,
+#title-start-ring::after{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border-radius:50%;
+    border:1px dashed rgba(0,255,255,.62);
+}
+
+#title-start-ring::after{
+    inset:44px;
+    border-style:solid;
+    opacity:.5;
+}
+
+#title-start-text{
+    color:#00ffff;
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(28px,5vw,54px);
+    letter-spacing:6px;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 24px #00ffff;
+}
+
+#title-start-sub{
+    color:#e8fbff;
+    font-family:'Orbitron',sans-serif;
+    font-size:12px;
+    letter-spacing:3px;
+    opacity:.82;
+}
+
+@keyframes titleGlow{
+    from{
+        transform:scale(1) rotate(0deg);
+        opacity:.72;
+    }
+    to{
+        transform:scale(1.08) rotate(8deg);
+        opacity:1;
+    }
+}
+
+@keyframes startOverlayIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes startRingSpin{
+    from{
+        transform:rotate(0deg) scale(.96);
+    }
+    to{
+        transform:rotate(360deg) scale(1.04);
+    }
+}
+
+@media(max-width:680px){
+    #btn-start-system{
+        width:100%;
+    }
+
+    #title-actions{
+        width:100%;
+    }
+
+    #title-main{
+        letter-spacing:3px;
+    }
+}

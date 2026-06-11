@@ -1,0 +1,206 @@
+#boot-container{
+    width:100vw;
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    overflow:hidden;
+}
+
+#boot-panel{
+    width:min(780px,94vw);
+    min-height:min(620px,86dvh);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    transition:
+        opacity .72s ease,
+        transform .72s ease,
+        filter .72s ease;
+}
+
+body.boot-complete #boot-panel{
+    opacity:0;
+    transform:scale(.94);
+    filter:blur(8px);
+}
+
+#boot-panel::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 24%,rgba(0,255,255,.20),transparent 34%),
+        radial-gradient(circle at 50% 62%,rgba(0,255,255,.10),transparent 42%);
+    opacity:.95;
+    animation:bootAuraFade 2.8s ease-in-out infinite alternate;
+    pointer-events:none;
+}
+
+#boot-panel::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0,255,255,.05) 48%,
+        transparent 100%
+    );
+    opacity:.7;
+    animation:bootSoftScan 3.2s ease-in-out infinite;
+    pointer-events:none;
+}
+
+#boot-panel>*{
+    position:relative;
+    z-index:1;
+}
+
+.boot-logo{
+    width:140px;
+    height:140px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:12px;
+    filter:
+        drop-shadow(0 0 12px #00ffff)
+        drop-shadow(0 0 24px #00ffff)
+        drop-shadow(0 0 40px #00ffff);
+    animation:bootLogoFadePulse 1.8s ease-in-out infinite alternate;
+}
+
+.boot-logo.rescon-emblem-ring{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.boot-logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+#boot-title{
+    color:#00ffff;
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(42px,7vw,76px);
+    letter-spacing:6px;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+#boot-subtitle{
+    color:#e8fbff;
+    font-family:'Orbitron',sans-serif;
+    font-size:13px;
+    letter-spacing:4px;
+    opacity:.9;
+}
+
+#boot-line-list{
+    width:min(540px,88vw);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-top:10px;
+}
+
+.boot-line{
+    padding:9px 12px;
+    border-radius:10px;
+    border:1px solid rgba(0,255,255,.18);
+    background:rgba(0,255,255,.04);
+    color:#00ffff;
+    font-family:'Orbitron',sans-serif;
+    font-size:12px;
+    letter-spacing:1.2px;
+    text-align:left;
+    animation:lineIn .24s ease-out both;
+}
+
+#boot-progress{
+    width:min(540px,88vw);
+    height:8px;
+    border-radius:999px;
+    border:1px solid rgba(0,255,255,.20);
+    overflow:hidden;
+    background:rgba(0,0,0,.30);
+}
+
+#boot-progress-fill{
+    width:0%;
+    height:100%;
+    background:#00ffff;
+    box-shadow:
+        0 0 8px #00ffff,
+        0 0 18px #00ffff,
+        0 0 32px #00ffff;
+    transition:width .26s ease;
+}
+
+#boot-footer{
+    color:#00ffff;
+    font-family:'Orbitron',sans-serif;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-top:6px;
+    text-shadow:0 0 14px rgba(0,255,255,.55);
+}
+
+@keyframes bootAuraFade{
+    from{
+        opacity:.58;
+        transform:scale(.98);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.04);
+    }
+}
+
+@keyframes bootSoftScan{
+    0%{
+        opacity:0;
+        transform:translateY(-18%);
+    }
+    45%{
+        opacity:.7;
+    }
+    100%{
+        opacity:0;
+        transform:translateY(18%);
+    }
+}
+
+@keyframes bootLogoFadePulse{
+    from{
+        opacity:.84;
+        transform:scale(.985);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.045);
+    }
+}
+
+@keyframes lineIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RESCON VERSION CENTER</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/logo.css">
+<link rel="stylesheet" href="../css/updates.css">
+</head>
+<body>
+<div id="app">
+<main id="updates-container">
+<section id="updates-header">
+<button class="neon-button" id="btn-back-home">HOME</button>
+<div>
+<div class="rescon-logo small rescon-emblem-ring"><img src="../assets/rescon-logo.svg" alt="RESCON"></div>
+<div id="updates-kicker">RESCON VERSION CENTER</div>
+<h1 id="updates-title">VERSION CENTER</h1>
+</div>
+<div id="updates-status">VERSION</div>
+</section>
+<section class="neon-card" id="latest-version-card">
+<div>
+<div class="section-title">LATEST VERSION</div>
+<div id="latest-version-row"><div id="latest-version">v---</div><div id="latest-version-tag">---</div></div>
+<div id="latest-version-title">Loading...</div>
+</div>
+<div id="latest-version-date">--</div>
+</section>
+<section class="neon-card" id="updates-list-card">
+<div class="section-title">VERSION HISTORY</div>
+<div id="updates-list"></div>
+</section>
+</main>
+</div>
+<script type="module" src="../js/updates.js"></script>
+</body>
+</html>

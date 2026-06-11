@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>COMMUNITY</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/community.css">
+</head>
+<body>
+<div id="app">
+<main id="community-container">
+
+<section id="community-header">
+<button class="neon-button" id="btn-back-home">HOME</button>
+<div>
+<div id="community-kicker">RESCON NETWORK</div>
+<h1 id="community-title">COMMUNITY</h1>
+</div>
+<div id="community-status">ONLINE</div>
+</section>
+
+<section class="neon-card" id="community-stats-card">
+<div class="community-stat"><span>POSTS</span><strong id="community-total-count">0</strong></div>
+<div class="community-stat"><span>TODAY</span><strong id="community-today-count">0</strong></div>
+<div class="community-stat"><span>LATEST</span><strong id="community-latest-time">--:--</strong></div>
+</section>
+
+<section class="neon-card" id="community-chat-card">
+<div class="community-list-head">
+<div class="section-title">LIVE CHAT</div>
+<div id="community-count">0 POSTS</div>
+</div>
+<div id="community-list"></div>
+</section>
+
+<section class="neon-card" id="community-post-card">
+<div class="section-title">MESSAGE</div>
+<div id="community-form">
+<input id="community-name" class="neon-input" maxlength="30" placeholder="NAME 任意">
+<div id="community-message-wrap">
+<textarea id="community-message" class="community-textarea" maxlength="200" placeholder="メッセージを入力"></textarea>
+<div id="community-char-count">0 / 200</div>
+</div>
+<div class="community-actions">
+<button class="neon-button" id="btn-send-community">SEND</button>
+<button class="neon-button" id="btn-clear-community">CLEAR</button>
+<button class="neon-button" id="btn-open-ng-request">NG REQUEST</button>
+</div>
+<div id="community-send-status"></div>
+</div>
+</section>
+
+</main>
+
+<div id="ng-request-modal" class="community-modal hidden">
+<div class="community-modal-panel">
+<div class="community-modal-head">
+<div>
+<div class="modal-kicker">OWNER REQUEST</div>
+<div class="section-title">NG WORD REQUEST</div>
+</div>
+<button class="neon-button mini-modal-button" id="btn-close-ng-request">CLOSE</button>
+</div>
+
+<div class="community-modal-body">
+<input id="ng-request-word" class="neon-input" maxlength="40" placeholder="申請したいNGワード">
+<input id="ng-request-reason" class="neon-input" maxlength="120" placeholder="理由 任意">
+<div id="ng-request-status"></div>
+</div>
+
+<div class="community-modal-actions">
+<button class="neon-button" id="btn-send-ng-request">REQUEST</button>
+</div>
+</div>
+</div>
+
+</div>
+<script type="module" src="../js/community.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESCON SYSTEM</title>
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <main id="home-container">
+
+        <section id="title-area">
+            <h1 id="system-title">RESCON SYSTEM</h1>
+            <div id="system-version">version 2.0.0</div>
+        </section>
+
+        <section class="neon-card" id="menu-card">
+            <div class="section-title">MAIN MENU</div>
+
+            <div id="menu-buttons">
+                <button class="neon-button" id="btn-room">
+                    ROOM SELECT
+                </button>
+
+                <button class="neon-button" id="btn-community">
+                    COMMUNITY
+                </button>
+
+                <button class="neon-button" id="btn-manual">
+                    MANUAL
+                </button>
+
+                <button class="neon-button" id="btn-updates">
+                    UPDATES
+                </button>
+            </div>
+        </section>
+
+        <section class="neon-card" id="notice-card">
+<div class="notice-card-head">
+<div>
+<div class="section-title">NOTICE</div>
+<div class="notice-caption">MASTERから配信されたお知らせを確認できます。</div>
+</div>
+<div id="notice-new-badge" class="notice-new-badge hidden">NEW 0</div>
+</div>
+
+<div id="notice-toolbar">
+<button class="notice-filter active" data-notice-home-filter="all">ALL</button>
+<button class="notice-filter" data-notice-home-filter="pinned">PINNED</button>
+<button class="notice-filter" data-notice-home-filter="new">NEW</button>
+<button class="neon-button mini-notice-button" id="btn-notice-mark-read">MARK READ</button>
+</div>
+
+<div id="home-notice-list"></div>
+</section>
+
+    </main>
+
+</div>
+
+<script type="module" src="../js/home.js"></script>
+
+</body>
+</html>

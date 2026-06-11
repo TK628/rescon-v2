@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MISSION RESULT</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/mode-base.css">
+<link rel="stylesheet" href="../css/mode-result.css">
+</head>
+<body>
+<div id="app">
+<main id="mode-container" class="result-mode">
+<section class="neon-card result-card" id="result-card">
+<div class="result-header">
+<div class="result-kicker">RESCON SYSTEM</div>
+<div class="section-title result-title">MISSION RESULT</div>
+<div class="result-subtitle">COMPETITION SCORE REPORT</div>
+</div>
+
+<div class="result-meta">
+<div class="result-meta-item">
+<span>ROOM</span>
+<strong id="result-room-name">ROOM</strong>
+</div>
+<div class="result-meta-item">
+<span>DATE</span>
+<strong id="result-date">----</strong>
+</div>
+</div>
+
+<div class="result-score-grid">
+<div class="result-score-card"><div class="result-score-label">TIME SCORE</div><div class="result-score-value" id="time-score">0</div></div>
+<div class="result-score-card"><div class="result-score-label">TASK SCORE</div><div class="result-score-value" id="task-score">0</div></div>
+<div class="result-score-card"><div class="result-score-label">STOVE SCORE</div><div class="result-score-value" id="stove-score">0</div></div>
+<div class="result-score-card"><div class="result-score-label">REPORT SCORE</div><div class="result-score-value" id="report-score">0</div></div>
+<div class="result-score-card"><div class="result-score-label">RESCUE SCORE</div><div class="result-score-value" id="rescue-score">0</div></div>
+</div>
+
+<div class="result-total-panel">
+<div class="result-total-label">TOTAL SCORE</div>
+<div class="result-total-value" id="total-score">0</div>
+</div>
+
+<div class="result-actions">
+<button class="neon-button" id="btn-pdf-export">PDF EXPORT</button>
+<button class="neon-button" id="btn-referee-setting">SETTINGへ戻る</button>
+<button class="neon-button" id="btn-home">HOME</button>
+</div>
+</section>
+</main>
+</div>
+<script type="module" src="../js/result.js"></script>
+</body>
+</html>
