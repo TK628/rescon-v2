@@ -391,15 +391,6 @@ async function sendReport(
             `.report-sound-frequency[data-dummy="${dummyId}"]`
         )?.value || "";
 
-    const qrCode=
-        document.querySelector(
-            `.report-qr-code[data-dummy="${dummyId}"]`
-        )?.value || "";
-        const rightHand=
-        document.querySelector(
-            `.report-right-hand[data-dummy="${dummyId}"]`
-        )?.checked || false;
-
     const leftHand=
         document.querySelector(
             `.report-left-hand[data-dummy="${dummyId}"]`
@@ -428,9 +419,6 @@ async function sendReport(
 
             [`dummies/${dummyId}/playerReport/soundFrequency`]:
                 Number(soundFrequency),
-
-            [`dummies/${dummyId}/playerReport/qrCode`]:
-                qrCode,
 
             [`dummies/${dummyId}/playerReport/injuries/rightHand`]:
                 rightHand,

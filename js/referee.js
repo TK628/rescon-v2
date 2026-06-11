@@ -40,7 +40,6 @@ const settingDummyButtons=document.querySelectorAll(".setting-dummy");
 const dummySettingTabs=document.querySelectorAll(".dummy-setting-tab");
 const clothesColorSelect=document.getElementById("setting-clothes-color");
 const soundFrequencySelect=document.getElementById("setting-sound-frequency");
-const qrCodeInput=document.getElementById("setting-qr-code");
 const faceColorButtons=document.querySelectorAll(".face-color-button");
 const walkingButtons=document.querySelectorAll(".walking-button");
 const rightHandCheck=document.getElementById("setting-right-hand");
@@ -274,7 +273,6 @@ function updateDummySettingPanel(roomData){
 
     clothesColorSelect.value=dummy.clothesColor??"red";
     soundFrequencySelect.value=String(dummy.soundFrequency??1);
-    qrCodeInput.value=dummy.qrCode??"";
 
     rightHandCheck.checked=dummy.injuries?.rightHand??false;
     leftHandCheck.checked=dummy.injuries?.leftHand??false;
@@ -581,11 +579,6 @@ function calculateReportScore(roomData){
         ) score+=50;
 
         if(
-            report.qrCode!==""&&
-            report.qrCode===dummy.qrCode
-        ) score+=50;
-
-        if(
             report.injuries?.rightHand===
             dummy.injuries?.rightHand
         ) score+=50;
@@ -849,7 +842,6 @@ if(!roomSnapshot.exists()){
             [`dummies/${selectedDummyId}/clothesColor`]:clothesColorSelect.value,
             [`dummies/${selectedDummyId}/faceColor`]:selectedFaceColor,
             [`dummies/${selectedDummyId}/soundFrequency`]:Number(soundFrequencySelect.value),
-            [`dummies/${selectedDummyId}/qrCode`]:qrCodeInput.value,
 
             [`dummies/${selectedDummyId}/injuries/rightHand`]:rightHandCheck.checked,
             [`dummies/${selectedDummyId}/injuries/leftHand`]:leftHandCheck.checked,
@@ -947,7 +939,6 @@ if(!roomSnapshot.exists()){
             "dummies/dummy1/playerReport":{
                 faceColor:"",
                 soundFrequency:null,
-                qrCode:"",
                 injuries:{
                     rightHand:null,
                     leftHand:null,
@@ -959,7 +950,6 @@ if(!roomSnapshot.exists()){
             "dummies/dummy2/playerReport":{
                 faceColor:"",
                 soundFrequency:null,
-                qrCode:"",
                 injuries:{
                     rightHand:null,
                     leftHand:null,
@@ -971,7 +961,6 @@ if(!roomSnapshot.exists()){
             "dummies/dummy3/playerReport":{
                 faceColor:"",
                 soundFrequency:null,
-                qrCode:"",
                 injuries:{
                     rightHand:null,
                     leftHand:null,
