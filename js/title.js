@@ -1,6 +1,5 @@
-// title.js 差し替え
-
 sessionStorage.removeItem("resconBootPassed");
+sessionStorage.removeItem("resconStartRequested");
 
 const btnStartSystem=document.getElementById("btn-start-system");
 const titlePanel=document.getElementById("title-panel");
@@ -10,12 +9,14 @@ let starting=false;
 
 if(btnStartSystem){
     btnStartSystem.onclick=()=>{
-        if(starting)return;
+        if(starting){
+            return;
+        }
 
         starting=true;
 
         sessionStorage.setItem(
-            "resconBootPassed",
+            "resconStartRequested",
             "true"
         );
 

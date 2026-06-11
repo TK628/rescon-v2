@@ -1,10 +1,8 @@
-// boot.js の先頭へ追加
-
 if(
-    sessionStorage.getItem("resconBootPassed")
+    sessionStorage.getItem("resconStartRequested")
     !=="true"
 ){
-    location.href="./index.html";
+    location.replace("./index.html");
 }
 
 const bootLineList=document.getElementById("boot-line-list");
@@ -36,7 +34,12 @@ function addBootLine(){
 
     index++;
 
-    const percent=Math.round((index/bootLines.length)*100);
+    const percent=Math.round(
+        (
+            index/
+            bootLines.length
+        )*100
+    );
 
     if(bootProgressFill){
         bootProgressFill.style.width=`${percent}%`;
@@ -47,11 +50,17 @@ function addBootLine(){
     }
 
     if(index>=bootLines.length){
-        setTimeout(finishBoot,720);
+        setTimeout(
+            finishBoot,
+            720
+        );
         return;
     }
 
-    setTimeout(addBootLine,360);
+    setTimeout(
+        addBootLine,
+        360
+    );
 }
 
 function finishBoot(){
@@ -61,9 +70,21 @@ function finishBoot(){
         bootFooter.innerText="ACCESS GRANTED";
     }
 
+    sessionStorage.setItem(
+        "resconBootPassed",
+        "true"
+    );
+
+    sessionStorage.removeItem(
+        "resconStartRequested"
+    );
+
     setTimeout(()=>{
-        location.href="./home.html";
+        location.replace("./home.html");
     },760);
 }
 
-setTimeout(addBootLine,420);
+setTimeout(
+    addBootLine,
+    420
+);

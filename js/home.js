@@ -1,17 +1,30 @@
-// home.js の一番上へ追加
+const resconNavigationEntry=
+    performance.getEntriesByType("navigation")[0];
+
+if(
+    resconNavigationEntry
+    &&
+    resconNavigationEntry.type==="back_forward"
+){
+    sessionStorage.removeItem("resconBootPassed");
+    sessionStorage.removeItem("resconStartRequested");
+    location.replace("./index.html");
+}
 
 if(
     sessionStorage.getItem("resconBootPassed")
     !=="true"
 ){
-    location.href="./index.html";
+    location.replace("./index.html");
 }
 
 window.addEventListener(
     "pageshow",
     event=>{
         if(event.persisted){
-            location.href="./index.html";
+            sessionStorage.removeItem("resconBootPassed");
+            sessionStorage.removeItem("resconStartRequested");
+            location.replace("./index.html");
         }
     }
 );
