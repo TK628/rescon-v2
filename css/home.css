@@ -218,3 +218,115 @@
         max-height:none;
     }
 }
+/* ===== HOME MAIN MENU HEIGHT PATCH ===== */
+/* home.css の一番下に追記してください */
+
+/* 通常画面: 下が見切れないようにする */
+#home-container{
+    min-height:100dvh!important;
+    height:auto!important;
+    overflow-y:auto!important;
+    padding-top:18px!important;
+    padding-bottom:18px!important;
+}
+
+/* MAIN MENUカード自体を少し低く */
+#menu-card{
+    padding:14px!important;
+}
+
+/* ボタンの余白を圧縮 */
+#menu-buttons{
+    gap:10px!important;
+    margin-top:10px!important;
+}
+
+/* ボタン高さを少し低く */
+#menu-buttons .neon-button{
+    min-height:44px!important;
+    height:44px!important;
+    padding:0 14px!important;
+    font-size:13px!important;
+    letter-spacing:1px!important;
+}
+
+/* NOTICEも少しだけ詰める */
+#notice-card{
+    padding:14px!important;
+}
+
+#notice-toolbar{
+    margin-bottom:8px!important;
+}
+
+/* フルスクリーン・高めの画面だけ、1画面に収める調整を有効化 */
+@media (min-height:900px) and (min-width:900px){
+    #home-container{
+        height:100dvh!important;
+        overflow:hidden!important;
+        display:flex!important;
+        flex-direction:column!important;
+        justify-content:center!important;
+        gap:14px!important;
+    }
+
+    #title-area{
+        margin-bottom:10px!important;
+    }
+
+    #system-title{
+        font-size:clamp(40px,5vw,72px)!important;
+    }
+
+    #menu-card{
+        flex-shrink:0!important;
+    }
+
+    #notice-card{
+        min-height:0!important;
+        flex:0 1 auto!important;
+    }
+
+    #home-notice-list{
+        max-height:34dvh!important;
+        overflow:auto!important;
+    }
+}
+
+/* 高さが低い画面では絶対に見切れないようにする */
+@media (max-height:899px){
+    #home-container{
+        justify-content:flex-start!important;
+        overflow-y:auto!important;
+    }
+
+    #title-area{
+        margin-bottom:12px!important;
+    }
+
+    #system-title{
+        font-size:clamp(32px,5vw,56px)!important;
+    }
+
+    #menu-card,
+    #notice-card{
+        flex-shrink:0!important;
+    }
+
+    #home-notice-list{
+        max-height:360px!important;
+        overflow:auto!important;
+    }
+}
+
+/* スマホ・縦長画面 */
+@media (max-width:760px){
+    #menu-buttons{
+        grid-template-columns:1fr!important;
+    }
+
+    #menu-buttons .neon-button{
+        height:42px!important;
+        min-height:42px!important;
+    }
+}
