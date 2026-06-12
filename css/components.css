@@ -14,13 +14,9 @@
     display:inline-flex;
     justify-content:center;
     align-items:center;
-    border-radius:14px;
+    border-radius:12px;
     border:1px solid rgba(0,255,255,0.45);
-    background:linear-gradient(
-        135deg,
-        rgba(0,255,255,0.12),
-        rgba(0,120,255,0.22)
-    );
+    background:linear-gradient(135deg,rgba(0,255,255,0.12),rgba(0,120,255,0.22));
     color:white;
     cursor:pointer;
     transition:var(--transition-normal);
@@ -45,11 +41,11 @@
 
 .section-title{
     font-family:'Orbitron',sans-serif;
+    font-size:14px;
     font-weight:bold;
     color:var(--color-neon);
     margin-bottom:10px;
-    font-size:14px;
-    letter-spacing:1px;
+    letter-spacing:1.5px;
     text-shadow:0 0 10px rgba(0,255,255,0.45);
 }
 
@@ -71,7 +67,7 @@
     border:1px solid rgba(0,255,255,0.18);
     border-radius:12px;
     color:white;
-    padding:14px;
+    padding:10px 12px;
     outline:none;
     transition:var(--transition-normal);
     backdrop-filter:blur(8px);
@@ -83,15 +79,12 @@
     box-shadow:0 0 16px rgba(0,255,255,0.28);
 }
 
-
-/* ===== v6.5 DROPDOWN WHITEOUT FIX ===== */
 select,
 .neon-input,
 select.neon-input{
     color:#ffffff;
     background-color:#07111f!important;
-    background-image:
-        linear-gradient(135deg,rgba(0,255,255,.08),rgba(0,90,150,.12))!important;
+    background-image:linear-gradient(135deg,rgba(0,255,255,.08),rgba(0,90,150,.12))!important;
     border-color:rgba(0,255,255,.32)!important;
 }
 
@@ -141,12 +134,10 @@ textarea:-webkit-autofill{
     caret-color:#ffffff;
 }
 
-/* Firefox */
 select{
     scrollbar-color:#00ffff #07111f;
 }
 
-/* Windows/Chrome native dropdown対策 */
 @media(forced-colors:none){
     select,
     select.neon-input{
