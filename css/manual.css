@@ -1,19 +1,19 @@
 #manual-container{
-    width:min(1180px,96vw);
+    width:min(1120px,96vw);
     height:100dvh;
     margin:0 auto;
-    padding:14px 0;
+    padding:12px 0;
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:12px;
     overflow:hidden;
 }
 
 #manual-header{
     display:grid;
-    grid-template-columns:140px 1fr 140px;
+    grid-template-columns:120px 1fr 120px;
     align-items:center;
-    gap:12px;
+    gap:10px;
     flex-shrink:0;
 }
 
@@ -22,9 +22,9 @@
 }
 
 #manual-kicker{
-    color:#bf84ff;
+    color:#66e3ff;
     font-family:'Orbitron',sans-serif;
-    font-size:12px;
+    font-size:11px;
     letter-spacing:3px;
 }
 
@@ -32,19 +32,19 @@
     margin:4px 0 0;
     color:#00ffff;
     font-family:'Orbitron',sans-serif;
-    font-size:clamp(28px,4vw,52px);
-    letter-spacing:4px;
-    text-shadow:0 0 24px rgba(0,255,255,.42);
+    font-size:clamp(24px,3vw,42px);
+    letter-spacing:3px;
+    text-shadow:0 0 22px rgba(0,255,255,.42);
 }
 
 #manual-status{
     justify-self:end;
-    padding:9px 13px;
+    padding:8px 12px;
     border-radius:999px;
     border:1px solid rgba(0,255,156,.35);
     color:#00ff9c;
     font-family:'Orbitron',sans-serif;
-    font-size:12px;
+    font-size:11px;
 }
 
 #manual-main-card{
@@ -52,46 +52,47 @@
     min-height:0;
     display:grid;
     grid-template-rows:auto auto minmax(0,1fr);
-    gap:12px;
+    gap:10px;
     overflow:hidden;
+    padding:14px!important;
 }
 
 .manual-card-head{
     display:grid;
-    grid-template-columns:1fr minmax(260px,420px);
-    gap:12px;
+    grid-template-columns:1fr minmax(240px,380px);
+    gap:10px;
     align-items:start;
 }
 
 .manual-caption{
     margin-top:4px;
     color:#bdfcff;
-    font-size:13px;
+    font-size:12px;
     opacity:.72;
-    line-height:1.5;
+    line-height:1.45;
 }
 
 #manual-tabs{
     display:flex;
     gap:8px;
-    padding:6px;
-    border-radius:16px;
-    border:1px solid rgba(191,132,255,.20);
+    padding:5px;
+    border-radius:14px;
+    border:1px solid rgba(0,255,255,.20);
     background:rgba(0,0,0,.16);
     overflow-x:auto;
 }
 
 .manual-tab{
     flex:0 0 auto;
-    min-width:160px;
-    height:38px;
-    padding:0 14px;
-    border-radius:12px;
+    min-width:150px;
+    height:34px;
+    padding:0 12px;
+    border-radius:11px;
     border:1px solid rgba(0,255,255,.22);
     background:rgba(255,255,255,.035);
     color:#dffcff;
     font-family:'Orbitron',sans-serif;
-    font-size:12px;
+    font-size:11px;
     font-weight:700;
     letter-spacing:1px;
     cursor:pointer;
@@ -99,8 +100,8 @@
 
 .manual-tab.active{
     color:#07101a;
-    background:linear-gradient(135deg,#bf84ff,#00ffff);
-    box-shadow:0 0 18px rgba(191,132,255,.24);
+    background:linear-gradient(135deg,#00ffff,#66e3ff);
+    box-shadow:0 0 18px rgba(0,255,255,.22);
 }
 
 .manual-panel{
@@ -112,20 +113,20 @@
 .manual-panel.active{
     display:flex;
     flex-direction:column;
-    gap:12px;
+    gap:10px;
 }
 
 .manual-panel-head{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    gap:12px;
+    gap:10px;
     flex-shrink:0;
 }
 
 .manual-updated{
     flex:0 0 auto;
-    padding:7px 10px;
+    padding:6px 9px;
     border-radius:999px;
     border:1px solid rgba(0,255,255,.22);
     color:#00ffff;
@@ -137,39 +138,40 @@
 .manual-content{
     min-height:0;
     overflow:auto;
-    padding:14px;
-    border-radius:18px;
+    padding:12px;
+    border-radius:16px;
     border:1px solid rgba(0,255,255,.14);
     background:rgba(255,255,255,.035);
 }
 
 .manual-section-item{
-    padding:14px 14px 16px;
-    border-radius:14px;
+    padding:12px 12px 14px;
+    border-radius:13px;
     border:1px solid rgba(0,255,255,.12);
     background:rgba(255,255,255,.025);
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .manual-section-item h3{
-    margin:0 0 10px;
-    color:#bf84ff;
-    font-size:18px;
-    border-left:3px solid #bf84ff;
-    padding-left:10px;
+    margin:0 0 8px;
+    color:#00ffff;
+    font-size:16px;
+    border-left:3px solid #00ffff;
+    padding-left:9px;
 }
 
 .manual-section-item p{
     margin:0;
     white-space:pre-wrap;
-    line-height:1.75;
+    line-height:1.65;
     color:#f4fbff;
+    font-size:13px;
 }
 
 .manual-empty{
     opacity:.72;
     text-align:center;
-    padding:30px;
+    padding:24px;
 }
 
 @media(max-width:800px){
