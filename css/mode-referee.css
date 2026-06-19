@@ -506,3 +506,104 @@
 .dummy-state-row span{font-size:12px;}
 .referee-trial-dummy .dummy-hp{font-size:34px!important;}
 }
+
+
+/* ===== REFEREE INTEGRATED TIMER PATCH ===== */
+#referee-timer-row{
+    position:relative!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:72px!important;
+    padding:8px 12px!important;
+    gap:2px!important;
+    cursor:pointer!important;
+    user-select:none!important;
+}
+
+#referee-timer-row::before{
+    content:""!important;
+    display:none!important;
+}
+
+#btn-timer-toggle{
+    display:none!important;
+}
+
+.referee-compact #match-timer{
+    width:100%!important;
+    text-align:center!important;
+    font-size:clamp(42px,7vw,76px)!important;
+    line-height:.95!important;
+    letter-spacing:3px!important;
+    pointer-events:none!important;
+}
+
+#timer-state-label{
+    color:#bdfcff;
+    font-family:'Orbitron',sans-serif;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+    opacity:.86;
+    text-shadow:0 0 10px rgba(0,255,255,.34);
+    pointer-events:none;
+}
+
+#referee-timer-row.timer-running{
+    border-color:rgba(0,255,156,.48)!important;
+    box-shadow:0 0 22px rgba(0,255,156,.18)!important;
+}
+
+#referee-timer-row.timer-running #timer-state-label{
+    color:#00ff9c;
+}
+
+#referee-timer-row.timer-countdown{
+    border-color:rgba(255,204,0,.58)!important;
+    box-shadow:0 0 24px rgba(255,204,0,.22)!important;
+}
+
+#referee-timer-row.timer-countdown #timer-state-label{
+    color:#ffcc00;
+}
+
+#referee-timer-row.timer-paused{
+    border-color:rgba(0,255,255,.28)!important;
+}
+
+#referee-timer-row:active{
+    transform:scale(.992);
+}
+
+@media(max-width:900px){
+    #referee-timer-row{
+        min-height:58px!important;
+        padding:6px 10px!important;
+    }
+
+    .referee-compact #match-timer{
+        font-size:clamp(38px,10vw,52px)!important;
+        letter-spacing:2px!important;
+    }
+
+    #timer-state-label{
+        font-size:9px!important;
+        letter-spacing:1.3px!important;
+    }
+
+    #referee-dashboard.referee-trial-dashboard{
+        height:calc(100dvh - 198px)!important;
+    }
+}
+
+@media(max-width:430px){
+    #referee-timer-row{
+        min-height:54px!important;
+    }
+
+    .referee-compact #match-timer{
+        font-size:42px!important;
+    }
+}

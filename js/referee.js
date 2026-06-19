@@ -23,6 +23,7 @@ const openSettings=params.get("openSettings");
 const roomNameElement=document.getElementById("room-name");
 const matchTimer=document.getElementById("match-timer");
 const btnTimerToggle=document.getElementById("btn-timer-toggle");
+const timerStateLabel=document.getElementById("timer-state-label");
 const refereeTimerRow=document.getElementById("referee-timer-row");
 const btnFullReset=document.getElementById("btn-full-reset");
 const btnBack=document.getElementById("btn-back");
@@ -910,6 +911,15 @@ if(!roomSnapshot.exists()){
         };
     }
 
+    if(refereeTimerRow){
+        refereeTimerRow.onkeydown=(event)=>{
+            if(event.key==="Enter"||event.key===" "){
+                event.preventDefault();
+                btnTimerToggle.click();
+            }
+        };
+    }
+
     btnFullReset.onclick=async()=>{
         const snapshot=await get(roomRef);
         const roomData=snapshot.val();
@@ -1074,7 +1084,29 @@ if(!roomSnapshot.exists()){
         const endTime=timer.endTime;
         const remaining=timer.remaining??timer.duration??selectedMatchTime;
 
-        btnTimerToggle.innerText=timer.countdown ? "CANCEL" : (endTime ? "STOP" : "START");
+        const timerButtonText=timer.countdown ? "CANCEL" : (endTime ? "STOP" : "START");
+        btnTimerToggle.innerText=timerButtonText;
+
+        if(timerStateLabel){
+            timerStateLabel.innerText=
+                timer.countdown
+                ?
+                "COUNTDOWN / TAP TO CANCEL"
+                :
+                (
+                    endTime
+                    ?
+                    "RUNNING / TAP TO STOP"
+                    :
+                    "PAUSED / TAP TO START"
+                );
+        }
+
+        if(refereeTimerRow){
+            refereeTimerRow.classList.toggle("timer-running",!!endTime);
+            refereeTimerRow.classList.toggle("timer-countdown",!!timer.countdown);
+            refereeTimerRow.classList.toggle("timer-paused",!endTime&&!timer.countdown);
+        }
 
         if(timerInterval){
             clearInterval(timerInterval);

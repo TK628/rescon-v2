@@ -20,9 +20,10 @@
             <button class="neon-button" id="btn-full-reset">全てリセット</button>
         </section>
 
-        <section id="referee-timer-row">
+        <section id="referee-timer-row" role="button" tabindex="0">
             <div id="match-timer">05:00</div>
-            <button class="neon-button" id="btn-timer-toggle">START</button>
+            <div id="timer-state-label">TAP TO START</div>
+            <button class="neon-button" id="btn-timer-toggle" aria-hidden="true" tabindex="-1">START</button>
         </section>
 
         <section id="referee-dashboard" class="referee-trial-dashboard">
