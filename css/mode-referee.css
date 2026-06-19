@@ -441,3 +441,68 @@
 /* ===== v5.1 REFEREE DUMMY ICON ADJUST ===== */
 .referee-dummy-grid .dummy-icon-holder{min-height:44px;margin:0;}
 .referee-dummy-grid .dummy-mini-icon{transform:scale(.86);}
+
+
+/* ===== REFEREE DUMMY TRIAL LAYOUT ===== */
+.referee-compact{width:min(1280px,96vw)!important;height:100dvh!important;min-height:100dvh!important;padding:8px 0!important;overflow:hidden!important;}
+.referee-compact #match-header{grid-template-columns:1fr 1fr!important;grid-template-areas:"room room" "back access" "settings reset"!important;gap:8px!important;}
+#room-name{grid-area:room;justify-self:center;width:min(520px,82%)!important;padding:6px 12px;border:1px solid rgba(0,255,255,.35);border-radius:10px;background:rgba(19,26,46,.64);text-align:center;}
+#btn-back{grid-area:back;}#btn-access{grid-area:access;}#btn-settings{grid-area:settings;}#btn-full-reset{grid-area:reset;}
+#referee-timer-row{cursor:pointer;grid-template-columns:1fr 140px!important;min-height:76px;padding:10px 14px;border-radius:18px;border:1px solid rgba(0,255,255,.25);background:rgba(19,26,46,.92);box-shadow:0 0 20px rgba(0,255,255,.12);transition:.18s ease;}
+#referee-timer-row::before{content:"タイマー（START / STOP）";align-self:start;grid-column:1 / 3;color:#bdfcff;font-weight:800;letter-spacing:1px;font-size:13px;}
+#referee-timer-row:hover{border-color:#00ffff;box-shadow:0 0 26px rgba(0,255,255,.28);}
+.referee-compact #match-timer{padding:0!important;background:transparent!important;border:none!important;box-shadow:none!important;}
+#btn-timer-toggle{height:44px!important;align-self:center;font-size:15px!important;}
+#referee-dashboard.referee-trial-dashboard{height:calc(100dvh - 225px)!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:minmax(0,1fr) auto!important;gap:10px!important;overflow:hidden!important;}
+.referee-trial-dummy-card{min-height:0!important;overflow:hidden!important;padding:10px!important;}
+.referee-trial-dummy-grid{height:100%!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;overflow:hidden!important;}
+.referee-trial-dummy{min-height:0!important;display:flex!important;flex-direction:column!important;gap:10px!important;padding:12px!important;border-radius:16px!important;border:1px solid rgba(0,255,255,.34)!important;background:linear-gradient(135deg,rgba(0,255,255,.055),rgba(0,20,45,.70))!important;box-shadow:inset 0 0 20px rgba(0,255,255,.04);}
+.referee-trial-dummy .dummy-name{width:100%;padding:6px 8px;border-radius:10px;background:rgba(0,0,0,.18);color:#00ffff;text-align:center;font-family:'Orbitron',sans-serif;font-size:15px!important;font-weight:900;text-shadow:0 0 12px rgba(0,255,255,.50);}
+.dummy-visual-state{display:grid;grid-template-columns:86px 1fr;gap:10px;align-items:center;}
+.dummy-icon-slot{display:flex;align-items:center;justify-content:center;min-height:96px;}
+.referee-trial-dummy .dummy-icon-holder{min-height:auto!important;margin:0!important;}
+.referee-trial-dummy .dummy-mini-icon{transform:scale(1.35)!important;}
+.dummy-state-buttons{display:flex;flex-direction:column;gap:8px;}
+.dummy-state-row{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:8px;}
+.dummy-state-row span{color:#e8fbff;font-weight:800;font-size:13px;}
+.dummy-state-row .neon-button{width:100%!important;min-width:0!important;height:32px!important;font-size:12px!important;}
+.dummy-state-row .rescue-button{border-color:rgba(255,65,108,.55);color:#ff8080;}
+.dummy-state-row .rescue-button.setting-selected{color:#07101a!important;background:#00ff9c!important;border-color:#00ff9c!important;}
+.dummy-hp-panel{padding:10px;border-radius:14px;border:1px solid rgba(0,255,255,.18);background:rgba(0,0,0,.18);}
+.dummy-hp-label,.dummy-damage-label{color:#bdfcff;font-size:12px;font-weight:800;margin-bottom:4px;}
+.referee-trial-dummy .dummy-hp{display:flex;align-items:baseline;justify-content:center;gap:7px;font-family:'Orbitron',sans-serif;font-size:clamp(30px,3vw,46px)!important;color:#ffffff;text-shadow:0 0 16px rgba(0,255,255,.36);}
+.referee-trial-dummy .dummy-hp small{font-size:14px;color:#dffcff;opacity:.82;}
+.referee-trial-dummy .dummy-bar{height:14px!important;border-radius:999px;overflow:hidden;background:rgba(0,0,0,.36);}
+.referee-trial-dummy .dummy-buttons{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:7px!important;margin-top:auto!important;}
+.referee-trial-dummy .dummy-buttons .neon-button{height:34px!important;min-width:0!important;font-size:13px!important;}
+.referee-trial-task-card{min-height:0!important;padding:12px!important;}
+.referee-trial-task-card .compact-task-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important;}
+.referee-trial-task-card .compact-task-grid label{min-height:40px;padding:8px 10px;}
+@media(max-width:900px){
+.referee-compact{width:94vw!important;overflow:hidden!important;}
+.referee-compact #match-header{grid-template-columns:1fr 1fr!important;gap:6px!important;}
+.referee-compact .neon-button{height:36px!important;font-size:13px!important;}
+#room-name{width:86%!important;padding:4px 10px!important;font-size:clamp(18px,5vw,26px)!important;}
+#referee-timer-row{grid-template-columns:1fr 92px!important;min-height:66px!important;padding:8px 10px!important;gap:6px!important;}
+#referee-timer-row::before{font-size:11px!important;}
+.referee-compact #match-timer{font-size:clamp(34px,11vw,54px)!important;}
+#btn-timer-toggle{height:36px!important;font-size:11px!important;}
+#referee-dashboard.referee-trial-dashboard{height:calc(100dvh - 220px)!important;grid-template-rows:minmax(0,1fr) 150px!important;}
+.referee-trial-dummy-grid{display:flex!important;grid-template-columns:none!important;gap:12px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;padding:2px 4px 8px;}
+.referee-trial-dummy{flex:0 0 88%!important;scroll-snap-align:center;padding:10px!important;}
+.dummy-visual-state{grid-template-columns:86px 1fr;}
+.referee-trial-dummy .dummy-mini-icon{transform:scale(1.25)!important;}
+.referee-trial-task-card{overflow:hidden!important;}
+.referee-trial-task-card .compact-task-grid{grid-template-columns:1fr!important;gap:6px!important;max-height:94px;overflow:auto;}
+.referee-trial-task-card .compact-task-grid label{min-height:34px;}
+}
+@media(max-width:430px){
+#referee-dashboard.referee-trial-dashboard{height:calc(100dvh - 214px)!important;}
+.referee-trial-dummy{flex-basis:90%!important;}
+.dummy-visual-state{grid-template-columns:76px 1fr;gap:8px;}
+.dummy-icon-slot{min-height:86px;}
+.referee-trial-dummy .dummy-mini-icon{transform:scale(1.12)!important;}
+.dummy-state-row{grid-template-columns:38px 1fr;}
+.dummy-state-row span{font-size:12px;}
+.referee-trial-dummy .dummy-hp{font-size:34px!important;}
+}

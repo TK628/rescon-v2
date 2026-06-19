@@ -25,17 +25,30 @@
             <button class="neon-button" id="btn-timer-toggle">START</button>
         </section>
 
-        <section id="referee-dashboard">
-            <section class="neon-card referee-main-card">
-                <div class="section-title compact-title">DUMMY STATUS</div>
-                <div id="dummy-grid" class="referee-dummy-grid">
-                    <div class="dummy-card" id="dummy-card-1">
-                        <div class="dummy-top-row">
-                            <div class="dummy-name">DUMMY 1</div>
-                            <button class="neon-button found-button" id="btn-found-dummy1">未発見</button>
+        <section id="referee-dashboard" class="referee-trial-dashboard">
+            <section class="neon-card referee-main-card referee-trial-dummy-card">
+                <div id="dummy-grid" class="referee-dummy-grid referee-trial-dummy-grid">
+                    <div class="dummy-card referee-trial-dummy" id="dummy-card-1">
+                        <div class="dummy-name">DUMMY 1</div>
+                        <div class="dummy-visual-state">
+                            <div class="dummy-icon-slot"></div>
+                            <div class="dummy-state-buttons">
+                                <div class="dummy-state-row">
+                                    <span>発見</span>
+                                    <button class="neon-button found-button" id="btn-found-dummy1">未発見</button>
+                                </div>
+                                <div class="dummy-state-row">
+                                    <span>救助</span>
+                                    <button class="neon-button rescue-button" id="btn-rescue-dummy1">未救助</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="dummy-hp" id="dummy1-hp">250</div>
-                        <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy1-bar"></div></div>
+                        <div class="dummy-hp-panel">
+                            <div class="dummy-hp-label">HP</div>
+                            <div class="dummy-hp"><span id="dummy1-hp">250</span><small>/ 250</small></div>
+                            <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy1-bar"></div></div>
+                        </div>
+                        <div class="dummy-damage-label">ダメージ</div>
                         <div class="dummy-buttons">
                             <button class="neon-button" id="btn-dummy1-minus1">-1</button>
                             <button class="neon-button" id="btn-dummy1-minus5">-5</button>
@@ -43,14 +56,27 @@
                             <button class="neon-button" id="btn-dummy1-reset">RESET</button>
                         </div>
                     </div>
-
-                    <div class="dummy-card" id="dummy-card-2">
-                        <div class="dummy-top-row">
-                            <div class="dummy-name">DUMMY 2</div>
-                            <button class="neon-button found-button" id="btn-found-dummy2">未発見</button>
+                    <div class="dummy-card referee-trial-dummy" id="dummy-card-2">
+                        <div class="dummy-name">DUMMY 2</div>
+                        <div class="dummy-visual-state">
+                            <div class="dummy-icon-slot"></div>
+                            <div class="dummy-state-buttons">
+                                <div class="dummy-state-row">
+                                    <span>発見</span>
+                                    <button class="neon-button found-button" id="btn-found-dummy2">未発見</button>
+                                </div>
+                                <div class="dummy-state-row">
+                                    <span>救助</span>
+                                    <button class="neon-button rescue-button" id="btn-rescue-dummy2">未救助</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="dummy-hp" id="dummy2-hp">250</div>
-                        <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy2-bar"></div></div>
+                        <div class="dummy-hp-panel">
+                            <div class="dummy-hp-label">HP</div>
+                            <div class="dummy-hp"><span id="dummy2-hp">250</span><small>/ 250</small></div>
+                            <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy2-bar"></div></div>
+                        </div>
+                        <div class="dummy-damage-label">ダメージ</div>
                         <div class="dummy-buttons">
                             <button class="neon-button" id="btn-dummy2-minus1">-1</button>
                             <button class="neon-button" id="btn-dummy2-minus5">-5</button>
@@ -58,14 +84,27 @@
                             <button class="neon-button" id="btn-dummy2-reset">RESET</button>
                         </div>
                     </div>
-
-                    <div class="dummy-card" id="dummy-card-3">
-                        <div class="dummy-top-row">
-                            <div class="dummy-name">DUMMY 3</div>
-                            <button class="neon-button found-button" id="btn-found-dummy3">未発見</button>
+                    <div class="dummy-card referee-trial-dummy" id="dummy-card-3">
+                        <div class="dummy-name">DUMMY 3</div>
+                        <div class="dummy-visual-state">
+                            <div class="dummy-icon-slot"></div>
+                            <div class="dummy-state-buttons">
+                                <div class="dummy-state-row">
+                                    <span>発見</span>
+                                    <button class="neon-button found-button" id="btn-found-dummy3">未発見</button>
+                                </div>
+                                <div class="dummy-state-row">
+                                    <span>救助</span>
+                                    <button class="neon-button rescue-button" id="btn-rescue-dummy3">未救助</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="dummy-hp" id="dummy3-hp">250</div>
-                        <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy3-bar"></div></div>
+                        <div class="dummy-hp-panel">
+                            <div class="dummy-hp-label">HP</div>
+                            <div class="dummy-hp"><span id="dummy3-hp">250</span><small>/ 250</small></div>
+                            <div class="dummy-bar"><div class="dummy-bar-fill" id="dummy3-bar"></div></div>
+                        </div>
+                        <div class="dummy-damage-label">ダメージ</div>
                         <div class="dummy-buttons">
                             <button class="neon-button" id="btn-dummy3-minus1">-1</button>
                             <button class="neon-button" id="btn-dummy3-minus5">-5</button>
@@ -75,8 +114,7 @@
                     </div>
                 </div>
             </section>
-
-            <section class="neon-card referee-side-card">
+            <section class="neon-card referee-side-card referee-trial-task-card">
                 <div class="section-title compact-title">タスク</div>
                 <div class="task-grid compact-task-grid">
                     <label><input type="checkbox" id="task-arrival-a"> 現場到着A</label>
@@ -84,24 +122,6 @@
                     <label><input type="checkbox" id="task-arrival-c"> 現場到着C</label>
                     <label><input type="checkbox" id="task-debris"> がれき撤去</label>
                     <label><input type="checkbox" id="task-gas"> ガス栓</label>
-                </div>
-            </section>
-
-            <section class="neon-card referee-side-card">
-                <div class="section-title compact-title">救助状況</div>
-                <div class="rescue-grid compact-rescue-grid">
-                    <div class="rescue-card">
-                        <div class="dummy-name">DUMMY 1</div>
-                        <button class="neon-button rescue-button" id="btn-rescue-dummy1">未救助</button>
-                    </div>
-                    <div class="rescue-card">
-                        <div class="dummy-name">DUMMY 2</div>
-                        <button class="neon-button rescue-button" id="btn-rescue-dummy2">未救助</button>
-                    </div>
-                    <div class="rescue-card">
-                        <div class="dummy-name">DUMMY 3</div>
-                        <button class="neon-button rescue-button" id="btn-rescue-dummy3">未救助</button>
-                    </div>
                 </div>
             </section>
         </section>

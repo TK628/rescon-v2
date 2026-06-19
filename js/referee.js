@@ -23,6 +23,7 @@ const openSettings=params.get("openSettings");
 const roomNameElement=document.getElementById("room-name");
 const matchTimer=document.getElementById("match-timer");
 const btnTimerToggle=document.getElementById("btn-timer-toggle");
+const refereeTimerRow=document.getElementById("referee-timer-row");
 const btnFullReset=document.getElementById("btn-full-reset");
 const btnBack=document.getElementById("btn-back");
 const btnSettings=document.getElementById("btn-settings");
@@ -141,10 +142,15 @@ function renderDummyIcon(card,dummy,dummyId){
     if(!card||!dummy){return;}
     let holder=card.querySelector(".dummy-icon-holder");
     if(!holder){
+        const slot=card.querySelector(".dummy-icon-slot");
         holder=document.createElement("div");
         holder.className="dummy-icon-holder";
-        const nameElement=card.querySelector(".dummy-name");
-        if(nameElement){nameElement.after(holder);}else{card.prepend(holder);}
+        if(slot){
+            slot.appendChild(holder);
+        }else{
+            const nameElement=card.querySelector(".dummy-name");
+            if(nameElement){nameElement.after(holder);}else{card.prepend(holder);}
+        }
     }
     holder.innerHTML=createDummyIconHtml(dummy,dummyId);
 }
@@ -890,6 +896,19 @@ if(!roomSnapshot.exists()){
             });
         }
     };
+
+    if(refereeTimerRow){
+        refereeTimerRow.onclick=(event)=>{
+            const clickedButton=event.target.closest("button");
+            if(clickedButton&&clickedButton!==btnTimerToggle){
+                return;
+            }
+            if(clickedButton===btnTimerToggle){
+                return;
+            }
+            btnTimerToggle.click();
+        };
+    }
 
     btnFullReset.onclick=async()=>{
         const snapshot=await get(roomRef);
