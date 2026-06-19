@@ -1021,21 +1021,12 @@ if(!roomSnapshot.exists()){
             rescuedHp:null
         });
     };
-
-    btnDummy1Minus1.onclick=()=>damageDummy("dummy1",1);
     btnDummy1Minus5.onclick=()=>damageDummy("dummy1",5);
     btnDummy1Minus10.onclick=()=>damageDummy("dummy1",10);
-    btnDummy1Reset.onclick=()=>resetDummy("dummy1");
-
-    btnDummy2Minus1.onclick=()=>damageDummy("dummy2",1);
     btnDummy2Minus5.onclick=()=>damageDummy("dummy2",5);
     btnDummy2Minus10.onclick=()=>damageDummy("dummy2",10);
-    btnDummy2Reset.onclick=()=>resetDummy("dummy2");
-
-    btnDummy3Minus1.onclick=()=>damageDummy("dummy3",1);
     btnDummy3Minus5.onclick=()=>damageDummy("dummy3",5);
     btnDummy3Minus10.onclick=()=>damageDummy("dummy3",10);
-    btnDummy3Reset.onclick=()=>resetDummy("dummy3");
 
     onValue(roomRef,(snapshot)=>{
         const roomData=snapshot.val();
