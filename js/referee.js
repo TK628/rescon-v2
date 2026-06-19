@@ -36,6 +36,7 @@ const accessList=document.getElementById("access-list");
 const settingsOverlay=document.getElementById("settings-overlay");
 const btnCloseSettings=document.getElementById("btn-close-settings");
 const btnSaveSettings=document.getElementById("btn-save-settings");
+const btnSaveDummyDetail=document.getElementById("btn-save-dummy-detail");
 const settingTimeButtons=document.querySelectorAll(".setting-time");
 const settingDummyButtons=document.querySelectorAll(".setting-dummy");
 
@@ -861,6 +862,12 @@ if(!roomSnapshot.exists()){
 
         settingsOverlay.style.display="none";
     };
+
+    if(btnSaveDummyDetail){
+        btnSaveDummyDetail.onclick=()=>{
+            btnSaveSettings.click();
+        };
+    }
 
     btnTimerToggle.onclick=async()=>{
         const snapshot=await get(roomRef);
