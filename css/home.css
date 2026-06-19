@@ -1296,3 +1296,228 @@ body.maintenance-mode #btn-room .home-menu-caption{
         font-size:12px!important;
     }
 }
+
+
+/* ===== HOME LAYOUT 3.0 FINE TUNE ===== */
+/* PC横画面: タイトルとメニューを低く */
+/* スマホ縦画面: タイトルをさらに縦圧縮 */
+/* 全体: ページ全体ではなく、お知らせリストだけスクロール */
+
+#home-container{
+    height:100dvh!important;
+    min-height:100dvh!important;
+    overflow:hidden!important;
+    padding-top:12px!important;
+    padding-bottom:12px!important;
+    gap:10px!important;
+}
+
+#title-area{
+    padding:7px 14px!important;
+    margin-bottom:0!important;
+    border-radius:12px!important;
+}
+
+#system-title{
+    font-size:clamp(26px,3.5vw,46px)!important;
+    line-height:.95!important;
+    letter-spacing:3px!important;
+}
+
+#system-version{
+    margin-top:3px!important;
+    font-size:10px!important;
+    line-height:1!important;
+}
+
+#menu-card{
+    padding:10px!important;
+    flex:0 0 auto!important;
+}
+
+#menu-buttons.home-layout-3{
+    margin-top:8px!important;
+    gap:10px!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-card{
+    min-height:78px!important;
+    padding:10px 10px!important;
+    gap:5px!important;
+    border-radius:14px!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-icon{
+    width:34px!important;
+    height:34px!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-title{
+    font-size:12px!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-caption{
+    font-size:9px!important;
+    line-height:1.3!important;
+}
+
+#notice-card{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+    padding:10px!important;
+}
+
+#notice-card .section-title{
+    flex:0 0 auto!important;
+    margin-bottom:6px!important;
+}
+
+#home-notice-list{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    padding-right:4px!important;
+    margin-top:4px!important;
+}
+
+.home-notice-card,
+.home-notice-empty{
+    flex:0 0 auto!important;
+}
+
+/* PC横でさらに低めに見せる */
+@media(min-width:901px){
+    #home-container{
+        width:min(1320px,94vw)!important;
+    }
+
+    #title-area{
+        width:min(760px,58vw)!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-menu-card{
+        min-height:70px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-menu-icon{
+        width:30px!important;
+        height:30px!important;
+    }
+
+    #notice-card{
+        min-height:0!important;
+    }
+}
+
+/* スマホ・PC半画面・タブレット縦 */
+@media(max-width:900px){
+    #home-container{
+        width:min(520px,94vw)!important;
+        padding-top:8px!important;
+        padding-bottom:8px!important;
+        gap:8px!important;
+    }
+
+    #title-area{
+        width:78%!important;
+        padding:6px 10px!important;
+        border-radius:9px!important;
+    }
+
+    #system-title{
+        font-size:clamp(22px,7vw,32px)!important;
+        line-height:.92!important;
+        letter-spacing:2px!important;
+    }
+
+    #system-version{
+        margin-top:2px!important;
+        font-size:9px!important;
+    }
+
+    #menu-card{
+        padding:8px!important;
+    }
+
+    #menu-buttons.home-layout-3{
+        gap:8px!important;
+        margin-top:7px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card{
+        min-height:64px!important;
+        grid-template-columns:46px 1fr!important;
+        padding:8px 11px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card .home-menu-icon{
+        width:38px!important;
+        height:38px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card .home-menu-title{
+        font-size:14px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card .home-menu-caption{
+        font-size:10px!important;
+        line-height:1.25!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card{
+        min-height:68px!important;
+        padding:7px 4px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-icon{
+        width:27px!important;
+        height:27px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-title{
+        font-size:9.5px!important;
+        line-height:1.2!important;
+    }
+
+    #notice-card{
+        min-height:0!important;
+        padding:9px!important;
+    }
+
+    #home-notice-list{
+        min-height:0!important;
+    }
+}
+
+@media(max-width:430px){
+    #title-area{
+        width:76%!important;
+        padding:5px 9px!important;
+    }
+
+    #system-title{
+        font-size:clamp(21px,6.8vw,30px)!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card{
+        min-height:60px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card{
+        min-height:64px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-icon{
+        width:25px!important;
+        height:25px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-title{
+        font-size:9px!important;
+    }
+}
