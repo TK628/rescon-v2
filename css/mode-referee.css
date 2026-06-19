@@ -1163,3 +1163,227 @@
         font-size:16px!important;
     }
 }
+
+
+/* ===== REFEREE SETTINGS V3 DUMMY PRIORITY PATCH ===== */
+/* 上部設定を圧縮して、ダミヤン設定を大きく見せる */
+
+#settings-panel{
+    height:94dvh!important;
+    max-height:94dvh!important;
+    gap:7px!important;
+    padding:10px!important;
+}
+
+#settings-panel .section-title{
+    font-size:17px!important;
+    margin-bottom:0!important;
+}
+
+.settings-v2-header{
+    min-height:0!important;
+}
+
+/* 試合時間・人数を低く */
+.settings-v2-section{
+    padding:7px 9px!important;
+    border-radius:12px!important;
+}
+
+.settings-v2-section:not(.settings-v2-dummy-section){
+    flex:0 0 auto!important;
+}
+
+.settings-v2-title{
+    margin-bottom:5px!important;
+    font-size:13px!important;
+    line-height:1.1!important;
+}
+
+.settings-v2-button-grid.three{
+    gap:7px!important;
+}
+
+.settings-v2-button-grid .neon-button,
+#settings-panel .setting-time,
+#settings-panel .setting-dummy{
+    height:32px!important;
+    min-height:32px!important;
+    font-size:13px!important;
+    border-radius:9px!important;
+}
+
+/* ストーブ設定を低く */
+.settings-v2-stove-grid{
+    gap:7px!important;
+}
+
+#settings-panel .stove-card{
+    padding:7px!important;
+    gap:4px!important;
+    border-radius:10px!important;
+}
+
+#settings-panel .stove-card label{
+    font-size:11px!important;
+    line-height:1!important;
+}
+
+#settings-panel .stove-card .neon-input{
+    min-height:30px!important;
+    height:30px!important;
+    padding:4px 7px!important;
+    font-size:12px!important;
+}
+
+/* ダミヤン設定を主役に */
+.settings-v2-dummy-section{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    padding:10px!important;
+    display:grid!important;
+    grid-template-rows:auto auto minmax(0,1fr) auto!important;
+}
+
+.settings-v2-dummy-section .settings-v2-title{
+    font-size:17px!important;
+    margin-bottom:8px!important;
+}
+
+#settings-panel #dummy-setting-tabs{
+    margin-bottom:10px!important;
+    gap:8px!important;
+}
+
+#settings-panel .dummy-setting-tab{
+    height:38px!important;
+    font-size:13px!important;
+}
+
+#settings-panel #dummy-detail-setting{
+    min-height:0!important;
+    overflow:auto!important;
+    padding:2px 2px 8px!important;
+    gap:10px!important;
+}
+
+#settings-panel .setting-row label{
+    font-size:14px!important;
+}
+
+#settings-panel .neon-input{
+    min-height:38px!important;
+    height:38px!important;
+}
+
+#settings-panel #face-color-buttons{
+    gap:7px!important;
+}
+
+#settings-panel .face-color-button{
+    min-height:34px!important;
+}
+
+#btn-save-dummy-detail{
+    height:38px!important;
+    min-height:38px!important;
+    margin-top:8px!important;
+}
+
+/* 下部保存も少し低く */
+#settings-actions .neon-button{
+    height:40px!important;
+    min-height:40px!important;
+    font-size:16px!important;
+}
+
+/* スマホではさらに上部圧縮 */
+@media(max-width:480px){
+    #settings-panel{
+        height:94dvh!important;
+        max-height:94dvh!important;
+        gap:6px!important;
+        padding:9px!important;
+    }
+
+    #settings-panel .section-title{
+        font-size:16px!important;
+    }
+
+    .settings-v2-section{
+        padding:6px 8px!important;
+    }
+
+    .settings-v2-title{
+        font-size:12px!important;
+        margin-bottom:4px!important;
+    }
+
+    .settings-v2-button-grid .neon-button,
+    #settings-panel .setting-time,
+    #settings-panel .setting-dummy{
+        height:30px!important;
+        min-height:30px!important;
+        font-size:12px!important;
+    }
+
+    #settings-panel .stove-card{
+        padding:6px!important;
+    }
+
+    #settings-panel .stove-card label{
+        font-size:10px!important;
+    }
+
+    #settings-panel .stove-card .neon-input{
+        height:28px!important;
+        min-height:28px!important;
+        font-size:11px!important;
+    }
+
+    .settings-v2-dummy-section{
+        padding:9px!important;
+    }
+
+    .settings-v2-dummy-section .settings-v2-title{
+        font-size:16px!important;
+        margin-bottom:7px!important;
+    }
+
+    #settings-panel .dummy-setting-tab{
+        height:34px!important;
+        font-size:11px!important;
+    }
+
+    #settings-panel #dummy-detail-setting{
+        grid-template-columns:1fr!important;
+        gap:8px!important;
+    }
+
+    #settings-panel #dummy-detail-setting .setting-face-row{
+        grid-column:auto!important;
+    }
+
+    #settings-panel .setting-row label{
+        font-size:13px!important;
+    }
+
+    #settings-panel .neon-input{
+        height:36px!important;
+        min-height:36px!important;
+    }
+
+    #settings-panel .face-color-button{
+        min-height:32px!important;
+    }
+
+    #btn-save-dummy-detail{
+        height:36px!important;
+        min-height:36px!important;
+    }
+
+    #settings-actions .neon-button{
+        height:38px!important;
+        min-height:38px!important;
+    }
+}
