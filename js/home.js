@@ -40,54 +40,14 @@ const btnNoticeMarkRead=document.getElementById("btn-notice-mark-read");
 const noticeFilterButtons=document.querySelectorAll(".notice-filter");
 
 const noticesRef=ref(db,"notices");
-const systemRef=ref(db,"system");
-let resconMaintenanceActive=false;
 
 const NOTICE_READ_KEY="resconNoticeLastReadAt";
 const NOTICE_REACTION_KEY="resconNoticeReactions";
 let latestHomeNotices={};
 let currentNoticeFilter="all";
 
-
-function setHomeMaintenanceMode(active){
-    resconMaintenanceActive=!!active;
-    document.body.classList.toggle("maintenance-mode",resconMaintenanceActive);
-
-    if(!btnRoom){
-        return;
-    }
-
-    btnRoom.classList.toggle("maintenance-disabled",resconMaintenanceActive);
-    btnRoom.setAttribute("aria-disabled",resconMaintenanceActive?"true":"false");
-
-    const title=btnRoom.querySelector(".home-menu-title");
-    const caption=btnRoom.querySelector(".home-menu-caption");
-
-    if(title){
-        title.innerText=resconMaintenanceActive?"メンテナンス中":"ルーム選択";
-    }
-
-    if(caption){
-        caption.innerText=resconMaintenanceActive?"ROOM SELECT は一時停止中です":"ルームを選択してゲームを開始します";
-    }
-}
-
-function isMaintenanceSystem(system){
-    return !!(system?.maintenance||system?.masterMaintenance||system?.emergency?.active);
-}
-
-onValue(systemRef,snapshot=>{
-    setHomeMaintenanceMode(isMaintenanceSystem(snapshot.val()||{}));
-});
-
-
 if(btnRoom){
     btnRoom.onclick=()=>{
-        if(resconMaintenanceActive){
-            alert("現在メンテナンス中のため、ルーム選択は利用できません。");
-            return;
-        }
-
         location.href="./room.html";
     };
 }
