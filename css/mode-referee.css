@@ -1387,3 +1387,14 @@
         min-height:38px!important;
     }
 }
+
+
+/* ===== REFEREE SETTINGS V3 SAVE TAB FIX ===== */
+#settings-panel .dummy-setting-tab.active,
+#settings-panel .dummy-setting-tab.setting-selected,
+#btn-save-dummy-detail.setting-selected{
+    border-color:#00ff9c!important;
+    background:linear-gradient(135deg,rgba(0,255,156,.32),rgba(0,255,255,.18))!important;
+    color:#ffffff!important;
+    box-shadow:0 0 18px rgba(0,255,156,.22)!important;
+}

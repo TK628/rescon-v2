@@ -104,6 +104,7 @@ let selectedFaceColor="black";
 let selectedWalking=true;
 let countdownStartHandled=false;
 let finishingNow=false;
+let latestRefereeRoomData=null;
 
 const roomRef=ref(db,`rooms/${roomId}`);
 const roomSnapshot=await get(roomRef);
@@ -811,6 +812,10 @@ if(!roomSnapshot.exists()){
 
     dummySettingTabs.forEach((button)=>{
         button.onclick=async()=>{
+            if(selectedDummyId&&selectedDummyId!==button.dataset.dummy){
+                await saveSelectedDummyDetailOnly();
+            }
+
             selectedDummyId=button.dataset.dummy;
 
             dummySettingTabs.forEach((tab)=>{
@@ -824,7 +829,10 @@ if(!roomSnapshot.exists()){
             const snapshot=await get(roomRef);
             const roomData=snapshot.val();
 
-            updateDummySettingPanel(roomData);
+            if(roomData){
+                latestRefereeRoomData=roomData;
+                updateDummySettingPanel(roomData);
+            }
         };
     });
 
@@ -852,18 +860,7 @@ if(!roomSnapshot.exists()){
     btnFoundDummy3.onclick=()=>{
         toggleFound("dummy3");
     };
-
-    if(btnSaveDummyDetail){
-        btnSaveDummyDetail.onclick=async()=>{
-            await saveSelectedDummyDetailOnly();
-            btnSaveDummyDetail.innerText="保存済み";
-            setTimeout(()=>{
-                btnSaveDummyDetail.innerText="ダミヤン保存";
-            },900);
-        };
-    }
-
-    btnSaveSettings.onclick=async()=>{
+btnSaveSettings.onclick=async()=>{
         await update(roomRef,{
             "settings/matchTime":selectedMatchTime,
             "settings/dummyCount":selectedDummyCount,
@@ -1055,6 +1052,7 @@ btnTimerToggle.onclick=async()=>{
 
     onValue(roomRef,(snapshot)=>{
         const roomData=snapshot.val();
+        latestRefereeRoomData=roomData;
 
         if(!roomData){
             return;
