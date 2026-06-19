@@ -18,9 +18,11 @@ const matchContent=document.getElementById("match-manual-content");
 const systemContent=document.getElementById("system-manual-content");
 const matchUpdated=document.getElementById("match-manual-updated");
 const systemUpdated=document.getElementById("system-manual-updated");
+const manualStatus=document.getElementById("manual-status");
 
 let latestSystem={};
 let searchText="";
+let manualLockShown=false;
 
 const defaultManualItems={
     match:[
@@ -44,7 +46,7 @@ const defaultManualItems={
     system:[
         {
             title:"HOME",
-            body:"RESCON SYSTEMの入口です。ROOM SELECT、COMMUNITY、MANUAL、UPDATESへ移動できます。"
+            body:"RESCON SYSTEMの入口です。ROOM SELECT、COMMUNITY、MANUAL、UPDATES、FEEDBACKへ移動できます。"
         },
         {
             title:"NOTICE",
@@ -55,8 +57,12 @@ const defaultManualItems={
             body:"利用者同士でメッセージを投稿できます。NGワード申請もできます。"
         },
         {
+            title:"FEEDBACK",
+            body:"不具合報告・要望・感想を送信できます。送信内容はMASTER CONSOLEで確認できます。"
+        },
+        {
             title:"MASTER",
-            body:"管理者専用コンソールです。ROOM管理、NOTICE管理、MANUAL管理、LOG確認などを行います。"
+            body:"管理者専用コンソールです。ROOM管理、NOTICE管理、MANUAL管理、UPDATE管理、LOG確認などを行います。"
         }
     ]
 };
@@ -72,12 +78,24 @@ manualTabs.forEach(tab=>{
         const target=tab.dataset.manualTab;
 
         manualTabs.forEach(item=>{
-            item.classList.toggle("active",item.dataset.manualTab===target);
+            item.classList.toggle(
+                "active",
+                item.dataset.manualTab===target
+            );
         });
 
         manualPanels.forEach(panel=>{
-            panel.classList.toggle("active",panel.dataset.manualPanel===target);
+            panel.classList.toggle(
+                "active",
+                panel.dataset.manualPanel===target
+            );
         });
+
+        history.replaceState(
+            null,
+            "",
+            `#${target}`
+        );
     };
 });
 
@@ -113,7 +131,11 @@ function getManualItems(type){
     }
 
     return Object.values(saved)
-        .sort((a,b)=>(a.order??a.createdAt??0)-(b.order??b.createdAt??0));
+        .sort((a,b)=>
+            (a.order??a.createdAt??0)
+            -
+            (b.order??b.createdAt??0)
+        );
 }
 
 function filterItems(items){
@@ -122,7 +144,10 @@ function filterItems(items){
     }
 
     return items.filter(item=>{
-        const target=`${item.title||""} ${item.body||""}`.toLowerCase();
+        const target=
+            `${item.title||""} ${item.body||""}`
+            .toLowerCase();
+
         return target.includes(searchText);
     });
 }
@@ -132,28 +157,38 @@ function renderManualGroup(type,targetElement){
         return;
     }
 
-    const items=filterItems(getManualItems(type));
+    const items=filterItems(
+        getManualItems(type)
+    );
 
     if(items.length===0){
-        targetElement.innerHTML=`<div class="manual-empty">表示できる項目がありません。</div>`;
+        targetElement.innerHTML=`
+            <div class="manual-empty">
+                表示できる項目がありません。
+            </div>
+        `;
         return;
     }
 
-    targetElement.innerHTML=items.map((item,index)=>`
-        <article class="manual-section-item">
-            <h3>${index+1}. ${escapeHtml(item.title||"NO TITLE")}</h3>
-            <p>${escapeHtml(item.body||"")}</p>
-        </article>
-    `).join("");
+    targetElement.innerHTML=
+        items.map((item,index)=>`
+            <article class="manual-section-item">
+                <h3>${index+1}. ${escapeHtml(item.title||"NO TITLE")}</h3>
+                <p>${escapeHtml(item.body||"").replaceAll("\\n","<br>")}</p>
+            </article>
+        `).join("");
 }
 
 function renderManuals(){
     renderManualGroup("match",matchContent);
     renderManualGroup("system",systemContent);
 
-    const updatedText=latestSystem.updatedAt
-        ? `UPDATED ${formatDate(latestSystem.updatedAt)}`
-        : "DEFAULT";
+    const updatedText=
+        latestSystem.updatedAt
+        ?
+        `UPDATED ${formatDate(latestSystem.updatedAt)}`
+        :
+        "DEFAULT";
 
     if(matchUpdated){
         matchUpdated.innerText=updatedText;
@@ -161,6 +196,10 @@ function renderManuals(){
 
     if(systemUpdated){
         systemUpdated.innerText=updatedText;
+    }
+
+    if(manualStatus){
+        manualStatus.innerText="LIVE";
     }
 }
 
@@ -176,8 +215,103 @@ function activateHashTab(){
     }
 }
 
-onValue(systemRef,snapshot=>{
-    latestSystem=snapshot.val()||{};
-    renderManuals();
-    activateHashTab();
-});
+function isManualUpdating(system){
+    return !!(
+        system?.manualUpdating||
+        system?.manualUpdate?.active||
+        system?.manualMaintenance
+    );
+}
+
+function showManualUpdateScreen(system){
+    if(manualLockShown){
+        return;
+    }
+
+    manualLockShown=true;
+
+    const schedule=
+        system?.manualUpdate?.schedule
+        ||
+        "更新完了までしばらくお待ちください";
+
+    const message=
+        system?.manualUpdate?.message
+        ||
+        "マニュアルを更新中です。";
+
+    document.body.classList.add("manual-update-mode");
+
+    const appRoot=document.getElementById("app")||document.body;
+
+    appRoot.innerHTML=`
+        <main id="manual-update-container">
+            <button class="neon-button manual-update-home" id="btn-manual-update-home">← HOME</button>
+
+            <section id="manual-update-panel">
+                <div class="manual-update-kicker">MANUAL</div>
+                <div class="manual-update-icon">▤</div>
+                <h1>MANUAL UPDATE</h1>
+                <p>
+                    ${escapeHtml(message)}<br>
+                    更新完了までしばらくお待ちください。
+                </p>
+
+                <div class="manual-update-schedule">
+                    SCHEDULED TIME<br>
+                    ${escapeHtml(schedule)}
+                </div>
+
+                <div class="manual-update-progress">
+                    <div></div>
+                </div>
+
+                <div class="manual-update-progress-text">
+                    UPDATE PROGRESS...
+                </div>
+            </section>
+        </main>
+    `;
+
+    const btnHome=document.getElementById("btn-manual-update-home");
+
+    if(btnHome){
+        btnHome.onclick=()=>{
+            location.href="./home.html";
+        };
+    }
+}
+
+onValue(
+    systemRef,
+    snapshot=>{
+        latestSystem=snapshot.val()||{};
+
+        if(isManualUpdating(latestSystem)){
+            showManualUpdateScreen(latestSystem);
+            return;
+        }
+
+        renderManuals();
+        activateHashTab();
+    },
+    error=>{
+        console.error(error);
+
+        if(matchContent){
+            matchContent.innerHTML=`
+                <div class="manual-empty">
+                    マニュアルの読み込みに失敗しました。
+                </div>
+            `;
+        }
+
+        if(systemContent){
+            systemContent.innerHTML=`
+                <div class="manual-empty">
+                    マニュアルの読み込みに失敗しました。
+                </div>
+            `;
+        }
+    }
+);

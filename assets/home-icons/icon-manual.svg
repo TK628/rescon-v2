@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img">
+
+<defs>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+<feGaussianBlur stdDeviation="5" result="blur"/>
+<feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<linearGradient id="edge" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#00ffff"/>
+<stop offset="48%" stop-color="#8dff9a"/>
+<stop offset="100%" stop-color="#ffffff"/>
+</linearGradient>
+</defs>
+
+<rect width="128" height="128" fill="none"/>
+
+<path d="M26 34c16-8 29-7 38 3v64c-10-10-24-11-38-3z" fill="rgba(141,255,154,.08)" stroke="#8dff9a" stroke-width="4" filter="url(#glow)"/>
+<path d="M102 34c-16-8-29-7-38 3v64c10-10 24-11 38-3z" fill="rgba(141,255,154,.08)" stroke="#8dff9a" stroke-width="4" filter="url(#glow)"/>
+<path d="M64 37v64" stroke="#00ffff" stroke-width="3"/>
+<path d="M36 50h17M36 63h17M36 76h15M75 50h17M75 63h17M75 76h15" stroke="#ffffff" stroke-width="2" opacity=".75"/>
+<path d="M24 106h80" stroke="#8dff9a" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+
+</svg>

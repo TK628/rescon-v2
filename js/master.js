@@ -52,6 +52,13 @@ const btnSaveUpdate=document.getElementById("btn-save-update");
 const btnSaveManual=document.getElementById("btn-save-manual");
 const btnSaveManualMatch=document.getElementById("btn-save-manual-match");
 const btnSaveManualSystem=document.getElementById("btn-save-manual-system");
+const versionInput=document.getElementById("version-input");
+const versionTitleInput=document.getElementById("version-title-input");
+const versionTagInput=document.getElementById("version-tag-input");
+const versionBodyInput=document.getElementById("version-body-input");
+const btnAddVersion=document.getElementById("btn-add-version");
+const versionCenterList=document.getElementById("version-center-list");
+const versionCenterCount=document.getElementById("version-center-count");
 const manualMatchTitleInput=document.getElementById("manual-match-title-input");
 const manualMatchBodyInput=document.getElementById("manual-match-body-input");
 const manualSystemTitleInput=document.getElementById("manual-system-title-input");
@@ -63,6 +70,10 @@ const btnClearManualSystem=document.getElementById("btn-clear-manual-system");
 const manualMatchList=document.getElementById("manual-match-list");
 const manualSystemList=document.getElementById("manual-system-list");
 const manualCenterCount=document.getElementById("manual-center-count");
+const manualUpdateToggle=document.getElementById("manual-update-toggle");
+const manualUpdateScheduleInput=document.getElementById("manual-update-schedule-input");
+const manualUpdateMessageInput=document.getElementById("manual-update-message-input");
+const btnSaveManualUpdateMode=document.getElementById("btn-save-manual-update-mode");
 
 const roomSummary=document.getElementById("room-summary");
 const masterRoomList=document.getElementById("master-room-list");
@@ -144,6 +155,7 @@ const adminNgWordCount=document.getElementById("admin-ng-word-count");
 
 const systemRef=ref(db,"system");
 const noticesRef=ref(db,"notices");
+const updatesRef=ref(db,"updates");
 const roomsRef=ref(db,"rooms");
 const logsRef=ref(db,"logs");
 const commentsRef=ref(db,"comments");
@@ -160,6 +172,8 @@ const connectedRef=ref(db,".info/connected");
 let authenticated=false;
 let latestSystem=null;
 let latestNotices={};
+let latestVersions={};
+let editingVersionKey=null;
 let editingManualMatchKey=null;
 let editingManualSystemKey=null;
 let currentNoticeFilter="all";
@@ -210,6 +224,31 @@ if(noticeCenterList){
         if(action==="publish") await changeNoticeStatus(key,"published");
         if(action==="draft") await changeNoticeStatus(key,"draft");
         if(action==="delete") await deleteNotice(key,item);
+    };
+}
+
+if(btnAddVersion){
+    btnAddVersion.onclick=()=>saveVersionItem();
+}
+
+if(versionCenterList){
+    versionCenterList.onclick=async(event)=>{
+        const button=event.target.closest(".version-admin-action");
+
+        if(!button){
+            return;
+        }
+
+        const key=button.dataset.versionKey;
+        const action=button.dataset.versionAction;
+
+        if(action==="edit"){
+            editVersionItem(key);
+        }
+
+        if(action==="delete"){
+            await deleteVersionItem(key);
+        }
     };
 }
 
@@ -569,8 +608,190 @@ if(manualInput){
             ??"";
     }
 
+
+    if(manualUpdateToggle){
+        manualUpdateToggle.checked=
+            latestSystem.manualUpdating
+            ??
+            latestSystem.manualUpdate?.active
+            ??
+            latestSystem.manualMaintenance
+            ??
+            false;
+    }
+
+    if(manualUpdateScheduleInput){
+        manualUpdateScheduleInput.value=
+            latestSystem.manualUpdate?.schedule
+            ??
+            "";
+    }
+
+    if(manualUpdateMessageInput){
+        manualUpdateMessageInput.value=
+            latestSystem.manualUpdate?.message
+            ??
+            "";
+    }
+
+    document.body.classList.toggle(
+        "manual-update-master-active",
+        !!(
+            latestSystem.manualUpdating||
+            latestSystem.manualUpdate?.active||
+            latestSystem.manualMaintenance
+        )
+    );
+
     updateMaintenanceBadge();
     renderManualManager();
+}
+
+function getVersionEntries(){
+    return Object.entries(latestVersions||{})
+        .sort((a,b)=>(b[1].createdAt??0)-(a[1].createdAt??0));
+}
+
+function clearVersionForm(){
+    editingVersionKey=null;
+
+    if(versionInput){
+        versionInput.value="";
+    }
+
+    if(versionTitleInput){
+        versionTitleInput.value="";
+    }
+
+    if(versionTagInput){
+        versionTagInput.value="FEATURE";
+    }
+
+    if(versionBodyInput){
+        versionBodyInput.value="";
+    }
+
+    if(btnAddVersion){
+        btnAddVersion.innerText="ADD VERSION";
+    }
+}
+
+async function saveVersionItem(){
+    const version=(versionInput?.value||"").trim();
+    const title=(versionTitleInput?.value||"").trim();
+    const tag=(versionTagInput?.value||"FEATURE").trim();
+    const body=(versionBodyInput?.value||"").trim();
+
+    if(!version||!title||!body){
+        alert("バージョン・タイトル・更新内容を入力してください");
+        return;
+    }
+
+    const key=editingVersionKey||String(Date.now());
+    const oldItem=latestVersions?.[key]||{};
+
+    await update(
+        ref(db,`updates/${key}`),
+        {
+            version,
+            title,
+            tag,
+            body,
+            createdAt:oldItem.createdAt??Date.now(),
+            updatedAt:Date.now()
+        }
+    );
+
+    await writeLog(`VERSION SAVE : ${version}`);
+    await createOwnerNotification("version","VERSION UPDATED",`${version} / ${title}`);
+    clearVersionForm();
+}
+
+function editVersionItem(key){
+    const item=latestVersions?.[key];
+
+    if(!item){
+        return;
+    }
+
+    editingVersionKey=key;
+
+    if(versionInput){
+        versionInput.value=item.version||"";
+    }
+
+    if(versionTitleInput){
+        versionTitleInput.value=item.title||"";
+    }
+
+    if(versionTagInput){
+        versionTagInput.value=item.tag||"FEATURE";
+    }
+
+    if(versionBodyInput){
+        versionBodyInput.value=item.body||item.message||"";
+    }
+
+    if(btnAddVersion){
+        btnAddVersion.innerText="UPDATE VERSION";
+    }
+}
+
+async function deleteVersionItem(key){
+    const item=latestVersions?.[key];
+
+    if(!item){
+        return;
+    }
+
+    if(!confirm(`${item.version||"VERSION"} を削除しますか？`)){
+        return;
+    }
+
+    await remove(ref(db,`updates/${key}`));
+    await writeLog(`VERSION DELETE : ${item.version||key}`);
+    await createOwnerNotification("version","VERSION DELETED",item.version||key);
+
+    if(editingVersionKey===key){
+        clearVersionForm();
+    }
+}
+
+function renderVersionCenter(updates){
+    latestVersions=updates||{};
+
+    const entries=getVersionEntries();
+
+    if(versionCenterCount){
+        versionCenterCount.innerText=`${entries.length} VERSIONS`;
+    }
+
+    if(!versionCenterList){
+        return;
+    }
+
+    if(entries.length===0){
+        versionCenterList.innerHTML=`<div class="version-admin-empty">VERSIONなし</div>`;
+        return;
+    }
+
+    versionCenterList.innerHTML=entries.map(([key,item])=>`
+        <article class="version-admin-item">
+            <div class="version-admin-top">
+                <div>
+                    <span class="version-admin-number">${escapeMasterHtml(item.version||"v---")}</span>
+                    <span class="version-admin-tag">${escapeMasterHtml(item.tag||"FEATURE")}</span>
+                    <strong>${escapeMasterHtml(item.title||"RESCON UPDATE")}</strong>
+                </div>
+                <div class="version-admin-date">${item.createdAt?new Date(item.createdAt).toLocaleString("ja-JP"):"--"}</div>
+            </div>
+            <div class="version-admin-body">${escapeMasterHtml(item.body||item.message||"")}</div>
+            <div class="version-admin-actions">
+                <button class="neon-button version-admin-action" data-version-action="edit" data-version-key="${key}">EDIT</button>
+                <button class="neon-button danger-action version-admin-action" data-version-action="delete" data-version-key="${key}">DELETE</button>
+            </div>
+        </article>
+    `).join("");
 }
 
 function remainDays(expiresAt){
@@ -2150,17 +2371,92 @@ masterPassInput.onkeydown=(event)=>{
 };
 
 async function saveSystem(){
+    const maintenance=
+        maintenanceToggle.checked;
+
+    const communityDisabled=
+        communityDisabledToggle.checked;
+
     await update(
         systemRef,
         {
-            maintenance:maintenanceToggle.checked,
-            communityDisabled:communityDisabledToggle.checked,
+            maintenance,
+            masterMaintenance:maintenance,
+            communityDisabled,
             updatedAt:Date.now()
         }
     );
 
+    latestSystem={
+        ...(latestSystem||{}),
+        maintenance,
+        masterMaintenance:maintenance,
+        communityDisabled
+    };
+
+    updateMaintenanceBadge();
+
     await writeLog(
-        `SYSTEM SAVE MAINTENANCE:${maintenanceToggle.checked} COMMUNITY_DISABLED:${communityDisabledToggle.checked}`
+        `SYSTEM SAVE MAINTENANCE:${maintenance} COMMUNITY_DISABLED:${communityDisabled}`
+    );
+}
+
+
+async function saveManualUpdateMode(){
+    const active=
+        manualUpdateToggle?.checked
+        ??false;
+
+    const schedule=
+        manualUpdateScheduleInput?.value.trim()
+        ||
+        "更新完了までしばらくお待ちください";
+
+    const message=
+        manualUpdateMessageInput?.value.trim()
+        ||
+        "マニュアルを更新中です。";
+
+    await update(
+        systemRef,
+        {
+            manualUpdating:active,
+            manualMaintenance:active,
+            manualUpdate:{
+                active,
+                schedule,
+                message,
+                updatedAt:Date.now()
+            },
+            updatedAt:Date.now()
+        }
+    );
+
+    latestSystem={
+        ...(latestSystem||{}),
+        manualUpdating:active,
+        manualMaintenance:active,
+        manualUpdate:{
+            active,
+            schedule,
+            message,
+            updatedAt:Date.now()
+        }
+    };
+
+    document.body.classList.toggle(
+        "manual-update-master-active",
+        active
+    );
+
+    await writeLog(
+        `MANUAL UPDATE MODE : ${active ? "ON" : "OFF"}`
+    );
+
+    await createOwnerNotification(
+        "manual",
+        active ? "MANUAL UPDATE MODE ON" : "MANUAL UPDATE MODE OFF",
+        message
     );
 }
 
@@ -2174,6 +2470,9 @@ async function saveText(type,value){
     );
 
     await writeLog(`${type.toUpperCase()} SAVE`);
+}
+if(btnSaveManualUpdateMode){
+    btnSaveManualUpdateMode.onclick=()=>saveManualUpdateMode();
 }
 if(btnSaveSystem){
     btnSaveSystem.onclick=()=>saveSystem();
@@ -2358,6 +2657,7 @@ masterNgRequestList.onclick=async(event)=>{
 function startListeners(){
     onValue(systemRef,snapshot=>renderSystem(snapshot.val()||{}));
     onValue(noticesRef,snapshot=>renderNoticeCenter(snapshot.val()||{}));
+    onValue(updatesRef,snapshot=>renderVersionCenter(snapshot.val()||{}));
     onValue(roomsRef,snapshot=>{
         const rooms=snapshot.val()||{};
         renderRooms(rooms);

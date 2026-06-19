@@ -1,30 +1,17 @@
-const resconNavigationEntry=
-    performance.getEntriesByType("navigation")[0];
-
-if(
-    resconNavigationEntry
-    &&
-    resconNavigationEntry.type==="back_forward"
-){
-    sessionStorage.removeItem("resconBootPassed");
-    sessionStorage.removeItem("resconStartRequested");
-    location.replace("./index.html");
-}
+// home.js の一番上へ追加
 
 if(
     sessionStorage.getItem("resconBootPassed")
     !=="true"
 ){
-    location.replace("./index.html");
+    location.href="./index.html";
 }
 
 window.addEventListener(
     "pageshow",
     event=>{
         if(event.persisted){
-            sessionStorage.removeItem("resconBootPassed");
-            sessionStorage.removeItem("resconStartRequested");
-            location.replace("./index.html");
+            location.href="./index.html";
         }
     }
 );
@@ -45,6 +32,7 @@ const btnRoom=document.getElementById("btn-room");
 const btnCommunity=document.getElementById("btn-community");
 const btnManual=document.getElementById("btn-manual");
 const btnUpdates=document.getElementById("btn-updates");
+const btnFeedback=document.getElementById("btn-feedback");
 
 const homeNoticeList=document.getElementById("home-notice-list");
 const noticeNewBadge=document.getElementById("notice-new-badge");
@@ -52,14 +40,54 @@ const btnNoticeMarkRead=document.getElementById("btn-notice-mark-read");
 const noticeFilterButtons=document.querySelectorAll(".notice-filter");
 
 const noticesRef=ref(db,"notices");
+const systemRef=ref(db,"system");
+let resconMaintenanceActive=false;
 
 const NOTICE_READ_KEY="resconNoticeLastReadAt";
 const NOTICE_REACTION_KEY="resconNoticeReactions";
 let latestHomeNotices={};
 let currentNoticeFilter="all";
 
+
+function setHomeMaintenanceMode(active){
+    resconMaintenanceActive=!!active;
+    document.body.classList.toggle("maintenance-mode",resconMaintenanceActive);
+
+    if(!btnRoom){
+        return;
+    }
+
+    btnRoom.classList.toggle("maintenance-disabled",resconMaintenanceActive);
+    btnRoom.setAttribute("aria-disabled",resconMaintenanceActive?"true":"false");
+
+    const title=btnRoom.querySelector(".home-menu-title");
+    const caption=btnRoom.querySelector(".home-menu-caption");
+
+    if(title){
+        title.innerText=resconMaintenanceActive?"メンテナンス中":"ルーム選択";
+    }
+
+    if(caption){
+        caption.innerText=resconMaintenanceActive?"ROOM SELECT は一時停止中です":"ルームを選択してゲームを開始します";
+    }
+}
+
+function isMaintenanceSystem(system){
+    return !!(system?.maintenance||system?.masterMaintenance||system?.emergency?.active);
+}
+
+onValue(systemRef,snapshot=>{
+    setHomeMaintenanceMode(isMaintenanceSystem(snapshot.val()||{}));
+});
+
+
 if(btnRoom){
     btnRoom.onclick=()=>{
+        if(resconMaintenanceActive){
+            alert("現在メンテナンス中のため、ルーム選択は利用できません。");
+            return;
+        }
+
         location.href="./room.html";
     };
 }
@@ -79,6 +107,12 @@ if(btnManual){
 if(btnUpdates){
     btnUpdates.onclick=()=>{
         location.href="./updates.html";
+    };
+}
+
+if(btnFeedback){
+    btnFeedback.onclick=()=>{
+        location.href="./feedback.html";
     };
 }
 

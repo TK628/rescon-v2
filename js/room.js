@@ -3,6 +3,7 @@ import { app } from "./firebase.js";
 import {
     getDatabase,
     ref,
+    get,
     onValue,
     remove
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
@@ -13,6 +14,8 @@ const btnHome=document.getElementById("btn-home");
 const roomSearch=document.getElementById("room-search");
 const roomList=document.getElementById("room-list");
 const btnCreateRoom=document.getElementById("btn-create-room");
+const systemRef=ref(db,"system");
+let roomMaintenanceActive=false;
 
 const joinOverlay=document.getElementById("join-overlay");
 const joinRoomName=document.getElementById("join-room-name");
@@ -36,11 +39,71 @@ if(createdRoom){
     sessionStorage.removeItem("roomCreated");
 }
 
+
+function isRoomMaintenanceSystem(system){
+    return !!(
+        system?.maintenance||
+        system?.masterMaintenance||
+        system?.emergency?.active
+    );
+}
+
+function showDirectRoomMaintenanceScreen(){
+    roomMaintenanceActive=true;
+    document.body.classList.add("room-direct-maintenance-mode");
+
+    const container=document.getElementById("room-container");
+
+    if(!container){
+        return;
+    }
+
+    container.innerHTML=`
+        <section id="room-direct-maintenance-panel">
+            <div class="maintenance-warning-line">⚠ WARNING ⚠</div>
+            <div class="maintenance-icon-mark">!</div>
+            <div class="maintenance-title">MAINTENANCE MODE</div>
+            <div class="maintenance-subtitle">SYSTEM MAINTENANCE IN PROGRESS</div>
+            <div class="maintenance-message-box">
+                現在、システムメンテナンスを実施しております。<br>
+                ルーム一覧の表示・作成・入室はできません。<br>
+                しばらく時間をおいてから再度アクセスしてください。
+            </div>
+            <button class="neon-button maintenance-home-button" id="btn-room-maintenance-home">HOMEへ戻る</button>
+        </section>
+    `;
+
+    const btnHome=document.getElementById("btn-room-maintenance-home");
+
+    if(btnHome){
+        btnHome.onclick=()=>{
+            location.href="./home.html";
+        };
+    }
+}
+
+onValue(
+    systemRef,
+    snapshot=>{
+        const active=isRoomMaintenanceSystem(snapshot.val()||{});
+
+        if(active){
+            showDirectRoomMaintenanceScreen();
+        }
+    }
+);
+
+
 btnHome.onclick=()=>{
     location.href="./home.html";
 };
 
 btnCreateRoom.onclick=()=>{
+    if(roomMaintenanceActive){
+        alert("現在メンテナンス中のため、ルーム作成は利用できません。");
+        return;
+    }
+
     location.href="./create-room.html";
 };
 
@@ -59,6 +122,10 @@ function getRemainDays(expiresAt){
 }
 
 function renderRoomList(){
+    if(roomMaintenanceActive){
+        return;
+    }
+
     roomList.innerHTML="";
 
     const keyword=roomSearch.value.trim().toLowerCase();
@@ -89,6 +156,10 @@ function renderRoomList(){
         `;
 
         card.onclick=()=>{
+            if(roomMaintenanceActive){
+                return;
+            }
+
             selectedRoomKey=key;
             selectedRoomData=room;
             joinRoomName.innerText=room.roomName;
@@ -145,6 +216,10 @@ function getRefereeCount(){
 }
 
 function enterRoom(roleName){
+    if(roomMaintenanceActive){
+        return;
+    }
+
     const playerName=encodeURIComponent(playerNameInput.value.trim());
 
     location.href=

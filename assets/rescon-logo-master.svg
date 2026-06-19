@@ -1,17 +1,80 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
 <defs>
-<filter id='g'><feGaussianBlur stdDeviation='4'/><feMerge><feMergeNode/><feMergeNode in='SourceGraphic'/></feMerge></filter>
-<linearGradient id='metal' x1='0' y1='0' x2='1' y2='1'>
-<stop offset='0%' stop-color='#fff'/><stop offset='50%' stop-color='#9db7c8'/><stop offset='100%' stop-color='#2d3944'/>
+<radialGradient id="bg" cx="50%" cy="46%" r="48%">
+<stop offset="0%" stop-color="#00ffff" stop-opacity=".18"/>
+<stop offset="60%" stop-color="#00ffff" stop-opacity=".06"/>
+<stop offset="100%" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#fff"/>
+<stop offset="22%" stop-color="#d9f8ff"/>
+<stop offset="48%" stop-color="#7f9aaa"/>
+<stop offset="68%" stop-color="#f8ffff"/>
+<stop offset="100%" stop-color="#2a3440"/>
 </linearGradient>
+<linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#243846"/>
+<stop offset="52%" stop-color="#07111c"/>
+<stop offset="100%" stop-color="#1e2d3a"/>
+</linearGradient>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+<feGaussianBlur stdDeviation="7" result="b"/>
+<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
 </defs>
-<ellipse cx='256' cy='256' rx='170' ry='60' transform='rotate(-25 256 256)' fill='none' stroke='#00ffff' stroke-width='10'/>
-<polygon points='256,78 268,90 256,102 244,90' fill='#00ffff'/>
-<polygon points='434,256 446,268 434,280 422,268' fill='#00ffff'/>
-<polygon points='256,434 268,446 256,458 244,446' fill='#00ffff'/>
-<polygon points='78,256 90,268 78,280 66,268' fill='#00ffff'/>
-<polygon points='256,120 360,180 360,332 256,392 152,332 152,180' fill='#08121d' stroke='#00ffff' stroke-width='6'/>
-<polygon points='256,145 335,190 335,322 256,367 177,322 177,190' fill='none' stroke='#c18cff' stroke-width='2'/>
-<path d='M195 340V170h95c48 0 76 24 76 64 0 29-16 49-45 59l52 47h-63l-45-40h-26v40z M245 255h36c22 0 35-10 35-27s-13-27-35-27h-36z' fill='url(#metal)' stroke='#00ffff' stroke-width='5'/>
-<text x='256' y='470' text-anchor='middle' fill='#00ffff' font-size='16'>MASTER</text>
+<rect width="1024" height="1024" fill="none"/>
+<circle cx="512" cy="470" r="430" fill="url(#bg)"/>
+<g fill="none" stroke-linecap="round" filter="url(#glow)">
+<ellipse cx="512" cy="458" rx="410" ry="154" transform="rotate(-25 512 458)" stroke="#00ffff" stroke-width="8"/>
+<ellipse cx="512" cy="458" rx="390" ry="146" transform="rotate(25 512 458)" stroke="#fff" stroke-width="3" opacity=".62"/>
+<ellipse cx="512" cy="458" rx="300" ry="112" transform="rotate(-6 512 458)" stroke="#bf84ff" stroke-width="3" stroke-dasharray="34 24" opacity=".72"/>
+</g>
+<g fill="none" opacity=".48" stroke="#00ffff">
+<circle cx="512" cy="458" r="250" stroke-width="2" stroke-dasharray="20 14"/>
+<circle cx="512" cy="458" r="205" stroke-width="1.5" stroke-dasharray="8 14"/>
+<circle cx="512" cy="458" r="162" stroke-width="1.2"/>
+</g>
+<g filter="url(#glow)">
+<g transform="translate(512 126)">
+<path d="M0-34 31-16 31 16 0 34-31 16-31-16z" fill="url(#dark)" stroke="#00ffff" stroke-width="4"/>
+<circle r="12" fill="#00ffff" stroke="#fff" stroke-width="3"/>
+<text y="-68" text-anchor="middle" fill="#00ffff" font-family="Orbitron,Arial" font-size="18" letter-spacing="5">COMMAND</text>
+</g>
+<g transform="translate(126 458)">
+<path d="M0-30 28-14 28 14 0 30-28 14-28-14z" fill="url(#dark)" stroke="#00ffff" stroke-width="4"/>
+<circle r="11" fill="#00ffff" stroke="#fff" stroke-width="3"/>
+<text x="-104" y="7" text-anchor="middle" fill="#00ffff" font-family="Orbitron,Arial" font-size="18" letter-spacing="4">FIRE</text>
+</g>
+<g transform="translate(898 458)">
+<path d="M0-30 28-14 28 14 0 30-28 14-28-14z" fill="url(#dark)" stroke="#00ffff" stroke-width="4"/>
+<circle r="11" fill="#00ffff" stroke="#fff" stroke-width="3"/>
+<text x="118" y="7" text-anchor="middle" fill="#00ffff" font-family="Orbitron,Arial" font-size="18" letter-spacing="4">MEDICAL</text>
+</g>
+<g transform="translate(512 790)">
+<path d="M0-34 31-16 31 16 0 34-31 16-31-16z" fill="url(#dark)" stroke="#00ffff" stroke-width="4"/>
+<circle r="12" fill="#00ffff" stroke="#fff" stroke-width="3"/>
+<text y="84" text-anchor="middle" fill="#00ffff" font-family="Orbitron,Arial" font-size="18" letter-spacing="5">RESCUE</text>
+</g>
+</g>
+<g filter="url(#glow)">
+<path d="M512 176 748 312 748 584 512 720 276 584 276 312z" fill="url(#dark)" stroke="#00ffff" stroke-width="7"/>
+<path d="M512 212 708 326 708 570 512 684 316 570 316 326z" fill="#07111f" fill-opacity=".78" stroke="#fff" stroke-width="2.5" opacity=".78"/>
+<path d="M512 246 670 338 670 558 512 650 354 558 354 338z" fill="#06101a" fill-opacity=".72" stroke="#00ffff" stroke-width="2" opacity=".55"/>
+<path d="M332 306 512 202 692 306 654 330 512 250 370 330z" fill="url(#metal)" opacity=".32"/>
+</g>
+<g filter="url(#glow)">
+<path d="M338 640V280h218c96 0 156 55 156 141 0 63-35 110-92 131l104 88H590l-88-76h-62v76z M440 480h92c43 0 70-22 70-58 0-35-27-57-70-57h-92z" fill="url(#metal)" stroke="#00ffff" stroke-width="8" stroke-linejoin="round"/>
+<path d="M366 326h84M440 282v58M548 366h52M404 520h80M518 566l58 50" stroke="#00ffff" stroke-width="4" stroke-linecap="round"/>
+<path d="M356 660h252" stroke="#00ffff" stroke-width="5" stroke-linecap="round"/>
+</g>
+<g stroke="#00ffff" stroke-width="2" opacity=".78" fill="none">
+<path d="M360 360h-50v42M658 432h46v38M448 642v42h62"/>
+<circle cx="310" cy="402" r="6" fill="#00ffff"/>
+<circle cx="704" cy="470" r="6" fill="#00ffff"/>
+<circle cx="510" cy="684" r="6" fill="#00ffff"/>
+</g>
+<g font-family="Orbitron,Arial,sans-serif" text-anchor="middle">
+<text x="512" y="900" fill="url(#metal)" font-size="42" letter-spacing="24">MASTER</text>
+<text x="512" y="948" fill="#00ffff" font-size="17" letter-spacing="11">AUTHORIZED COMMAND CORE</text>
+</g>
 </svg>
