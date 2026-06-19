@@ -701,126 +701,95 @@
 }
 
 
-/* ===== REFEREE TASK VISIBLE PATCH ===== */
-/* DUMMYで空いたスペースをTASKへ回す */
-
-.referee-trial-dummy .dummy-hp{
-    display:none!important;
-}
-
-.dummy-hp-panel{
-    padding:6px 10px!important;
-}
-
-.referee-trial-dummy .dummy-bar{
-    height:12px!important;
-}
-
-.dummy-hp-label{
-    margin-bottom:2px!important;
-}
+/* ===== REFEREE TASK EXPAND PATCH ===== */
 
 @media(max-width:900px){
-    #referee-dashboard.referee-trial-dashboard{
-        grid-template-rows:minmax(0,1fr) 184px!important;
-        height:calc(100dvh - 198px)!important;
-    }
 
-    .referee-trial-dummy{
-        gap:6px!important;
-    }
-
+    /* DUMMYを少し縮める */
     .dummy-visual-state{
-        grid-template-columns:70px 1fr!important;
-        gap:8px!important;
+        grid-template-columns:60px 1fr!important;
+        gap:6px!important;
     }
 
     .dummy-icon-slot{
-        min-height:72px!important;
+        min-height:60px!important;
     }
 
     .referee-trial-dummy .dummy-mini-icon{
-        transform:scale(1.02)!important;
-    }
-
-    .dummy-state-buttons{
-        gap:6px!important;
+        transform:scale(.88)!important;
     }
 
     .dummy-state-row .neon-button{
-        height:30px!important;
-        font-size:12px!important;
-    }
-
-    .dummy-state-row span{
-        font-size:12px!important;
+        height:26px!important;
+        font-size:11px!important;
     }
 
     .referee-trial-dummy .dummy-buttons .neon-button{
-        height:30px!important;
-        font-size:12px!important;
+        height:26px!important;
+        font-size:11px!important;
+    }
+
+    .dummy-hp-panel{
+        padding:4px 8px!important;
+    }
+
+    /* TASKを拡大 */
+    #referee-dashboard.referee-trial-dashboard{
+        grid-template-rows:minmax(0,1fr) 220px!important;
+        height:calc(100dvh - 198px)!important;
     }
 
     .referee-trial-task-card{
-        padding:10px!important;
-    }
-
-    .referee-trial-task-card .compact-title{
-        margin-bottom:6px!important;
+        padding:8px!important;
     }
 
     .referee-trial-task-card .compact-task-grid{
         grid-template-columns:repeat(2,minmax(0,1fr))!important;
-        gap:7px!important;
+        gap:6px!important;
         max-height:none!important;
         overflow:visible!important;
-    }
-
-    .referee-trial-task-card .compact-task-grid label{
-        min-height:34px!important;
-        padding:6px 9px!important;
-        font-size:12px!important;
     }
 }
 
 @media(max-width:430px){
-    #referee-dashboard.referee-trial-dashboard{
-        grid-template-rows:minmax(0,1fr) 176px!important;
-        height:calc(100dvh - 198px)!important;
-    }
 
-    .referee-trial-dummy{
-        gap:5px!important;
-    }
-
+    /* スマホはさらに圧縮 */
     .dummy-icon-slot{
-        min-height:66px!important;
+        min-height:52px!important;
     }
 
     .referee-trial-dummy .dummy-mini-icon{
-        transform:scale(.96)!important;
+        transform:scale(.78)!important;
     }
 
     .dummy-state-row{
-        grid-template-columns:34px 1fr!important;
-        gap:6px!important;
+        grid-template-columns:28px 1fr!important;
+        gap:4px!important;
     }
 
     .dummy-state-row span{
-        font-size:11px!important;
+        font-size:10px!important;
     }
 
     .dummy-state-row .neon-button{
-        height:28px!important;
-        font-size:11px!important;
+        height:24px!important;
+        font-size:10px!important;
     }
 
     .referee-trial-dummy .dummy-buttons .neon-button{
-        height:28px!important;
+        height:24px!important;
+        font-size:10px!important;
+    }
+
+    /* TASK領域を大きく確保 */
+    #referee-dashboard.referee-trial-dashboard{
+        grid-template-rows:minmax(0,1fr) 240px!important;
+        height:calc(100dvh - 198px)!important;
     }
 
     .referee-trial-task-card .compact-task-grid label{
-        min-height:32px!important;
+        min-height:30px!important;
+        padding:5px 8px!important;
         font-size:11px!important;
     }
 }
