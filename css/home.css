@@ -937,15 +937,260 @@ body.maintenance-mode #btn-room .home-menu-caption{
 }
 
 
-/* ===== HOME NOTICE SLIM PATCH ===== */
+/* ===== HOME LAYOUT 3.0 RESPONSIVE SIZE SYSTEM ===== */
+#home-container{
+    width:min(1320px,96vw)!important;
+    min-height:100dvh!important;
+    height:auto!important;
+    margin:0 auto!important;
+    padding:18px 0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:14px!important;
+    overflow-y:auto!important;
+}
+
+#title-area{
+    width:min(860px,72vw)!important;
+    margin:0 auto 4px!important;
+    padding:12px 18px!important;
+    border-radius:16px!important;
+    border:1px solid rgba(0,255,255,.25)!important;
+    background:rgba(19,26,46,.62)!important;
+    box-shadow:0 0 18px rgba(0,255,255,.10)!important;
+}
+
+#system-title{
+    font-size:clamp(28px,4vw,52px)!important;
+    line-height:1.05!important;
+    letter-spacing:4px!important;
+}
+
+#system-version{
+    margin-top:5px!important;
+    font-size:11px!important;
+}
+
+#menu-card{
+    padding:14px!important;
+    margin-bottom:0!important;
+}
+
+#menu-buttons.home-layout-3{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:14px!important;
+    margin-top:12px!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-card{
+    min-width:0!important;
+    min-height:104px!important;
+    padding:14px 12px!important;
+    border-radius:16px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:7px!important;
+    text-align:center!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-icon{
+    width:44px!important;
+    height:44px!important;
+    flex:0 0 auto!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-title{
+    font-size:13px!important;
+    line-height:1.25!important;
+    letter-spacing:.8px!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-caption{
+    font-size:10px!important;
+    line-height:1.35!important;
+    opacity:.72!important;
+}
+
+#menu-buttons.home-layout-3 .home-menu-text{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:4px!important;
+    min-width:0!important;
+}
+
+#notice-card{
+    min-height:0!important;
+    flex:1 1 auto!important;
+    padding:14px!important;
+}
+
+#home-notice-list{
+    max-height:calc(100dvh - 310px)!important;
+    min-height:220px!important;
+    overflow:auto!important;
+}
+
+@media(max-width:900px){
+    #home-container{
+        width:min(520px,94vw)!important;
+        padding:10px 0 14px!important;
+        gap:10px!important;
+    }
+
+    #title-area{
+        width:82%!important;
+        padding:8px 12px!important;
+        border-radius:10px!important;
+    }
+
+    #system-title{
+        font-size:clamp(24px,8vw,36px)!important;
+        letter-spacing:2.5px!important;
+    }
+
+    #system-version{
+        font-size:10px!important;
+    }
+
+    #menu-card{
+        padding:10px!important;
+    }
+
+    #menu-buttons.home-layout-3{
+        grid-template-columns:repeat(4,minmax(0,1fr))!important;
+        gap:10px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card{
+        grid-column:1 / -1!important;
+        min-height:76px!important;
+        display:grid!important;
+        grid-template-columns:58px 1fr!important;
+        text-align:left!important;
+        align-items:center!important;
+        justify-content:start!important;
+        padding:10px 14px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card .home-menu-icon{
+        width:48px!important;
+        height:48px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card .home-menu-text{
+        align-items:flex-start!important;
+        gap:5px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card .home-menu-title{
+        font-size:16px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-room-card .home-menu-caption{
+        font-size:11px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card{
+        min-height:86px!important;
+        padding:9px 5px!important;
+        gap:5px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-icon{
+        width:34px!important;
+        height:34px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-title{
+        font-size:11px!important;
+        line-height:1.25!important;
+        letter-spacing:0!important;
+        word-break:keep-all!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-caption{
+        display:none!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card::before,
+    #menu-buttons.home-layout-3 .home-sub-card::after{
+        display:none!important;
+    }
+
+    #notice-card{
+        padding:10px!important;
+        min-height:360px!important;
+    }
+
+    #notice-toolbar{
+        display:grid!important;
+        grid-template-columns:repeat(4,1fr)!important;
+        gap:6px!important;
+        overflow:visible!important;
+    }
+
+    .notice-filter,
+    .mini-notice-button{
+        width:100%!important;
+        min-width:0!important;
+        padding:0 6px!important;
+        font-size:9px!important;
+    }
+
+    #home-notice-list{
+        max-height:none!important;
+        min-height:330px!important;
+    }
+}
+
+@media(max-width:430px){
+    #home-container{
+        width:94vw!important;
+    }
+
+    #menu-buttons.home-layout-3{
+        gap:8px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card{
+        min-height:78px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-icon{
+        width:30px!important;
+        height:30px!important;
+    }
+
+    #menu-buttons.home-layout-3 .home-sub-card .home-menu-title{
+        font-size:10px!important;
+    }
+
+    #notice-card{
+        min-height:340px!important;
+    }
+
+    #home-notice-list{
+        min-height:300px!important;
+    }
+}
+
+@media(min-width:901px){
+    #notice-card{
+        min-height:420px!important;
+    }
+}
+
+
+/* ===== HOME LAYOUT 3.0 NOTICE SLIM FIX ===== */
 .notice-card-head{
-    margin-bottom:8px!important;
+    margin-bottom:6px!important;
 }
 
-.notice-caption{
-    display:none!important;
-}
-
+.notice-caption,
 .notice-new-badge,
 #notice-new-badge,
 #notice-toolbar{
@@ -957,7 +1202,7 @@ body.maintenance-mode #btn-room .home-menu-caption{
 }
 
 #home-notice-list{
-    margin-top:8px!important;
+    margin-top:6px!important;
     max-height:none!important;
     min-height:260px!important;
     overflow:auto!important;
@@ -1012,11 +1257,11 @@ body.maintenance-mode #btn-room .home-menu-caption{
 
 @media(max-width:900px){
     #notice-card{
-        min-height:300px!important;
+        min-height:280px!important;
     }
 
     #home-notice-list{
-        min-height:260px!important;
+        min-height:240px!important;
     }
 
     .section-title{
@@ -1036,11 +1281,11 @@ body.maintenance-mode #btn-room .home-menu-caption{
 
 @media(max-width:430px){
     #notice-card{
-        min-height:270px!important;
+        min-height:250px!important;
     }
 
     #home-notice-list{
-        min-height:230px!important;
+        min-height:210px!important;
     }
 
     .home-notice-title{
