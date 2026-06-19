@@ -134,50 +134,57 @@
 
     <div id="settings-overlay">
         <div class="neon-card" id="settings-panel">
-            <div class="settings-mini-head">設定</div>
-
-            <div class="settings-compact-row setting-time-row">
-                <button class="neon-button setting-time" data-time="300">5分</button>
-                <div class="settings-center-label">試合時間</div>
-                <button class="neon-button setting-time" data-time="900">15分</button>
-                <button class="neon-button setting-time setting-time-middle" data-time="480">8分</button>
+            <div class="settings-v2-header">
+                <div class="section-title">設定</div>
             </div>
 
-            <div class="settings-compact-row setting-dummy-row">
-                <button class="neon-button setting-dummy" data-count="1">1</button>
-                <div class="settings-center-label">ダミヤン人数</div>
-                <button class="neon-button setting-dummy" data-count="3">3</button>
-                <button class="neon-button setting-dummy setting-dummy-middle" data-count="2">2</button>
-            </div>
-
-            <div class="settings-stove-row">
-                <div class="stove-card compact-stove-box">
-                    <label for="stove-room-a">ストーブ A</label>
-                    <select id="stove-room-a" class="neon-input">
-                        <option value="off">OFF</option>
-                        <option value="on">ON</option>
-                    </select>
+            <section class="settings-v2-section">
+                <div class="settings-v2-title">試合時間</div>
+                <div class="settings-v2-button-grid three">
+                    <button class="neon-button setting-time" data-time="300">5分</button>
+                    <button class="neon-button setting-time" data-time="480">8分</button>
+                    <button class="neon-button setting-time" data-time="900">15分</button>
                 </div>
+            </section>
 
-                <div class="stove-card compact-stove-box">
-                    <label for="stove-room-b">ストーブ B</label>
-                    <select id="stove-room-b" class="neon-input">
-                        <option value="off">OFF</option>
-                        <option value="on">ON</option>
-                    </select>
+            <section class="settings-v2-section">
+                <div class="settings-v2-title">ダミヤン人数</div>
+                <div class="settings-v2-button-grid three">
+                    <button class="neon-button setting-dummy" data-count="1">1体</button>
+                    <button class="neon-button setting-dummy" data-count="2">2体</button>
+                    <button class="neon-button setting-dummy" data-count="3">3体</button>
                 </div>
+            </section>
 
-                <div class="stove-card compact-stove-box">
-                    <label for="stove-room-c">ストーブ C</label>
-                    <select id="stove-room-c" class="neon-input">
-                        <option value="off">OFF</option>
-                        <option value="on">ON</option>
-                    </select>
+            <section class="settings-v2-section">
+                <div class="settings-v2-title">ストーブ設定</div>
+                <div class="settings-v2-stove-grid">
+                    <div class="stove-card">
+                        <label for="stove-room-a">ROOM A</label>
+                        <select id="stove-room-a" class="neon-input">
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                    <div class="stove-card">
+                        <label for="stove-room-b">ROOM B</label>
+                        <select id="stove-room-b" class="neon-input">
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
+                    <div class="stove-card">
+                        <label for="stove-room-c">ROOM C</label>
+                        <select id="stove-room-c" class="neon-input">
+                            <option value="off">OFF</option>
+                            <option value="on">ON</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <section id="settings-dummy-panel">
-                <div class="settings-dummy-title">ダミヤン設定</div>
+            <section id="settings-dummy-panel" class="settings-v2-section settings-v2-dummy-section">
+                <div class="settings-v2-title">ダミヤン設定</div>
 
                 <div id="dummy-setting-tabs">
                     <button class="neon-button dummy-setting-tab active" data-dummy="dummy1">DUMMY 1</button>
@@ -253,8 +260,7 @@
             </section>
 
             <div id="settings-actions">
-                <button class="neon-button" id="btn-save-settings">保存・閉じる</button>
-                <button class="neon-button" id="btn-close-settings">閉じる</button>
+                <button class="neon-button" id="btn-save-settings">保存して閉じる</button>
             </div>
         </div>
     </div>

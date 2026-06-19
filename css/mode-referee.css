@@ -900,152 +900,111 @@
 }
 
 
-/* ===== REFEREE SETTINGS COMPACT LAYOUT PATCH ===== */
+/* ===== REFEREE SETTINGS V2 CLEAN PATCH ===== */
 #settings-overlay{
     align-items:center!important;
     justify-content:center!important;
 }
 
 #settings-panel{
-    width:min(480px,94vw)!important;
-    height:min(92dvh,760px)!important;
+    width:min(560px,94vw)!important;
+    height:min(92dvh,800px)!important;
     max-height:92dvh!important;
-    padding:8px!important;
-    gap:8px!important;
-    overflow:hidden!important;
+    padding:12px!important;
+    gap:10px!important;
     display:flex!important;
     flex-direction:column!important;
-    border-radius:12px!important;
+    overflow:hidden!important;
+    border-radius:16px!important;
 }
 
-.settings-mini-head{
-    align-self:flex-start;
-    min-width:62px;
-    height:22px;
-    padding:0 10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid rgba(0,255,255,.45);
-    border-radius:4px;
-    background:linear-gradient(135deg,rgba(0,255,255,.18),rgba(0,90,160,.28));
-    color:#dffcff;
-    font-weight:900;
-    font-size:12px;
+.settings-v2-header{
+    flex:0 0 auto;
 }
 
-.settings-compact-row{
-    display:grid;
-    grid-template-columns:1fr 1.4fr 1fr;
-    gap:6px;
-    align-items:center;
-    min-height:36px;
-    padding:4px;
-    border:1px solid rgba(0,255,255,.24);
-    background:rgba(0,255,255,.06);
-    border-radius:6px;
-    position:relative;
+#settings-panel .section-title{
+    margin:0!important;
+    font-size:18px!important;
 }
 
-.settings-center-label{
-    height:100%;
-    min-height:30px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#ffffff;
-    font-size:20px;
+.settings-v2-section{
+    flex:0 0 auto;
+    padding:10px;
+    border-radius:14px;
+    border:1px solid rgba(0,255,255,.22);
+    background:rgba(0,255,255,.045);
+}
+
+.settings-v2-title{
+    margin-bottom:8px;
+    color:#00ffff;
+    font-size:15px;
     font-weight:900;
     letter-spacing:1px;
+    text-shadow:0 0 12px rgba(0,255,255,.35);
 }
 
-.settings-compact-row .neon-button{
-    width:100%!important;
-    height:30px!important;
-    min-width:0!important;
-    border-radius:4px!important;
-    font-size:18px!important;
-    color:#fff!important;
-    background:rgba(0,0,0,.18)!important;
-}
-
-.setting-time-middle,
-.setting-dummy-middle{
-    position:absolute!important;
-    left:50%;
-    bottom:-25px;
-    transform:translateX(-50%);
-    width:70px!important;
-    height:22px!important;
-    font-size:12px!important;
-    opacity:.72;
-    z-index:2;
-}
-
-.settings-stove-row{
+.settings-v2-button-grid.three{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:4px;
+    gap:8px;
 }
 
-.compact-stove-box{
-    min-height:76px;
-    padding:8px!important;
-    border-radius:4px!important;
-    text-align:center;
+.settings-v2-button-grid .neon-button,
+#settings-panel .setting-time,
+#settings-panel .setting-dummy{
+    width:100%!important;
+    min-width:0!important;
+    height:40px!important;
+    border-radius:10px!important;
+    font-size:16px!important;
 }
 
-.compact-stove-box label{
-    font-size:20px!important;
-    letter-spacing:1px!important;
-    color:#ffffff;
+.settings-v2-stove-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
 }
 
-.compact-stove-box .neon-input{
-    margin-top:6px;
-    height:30px;
-    padding:4px 8px!important;
-    text-align:center;
+#settings-panel .stove-card{
+    padding:9px!important;
+    border-radius:12px!important;
+    gap:6px!important;
+}
+
+#settings-panel .stove-card label{
     font-size:12px!important;
+    letter-spacing:1px!important;
+    color:#dffcff;
 }
 
-#settings-dummy-panel{
-    flex:1 1 auto;
-    min-height:0;
-    position:relative;
+#settings-panel .stove-card .neon-input{
+    min-height:34px;
+    padding:6px 8px!important;
+    font-size:13px!important;
+}
+
+.settings-v2-dummy-section{
+    flex:1 1 auto!important;
+    min-height:0!important;
     display:grid;
     grid-template-rows:auto auto minmax(0,1fr) auto;
-    border:1px solid rgba(0,255,255,.30);
-    border-radius:6px;
-    background:rgba(0,255,255,.055);
     overflow:hidden;
-}
-
-.settings-dummy-title{
-    min-height:36px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-bottom:1px solid rgba(0,255,255,.24);
-    color:#ffffff;
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:1px;
-    background:rgba(0,255,255,.08);
 }
 
 #settings-panel #dummy-setting-tabs{
     display:grid!important;
     grid-template-columns:repeat(3,1fr)!important;
-    gap:6px!important;
-    margin:8px!important;
+    gap:8px!important;
+    margin:0 0 10px!important;
 }
 
 #settings-panel .dummy-setting-tab{
-    height:30px!important;
+    width:100%!important;
+    height:38px!important;
     min-width:0!important;
-    font-size:11px!important;
+    font-size:13px!important;
+    border-radius:10px!important;
 }
 
 #settings-panel #dummy-detail-setting{
@@ -1053,8 +1012,8 @@
     overflow:auto;
     display:grid!important;
     grid-template-columns:1fr 1fr!important;
-    gap:8px!important;
-    padding:8px!important;
+    gap:10px!important;
+    padding:2px 2px 8px!important;
 }
 
 #settings-panel #dummy-detail-setting .setting-face-row{
@@ -1062,97 +1021,145 @@
 }
 
 #settings-panel .setting-row{
-    gap:5px!important;
+    gap:6px!important;
 }
 
 #settings-panel .setting-row label{
-    font-size:12px!important;
+    font-size:13px!important;
+    font-weight:900!important;
 }
 
 #settings-panel .neon-input{
-    min-height:32px;
-    font-size:12px!important;
+    min-height:38px;
+    font-size:13px!important;
 }
 
 #settings-panel #face-color-buttons{
     display:grid!important;
     grid-template-columns:repeat(4,1fr)!important;
-    gap:5px!important;
+    gap:7px!important;
 }
 
 #settings-panel .face-color-button{
-    min-height:28px;
-    font-size:11px!important;
-    padding:4px!important;
+    min-height:34px;
+    font-size:12px!important;
+    padding:5px!important;
+    border-radius:10px!important;
 }
 
 #settings-panel .injury-grid{
     grid-template-columns:1fr 1fr!important;
-    gap:5px!important;
+    gap:6px!important;
 }
 
 #settings-panel .injury-grid label{
-    font-size:11px!important;
+    min-height:32px;
+    padding:6px;
+    border-radius:8px;
+    background:rgba(255,255,255,.035);
+    font-size:12px!important;
+}
+
+#settings-panel .setting-buttons{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
 }
 
 #settings-panel .walking-button{
-    height:30px!important;
-    font-size:11px!important;
+    width:100%!important;
+    height:36px!important;
+    font-size:13px!important;
 }
 
 #btn-save-dummy-detail{
     justify-self:end;
-    margin:0 6px 6px 0;
-    height:28px!important;
-    min-width:150px!important;
-    border-radius:4px!important;
-    font-size:13px!important;
+    align-self:end;
+    min-width:180px!important;
+    height:36px!important;
+    border-radius:10px!important;
+    font-size:14px!important;
+    margin-top:8px;
 }
 
 #settings-actions{
-    display:grid!important;
-    grid-template-columns:1fr auto!important;
-    gap:8px!important;
     flex:0 0 auto;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
 }
 
 #settings-actions .neon-button{
-    height:42px!important;
-    border-radius:4px!important;
+    height:44px!important;
+    border-radius:12px!important;
     font-size:18px!important;
 }
 
 #btn-close-settings{
-    min-width:80px!important;
+    display:none!important;
 }
 
 @media(max-width:480px){
     #settings-panel{
         width:94vw!important;
         height:92dvh!important;
+        padding:10px!important;
+        gap:8px!important;
     }
 
-    .settings-center-label{
-        font-size:17px;
+    .settings-v2-section{
+        padding:8px!important;
     }
 
-    .settings-compact-row .neon-button{
-        font-size:16px!important;
+    .settings-v2-title{
+        font-size:14px!important;
+        margin-bottom:6px!important;
     }
 
-    .compact-stove-box label{
-        font-size:16px!important;
+    .settings-v2-button-grid .neon-button,
+    #settings-panel .setting-time,
+    #settings-panel .setting-dummy{
+        height:36px!important;
+        font-size:14px!important;
     }
 
-    .settings-dummy-title{
-        font-size:19px;
+    .settings-v2-stove-grid{
+        gap:6px!important;
+    }
+
+    #settings-panel .stove-card{
+        padding:7px!important;
+    }
+
+    #settings-panel #dummy-setting-tabs{
+        gap:6px!important;
+    }
+
+    #settings-panel .dummy-setting-tab{
+        height:34px!important;
+        font-size:11px!important;
     }
 
     #settings-panel #dummy-detail-setting{
         grid-template-columns:1fr!important;
+        gap:8px!important;
     }
 
     #settings-panel #dummy-detail-setting .setting-face-row{
         grid-column:auto!important;
+    }
+
+    #settings-panel #face-color-buttons{
+        grid-template-columns:repeat(4,1fr)!important;
+    }
+
+    #btn-save-dummy-detail{
+        width:100%!important;
+        min-width:0!important;
+    }
+
+    #settings-actions .neon-button{
+        height:42px!important;
+        font-size:16px!important;
     }
 }

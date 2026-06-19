@@ -653,6 +653,21 @@ function calculateTotalScore(roomData){
     };
 }
 
+
+async function saveSelectedDummyDetailOnly(){
+    await update(roomRef,{
+        [`dummies/${selectedDummyId}/clothesColor`]:clothesColorSelect.value,
+        [`dummies/${selectedDummyId}/faceColor`]:selectedFaceColor,
+        [`dummies/${selectedDummyId}/soundFrequency`]:Number(soundFrequencySelect.value),
+        [`dummies/${selectedDummyId}/injuries/rightHand`]:rightHandCheck.checked,
+        [`dummies/${selectedDummyId}/injuries/leftHand`]:leftHandCheck.checked,
+        [`dummies/${selectedDummyId}/injuries/rightLeg`]:rightLegCheck.checked,
+        [`dummies/${selectedDummyId}/injuries/leftLeg`]:leftLegCheck.checked,
+        [`dummies/${selectedDummyId}/injuries/walking`]:selectedWalking,
+        [`dummies/${selectedDummyId}/maxHp`]:MAX_LIFE
+    });
+}
+
 if(!roomSnapshot.exists()){
     roomNameElement.innerText="ROOM NOT FOUND";
 }else{
@@ -838,6 +853,16 @@ if(!roomSnapshot.exists()){
         toggleFound("dummy3");
     };
 
+    if(btnSaveDummyDetail){
+        btnSaveDummyDetail.onclick=async()=>{
+            await saveSelectedDummyDetailOnly();
+            btnSaveDummyDetail.innerText="保存済み";
+            setTimeout(()=>{
+                btnSaveDummyDetail.innerText="ダミヤン保存";
+            },900);
+        };
+    }
+
     btnSaveSettings.onclick=async()=>{
         await update(roomRef,{
             "settings/matchTime":selectedMatchTime,
@@ -862,14 +887,7 @@ if(!roomSnapshot.exists()){
 
         settingsOverlay.style.display="none";
     };
-
-    if(btnSaveDummyDetail){
-        btnSaveDummyDetail.onclick=()=>{
-            btnSaveSettings.click();
-        };
-    }
-
-    btnTimerToggle.onclick=async()=>{
+btnTimerToggle.onclick=async()=>{
         const snapshot=await get(roomRef);
         const roomData=snapshot.val();
         const timer=roomData.timer||{};
