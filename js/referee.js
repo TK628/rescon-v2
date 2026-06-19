@@ -655,6 +655,7 @@ function calculateTotalScore(roomData){
 }
 
 
+
 async function saveSelectedDummyDetailOnly(){
     await update(roomRef,{
         [`dummies/${selectedDummyId}/clothesColor`]:clothesColorSelect.value,
@@ -708,9 +709,11 @@ if(!roomSnapshot.exists()){
         accessOverlay.style.display="none";
     };
 
-    btnCloseSettings.onclick=()=>{
-        settingsOverlay.style.display="none";
-    };
+    if(btnCloseSettings){
+        btnCloseSettings.onclick=()=>{
+            settingsOverlay.style.display="none";
+        };
+    }
 
     taskArrivalA.onchange=()=>{
         saveTask(
@@ -860,7 +863,23 @@ if(!roomSnapshot.exists()){
     btnFoundDummy3.onclick=()=>{
         toggleFound("dummy3");
     };
+
+    if(btnSaveDummyDetail){
+        btnSaveDummyDetail.onclick=async()=>{
+            await saveSelectedDummyDetailOnly();
+
+            btnSaveDummyDetail.classList.add("setting-selected");
+            btnSaveDummyDetail.innerText="保存済み";
+
+            setTimeout(()=>{
+                btnSaveDummyDetail.classList.remove("setting-selected");
+                btnSaveDummyDetail.innerText="ダミヤン保存";
+            },900);
+        };
+    }
 btnSaveSettings.onclick=async()=>{
+        await saveSelectedDummyDetailOnly();
+
         await update(roomRef,{
             "settings/matchTime":selectedMatchTime,
             "settings/dummyCount":selectedDummyCount,
