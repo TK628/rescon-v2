@@ -699,24 +699,128 @@
         font-size:12px!important;
     }
 }
-/* ===== HP NUMBER HIDE PATCH ===== */
 
-/* HP数値を非表示 */
+
+/* ===== REFEREE TASK VISIBLE PATCH ===== */
+/* DUMMYで空いたスペースをTASKへ回す */
+
 .referee-trial-dummy .dummy-hp{
-    display:none !important;
+    display:none!important;
 }
 
-/* HPエリアを圧縮 */
 .dummy-hp-panel{
-    padding:6px 10px !important;
+    padding:6px 10px!important;
 }
 
-/* HPバーを少し細く */
 .referee-trial-dummy .dummy-bar{
-    height:12px !important;
+    height:12px!important;
 }
 
-/* HP見出しも少し詰める */
 .dummy-hp-label{
-    margin-bottom:2px !important;
+    margin-bottom:2px!important;
+}
+
+@media(max-width:900px){
+    #referee-dashboard.referee-trial-dashboard{
+        grid-template-rows:minmax(0,1fr) 184px!important;
+        height:calc(100dvh - 198px)!important;
+    }
+
+    .referee-trial-dummy{
+        gap:6px!important;
+    }
+
+    .dummy-visual-state{
+        grid-template-columns:70px 1fr!important;
+        gap:8px!important;
+    }
+
+    .dummy-icon-slot{
+        min-height:72px!important;
+    }
+
+    .referee-trial-dummy .dummy-mini-icon{
+        transform:scale(1.02)!important;
+    }
+
+    .dummy-state-buttons{
+        gap:6px!important;
+    }
+
+    .dummy-state-row .neon-button{
+        height:30px!important;
+        font-size:12px!important;
+    }
+
+    .dummy-state-row span{
+        font-size:12px!important;
+    }
+
+    .referee-trial-dummy .dummy-buttons .neon-button{
+        height:30px!important;
+        font-size:12px!important;
+    }
+
+    .referee-trial-task-card{
+        padding:10px!important;
+    }
+
+    .referee-trial-task-card .compact-title{
+        margin-bottom:6px!important;
+    }
+
+    .referee-trial-task-card .compact-task-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr))!important;
+        gap:7px!important;
+        max-height:none!important;
+        overflow:visible!important;
+    }
+
+    .referee-trial-task-card .compact-task-grid label{
+        min-height:34px!important;
+        padding:6px 9px!important;
+        font-size:12px!important;
+    }
+}
+
+@media(max-width:430px){
+    #referee-dashboard.referee-trial-dashboard{
+        grid-template-rows:minmax(0,1fr) 176px!important;
+        height:calc(100dvh - 198px)!important;
+    }
+
+    .referee-trial-dummy{
+        gap:5px!important;
+    }
+
+    .dummy-icon-slot{
+        min-height:66px!important;
+    }
+
+    .referee-trial-dummy .dummy-mini-icon{
+        transform:scale(.96)!important;
+    }
+
+    .dummy-state-row{
+        grid-template-columns:34px 1fr!important;
+        gap:6px!important;
+    }
+
+    .dummy-state-row span{
+        font-size:11px!important;
+    }
+
+    .dummy-state-row .neon-button{
+        height:28px!important;
+        font-size:11px!important;
+    }
+
+    .referee-trial-dummy .dummy-buttons .neon-button{
+        height:28px!important;
+    }
+
+    .referee-trial-task-card .compact-task-grid label{
+        min-height:32px!important;
+        font-size:11px!important;
+    }
 }
