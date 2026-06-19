@@ -699,3 +699,24 @@
         font-size:12px!important;
     }
 }
+/* ===== HP NUMBER HIDE PATCH ===== */
+
+/* HP数値を非表示 */
+.referee-trial-dummy .dummy-hp{
+    display:none !important;
+}
+
+/* HPエリアを圧縮 */
+.dummy-hp-panel{
+    padding:6px 10px !important;
+}
+
+/* HPバーを少し細く */
+.referee-trial-dummy .dummy-bar{
+    height:12px !important;
+}
+
+/* HP見出しも少し詰める */
+.dummy-hp-label{
+    margin-bottom:2px !important;
+}
