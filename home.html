@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESCON SYSTEM</title>
 
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/components.css">
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
@@ -25,73 +25,36 @@
         <section class="neon-card" id="menu-card">
             <div class="section-title">MAIN MENU</div>
 
-            <div id="menu-buttons" class="home-menu-grid home-layout-3">
-                <button class="home-menu-card home-room-card" id="btn-room">
-                    <span class="home-menu-icon"><img src="./assets/home-icons/icon-room.svg" alt=""></span>
-                    <span class="home-menu-text">
-                        <span class="home-menu-title">ルーム選択</span>
-                        <span class="home-menu-caption">ルームを選択してゲームを開始します</span>
-                    </span>
+            <div id="menu-buttons">
+                <button class="neon-button" id="btn-room">
+                    ROOM SELECT
                 </button>
 
-                <button class="home-menu-card home-sub-card" id="btn-community">
-                    <span class="home-menu-icon"><img src="./assets/home-icons/icon-community.svg" alt=""></span>
-                    <span class="home-menu-text">
-                        <span class="home-menu-title">コミュニティー</span>
-                        <span class="home-menu-caption">投稿や話題をチェックします</span>
-                    </span>
+                <button class="neon-button" id="btn-community">
+                    COMMUNITY
                 </button>
 
-                <button class="home-menu-card home-sub-card" id="btn-updates">
-                    <span class="home-menu-icon"><img src="./assets/home-icons/icon-updates.svg" alt=""></span>
-                    <span class="home-menu-text">
-                        <span class="home-menu-title">アップデート</span>
-                        <span class="home-menu-caption">更新履歴を確認できます</span>
-                    </span>
+                <button class="neon-button" id="btn-manual">
+                    MANUAL
                 </button>
 
-                <button class="home-menu-card home-sub-card" id="btn-manual">
-                    <span class="home-menu-icon"><img src="./assets/home-icons/icon-manual.svg" alt=""></span>
-                    <span class="home-menu-text">
-                        <span class="home-menu-title">マニュアル</span>
-                        <span class="home-menu-caption">操作方法を確認できます</span>
-                    </span>
-                </button>
-
-                <button class="home-menu-card home-sub-card" id="btn-feedback">
-                    <span class="home-menu-icon"><img src="./assets/home-icons/icon-feedback.svg" alt=""></span>
-                    <span class="home-menu-text">
-                        <span class="home-menu-title">フィードバック</span>
-                        <span class="home-menu-caption">不具合報告を送信できます</span>
-                    </span>
+                <button class="neon-button" id="btn-updates">
+                    UPDATES
                 </button>
             </div>
         </section>
 
         <section class="neon-card" id="notice-card">
-<div class="notice-card-head">
-<div>
-<div class="section-title">お知らせ</div>
-<div class="notice-caption">MASTERから配信されたお知らせを確認できます。</div>
-</div>
-<div id="notice-new-badge" class="notice-new-badge hidden">NEW 0</div>
-</div>
-
-<div id="notice-toolbar">
-<button class="notice-filter active" data-notice-home-filter="all">ALL</button>
-<button class="notice-filter" data-notice-home-filter="pinned">PINNED</button>
-<button class="notice-filter" data-notice-home-filter="new">NEW</button>
-<button class="neon-button mini-notice-button" id="btn-notice-mark-read">MARK READ</button>
-</div>
-
-<div id="home-notice-list"></div>
-</section>
+            <div class="section-title">NOTICE</div>
+            <div class="notice-item">現在メンテナンス予定はありません。</div>
+            <div class="notice-item">RESCON SYSTEM v2 再構築中。</div>
+        </section>
 
     </main>
 
 </div>
 
-<script type="module" src="./js/home.js"></script>
+<script type="module" src="../js/home.js"></script>
 
 </body>
 </html>

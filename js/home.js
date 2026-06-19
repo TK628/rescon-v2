@@ -45,6 +45,7 @@ const NOTICE_READ_KEY="resconNoticeLastReadAt";
 const NOTICE_REACTION_KEY="resconNoticeReactions";
 let latestHomeNotices={};
 let currentNoticeFilter="all";
+let noticeAutoReadTimer=null;
 
 if(btnRoom){
     btnRoom.onclick=()=>{
@@ -207,12 +208,38 @@ function updateNewBadge(){
     }
 }
 
+
+function markVisibleNoticesAsReadSoon(){
+    if(noticeAutoReadTimer){
+        clearTimeout(noticeAutoReadTimer);
+    }
+
+    noticeAutoReadTimer=setTimeout(()=>{
+        const visibleEntries=Object.entries(latestHomeNotices||{})
+            .filter(([key,item])=>isNoticeVisible(item));
+
+        if(visibleEntries.length===0){
+            return;
+        }
+
+        const latestCreatedAt=Math.max(
+            ...visibleEntries.map(([key,item])=>item.createdAt??0)
+        );
+
+        if(latestCreatedAt>getLastNoticeReadAt()){
+            setLastNoticeReadAt(latestCreatedAt);
+            renderHomeNotices();
+        }
+    },1200);
+}
+
 function renderHomeNotices(){
     if(!homeNoticeList){
         return;
     }
 
     updateNewBadge();
+    markVisibleNoticesAsReadSoon();
 
     const lastReadAt=getLastNoticeReadAt();
     const reactedMap=getNoticeReactionMap();
