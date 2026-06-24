@@ -211,3 +211,114 @@
 
 /* ===== v5.1 PLAYER DUMMY ICON ADJUST ===== */
 .player-dummy-card .dummy-icon-holder{min-height:42px;margin:0;}
+
+
+/* ===== PLAYER STOVE HORIZONTAL PATCH ===== */
+.player-stove-report-card{
+    display:grid!important;
+    grid-template-columns:1fr auto!important;
+    grid-template-areas:
+        "title button"
+        "grid grid"!important;
+    gap:8px!important;
+    align-items:center!important;
+    padding:10px!important;
+}
+
+.player-stove-report-card .section-title{
+    grid-area:title!important;
+    margin:0!important;
+    font-size:clamp(13px,1.3vw,18px)!important;
+}
+
+.player-stove-report-card .stove-grid{
+    grid-area:grid!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:8px!important;
+    margin:0!important;
+}
+
+.player-stove-report-card .stove-card{
+    padding:7px!important;
+    border-radius:10px!important;
+    border:1px solid rgba(0,255,255,.18);
+    background:rgba(255,255,255,.035);
+    display:flex!important;
+    flex-direction:column!important;
+    gap:5px!important;
+}
+
+.player-stove-report-card .stove-card label{
+    font-size:11px!important;
+    line-height:1!important;
+    letter-spacing:.8px;
+    opacity:.88;
+}
+
+.player-stove-report-card .stove-card .neon-input{
+    height:30px!important;
+    min-height:30px!important;
+    padding:4px 8px!important;
+    font-size:12px!important;
+}
+
+#btn-report-stove{
+    grid-area:button!important;
+    width:auto!important;
+    min-width:110px!important;
+    height:32px!important;
+    font-size:12px!important;
+    padding:0 12px!important;
+}
+
+@media(max-width:768px){
+    .player-stove-report-card{
+        grid-template-columns:1fr 96px!important;
+        gap:6px!important;
+        padding:8px!important;
+    }
+
+    .player-stove-report-card .section-title{
+        font-size:13px!important;
+    }
+
+    .player-stove-report-card .stove-grid{
+        gap:5px!important;
+    }
+
+    .player-stove-report-card .stove-card{
+        padding:5px!important;
+        gap:4px!important;
+    }
+
+    .player-stove-report-card .stove-card label{
+        font-size:9px!important;
+        text-align:center;
+    }
+
+    .player-stove-report-card .stove-card .neon-input{
+        height:26px!important;
+        min-height:26px!important;
+        padding:3px 5px!important;
+        font-size:10px!important;
+        text-align:center;
+    }
+
+    #btn-report-stove{
+        min-width:96px!important;
+        height:28px!important;
+        font-size:10px!important;
+        padding:0 6px!important;
+    }
+}
+
+@media(max-width:430px){
+    .player-stove-report-card{
+        grid-template-columns:1fr 88px!important;
+    }
+
+    #btn-report-stove{
+        min-width:88px!important;
+    }
+}
