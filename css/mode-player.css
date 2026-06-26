@@ -25,8 +25,9 @@
 }
 
 .player-mode #match-timer{
-    font-size:clamp(34px,5vw,64px)!important;
-    padding:8px 12px!important;
+      font-size:clamp(30px,4vw,56px)!important;
+    padding:2px 12px!important;
+    line-height:0.95;
     border-radius:16px;
     line-height:1;
 }
@@ -41,6 +42,21 @@
 
 .player-mode .neon-card{
     padding:12px!important;
+}
+
+/* 審判欄 */
+#referee-panel{
+    padding:8px 16px!important;
+}
+
+#referee-panel .section-title{
+    margin-bottom:4px!important;
+    font-size:18px!important;
+}
+
+#referee-list{
+    font-size:14px!important;
+    line-height:1.2;
 }
 
 .player-mode .section-title{
@@ -321,4 +337,8 @@
     #btn-report-stove{
         min-width:88px!important;
     }
+}
+
+#timer-panel{
+    padding:8px 16px!important;
 }
