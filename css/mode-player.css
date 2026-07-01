@@ -25,11 +25,10 @@
 }
 
 .player-mode #match-timer{
-      font-size:clamp(25px,4vw,56px)!important;
-    padding:2px 12px!important;
+    font-size:clamp(26px,3vw,48px)!important;
+    padding:2px 8px!important;
+    border-radius:12px;
     line-height:0.95;
-    border-radius:16px;
-    line-height:1;
 }
 
 .player-mode #dummy-grid{
