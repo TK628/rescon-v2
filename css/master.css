@@ -3331,359 +3331,490 @@ body.master-emergency-active{
 }
 
 
-/* ===== MASTER SIZE BALANCE PATCH ===== */
-#master-container{
-    padding:10px 0!important;
-    gap:10px!important;
-}
+/* ===== MASTER CONSOLE SIDEBAR LAYOUT PATCH ===== */
+/* PCは左サイドバー型の管理画面へ。スマホは従来寄りの縦並び。 */
 
-#master-header{
-    padding:8px 12px!important;
-    border-radius:18px!important;
-    grid-template-columns:120px 1fr 120px!important;
-}
+@media(min-width:901px){
 
-#btn-back-home{
-    min-width:0!important;
-    height:36px!important;
-    font-size:12px!important;
-    padding:0 12px!important;
-}
-
-.master-title-wrap .rescon-logo,
-.rescon-logo.small{
-    transform:scale(.82)!important;
-    margin-bottom:-4px!important;
-}
-
-#master-kicker{
-    font-size:10px!important;
-    letter-spacing:3px!important;
-}
-
-#master-title{
-    font-size:clamp(24px,3.2vw,42px)!important;
-    letter-spacing:4px!important;
-    margin:2px 0 0!important;
-    line-height:1!important;
-}
-
-#master-status{
-    padding:7px 10px!important;
-    font-size:10px!important;
-}
-
-#master-console{
-    gap:8px!important;
-}
-
-#master-tabs{
-    gap:6px!important;
-    padding:6px!important;
-    border-radius:16px!important;
-}
-
-.master-tab{
-    height:36px!important;
-    border-radius:11px!important;
-    font-size:11px!important;
-    letter-spacing:1px!important;
-    padding:0 6px!important;
-}
-
-.master-panel-card{
-    gap:10px!important;
-    padding:14px!important;
-    border-radius:18px!important;
-}
-
-.master-card-head{
-    gap:10px!important;
-}
-
-.section-title{
-    font-size:clamp(16px,1.5vw,22px)!important;
-    margin-bottom:6px!important;
-}
-
-.mini-section-title{
-    font-size:13px!important;
-}
-
-.master-panel-caption{
-    margin-top:-4px!important;
-    font-size:11px!important;
-    line-height:1.45!important;
-}
-
-.status-badge,
-#dashboard-updated,
-#announcement-status-badge,
-#health-overall-badge,
-#emergency-badge,
-#theme-current-badge,
-#manual-center-count,
-#notice-center-count,
-#version-center-count{
-    padding:6px 9px!important;
-    font-size:10px!important;
-}
-
-#dashboard-grid{
-    gap:8px!important;
-}
-
-.dashboard-stat{
-    padding:10px!important;
-    border-radius:14px!important;
-}
-
-.dashboard-stat span{
-    font-size:9px!important;
-    letter-spacing:1.4px!important;
-}
-
-.dashboard-stat strong{
-    margin-top:5px!important;
-    font-size:clamp(22px,3vw,38px)!important;
-}
-
-.dashboard-lower{
-    gap:8px!important;
-}
-
-.dashboard-section{
-    gap:7px!important;
-    padding:9px!important;
-    border-radius:14px!important;
-}
-
-.dashboard-activity,
-.dashboard-room,
-.notification-item,
-.master-room-item,
-.master-log-item,
-.master-comment-item,
-.community-admin-post,
-.ng-request-item,
-.community-admin-empty{
-    padding:9px 10px!important;
-    border-radius:12px!important;
-}
-
-.dashboard-activity span,
-.dashboard-room span,
-.notification-date,
-.master-room-meta,
-.master-log-meta,
-.comment-date{
-    font-size:10px!important;
-}
-
-.master-subtabs{
-    gap:6px!important;
-    margin-bottom:8px!important;
-}
-
-.master-subtab{
-    height:34px!important;
-    min-height:34px!important;
-    border-radius:10px!important;
-    font-size:11px!important;
-    padding:0 8px!important;
-}
-
-.master-consolidated-grid{
-    gap:10px!important;
-}
-
-.compact-panel{
-    padding:12px!important;
-}
-
-.master-switch-row{
-    padding:10px!important;
-    border-radius:12px!important;
-}
-
-.large-switch{
-    min-height:76px!important;
-}
-
-.master-switch-row strong{
-    font-size:14px!important;
-    margin-bottom:5px!important;
-}
-
-.master-switch-row small{
-    font-size:11px!important;
-    line-height:1.45!important;
-}
-
-.master-switch-row input{
-    width:22px!important;
-    height:22px!important;
-}
-
-.neon-input,
-.master-textarea{
-    font-size:12px!important;
-}
-
-.master-textarea{
-    padding:10px!important;
-    border-radius:12px!important;
-    line-height:1.55!important;
-}
-
-.neon-button,
-.full-button{
-    min-height:34px!important;
-    font-size:12px!important;
-}
-
-.notice-center-form{
-    gap:8px!important;
-}
-
-.notice-center-filter{
-    gap:6px!important;
-}
-
-.notice-filter{
-    height:30px!important;
-    font-size:10px!important;
-    border-radius:9px!important;
-}
-
-.health-card,
-.theme-card,
-.community-stat-admin{
-    padding:10px!important;
-    border-radius:13px!important;
-}
-
-.health-card span,
-.theme-card span,
-.community-stat-admin span{
-    font-size:9px!important;
-}
-
-.health-card strong,
-.community-stat-admin strong{
-    font-size:22px!important;
-}
-
-.manual-update-control-box{
-    margin:10px 0!important;
-    padding:10px!important;
-    border-radius:12px!important;
-}
-
-.manual-update-admin-grid{
-    gap:8px!important;
-    margin:8px 0!important;
-}
-
-.manual-editor-grid{
-    gap:10px!important;
-}
-
-.manual-admin-item,
-.version-admin-item{
-    padding:10px!important;
-    border-radius:12px!important;
-}
-
-.master-room-actions,
-.master-comment-actions,
-.announcement-actions,
-.notification-toolbar,
-.manual-editor-actions,
-.notice-center-actions{
-    gap:6px!important;
-}
-
-.master-room-actions .neon-button,
-.master-comment-actions .neon-button,
-.manual-editor-actions .neon-button,
-.notice-center-actions .neon-button{
-    height:30px!important;
-    font-size:10px!important;
-}
-
-#master-room-list,
-#master-log-list,
-#master-comment-list,
-#master-community-post-list,
-#master-ng-request-list,
-#dashboard-activity-list,
-#dashboard-room-list,
-#notification-list{
-    gap:7px!important;
-}
-
-@media(max-width:900px){
     #master-container{
-        width:94vw!important;
+        width:min(1760px,97vw)!important;
+        height:100dvh!important;
         padding:8px 0!important;
         gap:8px!important;
+        overflow:hidden!important;
     }
 
     #master-header{
-        padding:8px!important;
-        gap:8px!important;
+        min-height:64px!important;
+        padding:7px 12px!important;
+        border-radius:16px!important;
+        grid-template-columns:120px 1fr 118px!important;
+        gap:10px!important;
     }
 
-    #master-title{
-        font-size:30px!important;
-        letter-spacing:3px!important;
+    #btn-back-home{
+        height:34px!important;
+        min-width:100px!important;
+        font-size:11px!important;
+        padding:0 10px!important;
+    }
+
+    .master-title-wrap{
+        display:grid!important;
+        grid-template-columns:auto 1fr!important;
+        grid-template-areas:
+            "logo kicker"
+            "logo title"!important;
+        column-gap:12px!important;
+        align-items:center!important;
+        justify-content:center!important;
+        width:max-content!important;
+        margin:0 auto!important;
+    }
+
+    .master-title-wrap .rescon-logo,
+    .rescon-logo.small{
+        grid-area:logo!important;
+        width:46px!important;
+        height:46px!important;
+        transform:scale(.72)!important;
+        margin:0!important;
     }
 
     #master-kicker{
+        grid-area:kicker!important;
+        text-align:left!important;
         font-size:9px!important;
-        letter-spacing:2px!important;
+        letter-spacing:2.5px!important;
+        line-height:1!important;
     }
 
-    #master-tabs{
-        grid-template-columns:repeat(2,1fr)!important;
-        gap:6px!important;
-    }
-
-    .master-tab{
-        height:34px!important;
-        font-size:10px!important;
-    }
-
-    .master-panel-card{
-        min-height:auto!important;
-        padding:12px!important;
-    }
-
-    .section-title{
-        font-size:17px!important;
-    }
-
-    .master-panel-caption{
-        font-size:10px!important;
-    }
-}
-
-@media(max-width:480px){
     #master-title{
-        font-size:26px!important;
+        grid-area:title!important;
+        text-align:left!important;
+        font-size:clamp(24px,2.4vw,38px)!important;
+        letter-spacing:3px!important;
+        line-height:1!important;
+        margin:1px 0 0!important;
     }
 
     #master-status{
-        font-size:9px!important;
+        padding:7px 10px!important;
+        font-size:10px!important;
+    }
+
+    /* ログインカードは中央維持 */
+    .master-login-card{
+        width:min(560px,94vw)!important;
+    }
+
+    /* 認証後は左サイドバー + メイン */
+    #master-console{
+        flex:1!important;
+        min-height:0!important;
+        display:grid!important;
+        grid-template-columns:190px minmax(0,1fr)!important;
+        grid-template-rows:1fr!important;
+        gap:10px!important;
+        overflow:hidden!important;
+    }
+
+    #master-tabs{
+        height:100%!important;
+        min-height:0!important;
+        display:flex!important;
+        flex-direction:column!important;
+        gap:7px!important;
+        padding:9px!important;
+        border-radius:18px!important;
+        overflow:auto!important;
+        background:
+            radial-gradient(circle at top,rgba(191,132,255,.13),transparent 36%),
+            rgba(0,8,20,.44)!important;
     }
 
     .master-tab{
-        height:32px!important;
-        font-size:9px!important;
+        width:100%!important;
+        height:40px!important;
+        min-height:40px!important;
+        border-radius:12px!important;
+        font-size:11px!important;
+        letter-spacing:1px!important;
+        text-align:left!important;
+        padding:0 12px!important;
+        display:flex!important;
+        align-items:center!important;
+        justify-content:flex-start!important;
+    }
+
+    .master-tab.active{
+        box-shadow:0 0 20px rgba(191,132,255,.26)!important;
+    }
+
+    #master-tab-panels{
+        min-height:0!important;
+        overflow:hidden!important;
+    }
+
+    .master-panel{
+        height:100%!important;
+        min-height:0!important;
+        overflow:hidden!important;
+    }
+
+    .master-panel.active{
+        display:block!important;
+    }
+
+    .master-panel-card{
+        height:100%!important;
+        min-height:0!important;
+        padding:12px!important;
+        gap:10px!important;
+        border-radius:18px!important;
+        overflow:hidden!important;
+    }
+
+    .master-card-head{
+        align-items:flex-start!important;
+        gap:10px!important;
+    }
+
+    .section-title{
+        font-size:clamp(16px,1.25vw,21px)!important;
+        margin-bottom:5px!important;
+        line-height:1.15!important;
+    }
+
+    .mini-section-title{
+        font-size:13px!important;
+    }
+
+    .master-panel-caption{
+        margin-top:-3px!important;
+        font-size:11px!important;
+        line-height:1.45!important;
+    }
+
+    .status-badge,
+    #dashboard-updated,
+    #announcement-status-badge,
+    #health-overall-badge,
+    #emergency-badge,
+    #theme-current-badge,
+    #manual-center-count,
+    #notice-center-count,
+    #version-center-count{
+        padding:6px 9px!important;
+        font-size:10px!important;
+        white-space:nowrap!important;
+    }
+
+    /* Dashboard */
+    #dashboard-grid{
+        grid-template-columns:repeat(6,minmax(0,1fr))!important;
+        gap:8px!important;
+    }
+
+    .dashboard-stat{
+        min-height:78px!important;
+        padding:10px 8px!important;
+        border-radius:14px!important;
+    }
+
+    .dashboard-stat span{
+        font-size:8px!important;
+        letter-spacing:1.2px!important;
+        line-height:1.2!important;
     }
 
     .dashboard-stat strong{
-        font-size:28px!important;
+        margin-top:4px!important;
+        font-size:clamp(22px,2.6vw,38px)!important;
+        line-height:1!important;
+    }
+
+    .dashboard-lower{
+        min-height:0!important;
+        grid-template-columns:1fr 1fr!important;
+        gap:8px!important;
+        overflow:hidden!important;
+    }
+
+    .dashboard-section{
+        padding:9px!important;
+        gap:7px!important;
+        border-radius:14px!important;
+    }
+
+    .dashboard-feed-wide{
+        grid-column:1 / -1!important;
+        min-height:0!important;
+    }
+
+    #dashboard-activity-list,
+    #dashboard-room-list,
+    #dashboard-live-feed-list,
+    #notification-list{
+        gap:6px!important;
+    }
+
+    .dashboard-activity,
+    .dashboard-room,
+    .notification-item{
+        padding:8px 9px!important;
+        border-radius:11px!important;
+        font-size:12px!important;
+    }
+
+    .dashboard-activity span,
+    .dashboard-room span,
+    .notification-date{
+        font-size:10px!important;
+    }
+
+    /* Subtabs */
+    .master-subtabs{
+        display:flex!important;
+        flex-wrap:wrap!important;
+        gap:6px!important;
+        margin-bottom:8px!important;
+    }
+
+    .master-subtab{
+        height:32px!important;
+        min-height:32px!important;
+        border-radius:10px!important;
+        font-size:10px!important;
+        padding:0 10px!important;
+    }
+
+    .master-consolidated-grid{
+        height:calc(100% - 42px)!important;
+        min-height:0!important;
+        gap:10px!important;
+        overflow:hidden!important;
+    }
+
+    .master-subpanel-area{
+        min-height:0!important;
+    }
+
+    .compact-panel{
+        padding:12px!important;
+        gap:10px!important;
+    }
+
+    .master-sub-panel{
+        min-height:0!important;
+        overflow:hidden!important;
+    }
+
+    .master-sub-panel.active-subpanel{
+        display:flex!important;
+        flex-direction:column!important;
+    }
+
+    /* 操作カード類 */
+    .master-switch-row{
+        padding:10px!important;
+        border-radius:12px!important;
+    }
+
+    .large-switch{
+        min-height:72px!important;
+    }
+
+    .master-switch-row strong{
+        font-size:14px!important;
+        margin-bottom:4px!important;
+    }
+
+    .master-switch-row small{
+        font-size:11px!important;
+        line-height:1.4!important;
+    }
+
+    .master-switch-row input{
+        width:22px!important;
+        height:22px!important;
+    }
+
+    .neon-input{
+        min-height:34px!important;
+        height:34px!important;
+        font-size:12px!important;
+        border-radius:10px!important;
+    }
+
+    .master-textarea{
+        padding:10px!important;
+        border-radius:12px!important;
+        font-size:12px!important;
+        line-height:1.55!important;
+    }
+
+    .neon-button,
+    .full-button{
+        min-height:34px!important;
+        height:34px!important;
+        font-size:11px!important;
+        border-radius:10px!important;
+    }
+
+    /* ROOMS: PCの横幅活用 */
+    .room-control-toolbar,
+    .rooms-control-toolbar,
+    .room-filter-toolbar,
+    #room-control-toolbar{
+        display:grid!important;
+        grid-template-columns:minmax(260px,1fr) 240px 120px!important;
+        gap:8px!important;
+        align-items:center!important;
+    }
+
+    #room-summary,
+    #comment-summary,
+    #community-manage-summary{
+        gap:6px!important;
+    }
+
+    #room-summary span,
+    #comment-summary span,
+    #community-manage-summary span{
+        padding:5px 8px!important;
+        font-size:10px!important;
+    }
+
+    #master-room-list,
+    #master-log-list,
+    #master-comment-list,
+    #master-community-post-list,
+    #master-ng-request-list,
+    #notice-center-list,
+    #version-center-list,
+    #manual-match-list,
+    #manual-system-list{
+        min-height:0!important;
+        gap:7px!important;
+        overflow:auto!important;
+    }
+
+    .master-room-item,
+    .master-log-item,
+    .master-comment-item,
+    .community-admin-post,
+    .ng-request-item,
+    .community-admin-empty,
+    .manual-admin-item,
+    .version-admin-item{
+        padding:9px 10px!important;
+        border-radius:12px!important;
+    }
+
+    .master-room-actions,
+    .master-comment-actions,
+    .manual-editor-actions,
+    .notice-center-actions,
+    .announcement-actions,
+    .notification-toolbar{
+        gap:6px!important;
+    }
+
+    .master-room-actions .neon-button,
+    .master-comment-actions .neon-button,
+    .manual-editor-actions .neon-button,
+    .notice-center-actions .neon-button{
+        height:30px!important;
+        min-height:30px!important;
+        font-size:9px!important;
+        padding:0 6px!important;
+    }
+
+    /* Notice / Version / Manual 編集画面の余白削減 */
+    .notice-center-form,
+    .announcement-form,
+    .manual-editor-grid{
+        gap:8px!important;
+    }
+
+    .notice-center-filter{
+        gap:5px!important;
+    }
+
+    .notice-filter{
+        height:28px!important;
+        font-size:9px!important;
+        border-radius:8px!important;
+    }
+
+    .manual-update-control-box{
+        margin:8px 0!important;
+        padding:9px!important;
+        border-radius:12px!important;
+    }
+
+    .manual-update-admin-grid{
+        gap:8px!important;
+        margin:8px 0!important;
+    }
+
+    .manual-center-body{
+        min-height:0!important;
+        overflow:hidden!important;
+    }
+
+    /* Health / Theme */
+    #health-grid,
+    #theme-grid,
+    .community-stats-admin{
+        gap:8px!important;
+    }
+
+    .health-card,
+    .theme-card,
+    .community-stat-admin{
+        padding:10px!important;
+        border-radius:13px!important;
+    }
+
+    .health-card span,
+    .theme-card span,
+    .community-stat-admin span{
+        font-size:9px!important;
+    }
+
+    .health-card strong,
+    .community-stat-admin strong{
+        font-size:22px!important;
+    }
+}
+
+/* タブ数が多いPCでも視認しやすく */
+@media(min-width:901px) and (max-width:1280px){
+    #master-console{
+        grid-template-columns:160px minmax(0,1fr)!important;
+    }
+
+    .master-tab{
+        font-size:9px!important;
+        padding:0 9px!important;
+    }
+
+    #dashboard-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    }
+}
+
+/* スマホはサイドバー化せず、縦積み維持 */
+@media(max-width:900px){
+    #master-console{
+        display:flex!important;
+        flex-direction:column!important;
+    }
+
+    #master-tabs{
+        display:grid!important;
+        grid-template-columns:repeat(2,1fr)!important;
     }
 }
